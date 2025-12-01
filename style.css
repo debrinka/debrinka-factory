@@ -29,6 +29,37 @@ src: url('fonts/plus-jakarta-sans-v12-latin-700.eot'); /* IE9 Compat Modes */
     --magenta: hsl(322, 98%, 62%);
     --white: hsl(20, 10%, 94%);
     --black: hsl(200, 0%, 15%);
+    --size-000: -.5rem;
+    --size-00: -.25rem;
+    --size-1: .25rem;
+    --size-2: .5rem;
+    --size-3: 1rem;
+    --size-4: 1.25rem;
+    --size-5: 1.5rem;
+    --size-6: 1.75rem;
+    --size-7: 2rem;
+    --size-8: 3rem;
+    --size-9: 4rem;
+    --size-10: 5rem;
+    --size-11: 7.5rem;
+    --size-12: 10rem;
+    --size-13: 15rem;
+    --size-14: 20rem;
+    --size-15: 30rem;
+    --size-xxs: 240px;
+    --size-xs: 360px;
+    --size-sm: 480px;
+    --size-md: 768px;
+    --size-lg: 1024px;
+    --size-xl: 1440px;
+    --size-xxl: 1920px;
+    --space-xxs: var(--size-1);
+    --space-xs: var(--size-2);
+    --space-sm: calc(var(--size-1) + var(--size-2));
+    --space-md: var(--size-3);
+    --space-lg: var(--size-7);
+    --topnav-h: 72px; /* valore di fallback; sarà sovrascritto da JS */
+  --vh: 1vh;
 }
 
 *,
@@ -44,10 +75,29 @@ body {
     min-height: 100vh;
 }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* previene scroll orizzontale causato da elementi troppo larghi */
+}
+
 h1, 
 h2, 
 h3 {
     margin: 0;
+}
+
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
+img {
+  display: block;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 button {
@@ -66,7 +116,7 @@ button:hover {
     text-transform: lowercase;
     border: none;
     transition: 150ms ease-in-out;
-    transition-property: background-color, color, text-decoration;
+    transition-property: background-color, color, text-decoration, font-weight;
 }
 
 .button.magenta {
@@ -78,6 +128,7 @@ button:hover {
     background-color:var(--white);
     color: var(--black);
     text-decoration: underline;
+    font-weight: 500;
 }
 
 .grid-main{
@@ -97,4 +148,66 @@ button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 1.5rem;
+   border-bottom: 2px solid var(--black);
+   height: var(--topnav-h);
 }
+
+.left-wrap {
+    display: flex;
+  }
+
+.right-wrap {
+    display: flex;
+    align-items: center;
+  }
+
+.linknav{
+    line-height: 1.625;
+    padding: 18px 64px;
+    }
+
+/** .hero {
+    block-size: max(490px, calc(100dvb - var(100px)));
+    display: grid;
+    gap: var(--space-lg);
+    inline-size: 100%;
+}**/
+
+.hero {
+  width: 100%;
+  max-width: 100vw;
+  height: calc(100 * var(--vh) - var(--topnav-h));
+  min-height: calc(100vh - var(--topnav-h));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-image: none;
+}
+
+.hero-content {
+height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: clamp(1rem, 4vw, 6rem); 
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+.hero-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  .dark {
+    background-color: var(--black);
+    color: var(--white);
+   min-height: 100vh;
+  }
