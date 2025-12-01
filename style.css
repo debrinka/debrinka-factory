@@ -1,0 +1,100 @@
+/* plus-jakarta-sans-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('fonts/plus-jakarta-sans-v12-latin-500.eot'); /* IE9 Compat Modes */
+  src: url('fonts/plus-jakarta-sans-v12-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/plus-jakarta-sans-v12-latin-500.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('fonts/plus-jakarta-sans-v12-latin-500.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+       url('fonts/plus-jakarta-sans-v12-latin-500.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+       url('fonts/plus-jakarta-sans-v12-latin-500.svg#PlusJakartaSans') format('svg'); /* Legacy iOS */
+}
+/* plus-jakarta-sans-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+src: url('fonts/plus-jakarta-sans-v12-latin-700.eot'); /* IE9 Compat Modes */
+  src: url('fonts/plus-jakarta-sans-v12-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/plus-jakarta-sans-v12-latin-700.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('fonts/plus-jakarta-sans-v12-latin-700.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+       url('fonts/plus-jakarta-sans-v12-latin-700.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+       url('fonts/plus-jakarta-sans-v12-latin-700.svg#PlusJakartaSans') format('svg'); /* Legacy iOS */
+}
+
+:root {
+    --magenta: hsl(322, 98%, 62%);
+    --white: hsl(20, 10%, 94%);
+    --black: hsl(200, 0%, 15%);
+}
+
+*,
+*::before, 
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+    background-color: var(--white);
+    min-height: 100vh;
+}
+
+h1, 
+h2, 
+h3 {
+    margin: 0;
+}
+
+button {
+    font-family: inherit;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.button {
+    font-size: 1.5rem;
+    line-height: 1.625;
+    font-weight: 700;
+    padding: 18px 64px;
+    text-transform: lowercase;
+    border: none;
+    transition: 150ms ease-in-out;
+    transition-property: background-color, color, text-decoration;
+}
+
+.button.magenta {
+    background-color: var(--magenta);
+    color: var(--white);   
+}
+
+.button.magenta:hover {
+    background-color:var(--white);
+    color: var(--black);
+    text-decoration: underline;
+}
+
+.grid-main{
+    display: grid;
+    grid-template-columns: 1fr min(100%, 50rem) 1fr;
+}
+
+@media (width > 28.125rem) {
+   
+}
+
+.grid-content {
+    grid-column: 2 / 3;
+}
+
+.topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
