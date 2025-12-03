@@ -610,54 +610,46 @@ button:hover {
     background-color: var(--white);
     position: relative;
     z-index: 2;
+    padding-bottom: var(--size-11);
 }
 
-/* LA RIGA (Il contenitore cliccabile) */
-.project-row {
-    display: block;        /* Resettiamo il flex vecchio */
-    width: 100%;
-    text-decoration: none; /* Togliamo la sottolineatura dai link */
-    color: inherit;
-    
-    border-bottom: 2px solid var(--black);
+/* 1. WRAPPER HOVER (Tutta la larghezza) */
+.project-hover-wrapper {
     transition: background-color 0.3s ease;
-    
-    /* Togliamo l'altezza fissa (60vh) per permettere all'allineamento 
-       baseline e ai margini di 40px di comandare l'altezza in modo naturale */
 }
 
-.project-row:hover {
+.project-hover-wrapper:hover {
     background-color: #f4f4f4;
 }
 
-/* IL TITOLO */
-/* Manteniamo il tuo font styling */
+/* 2. LA RIGA DEL PROGETTO (Gestisce Bordo e Padding) */
+.project-row {
+    /* Il bordo è applicato alla riga, quindi sarà largo quanto il container (meno i gutter) */
+    border-bottom: 2px solid var(--black);
+    
+    /* I famosi 40px di aria sopra e sotto */
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* 3. IL TITOLO */
 .project-name {
     font-size: clamp(3rem, 6vw, 6rem);
     font-weight: 700;
     line-height: 0.9;
     margin: 0;
     
-    /* IMPORTANTE: Per l'allineamento baseline. 
-       Dato che l'immagine ha 40px sotto, dobbiamo assicurarci che 
-       il titolo non "tocchi" il bordo nero se è più lungo. 
-       Diamo anche a lui un po' di respiro inferiore. */
-    padding-bottom: 40px; 
+    /* Fix per mobile: su desktop è baseline, su mobile serve spazio sotto */
+    margin-bottom: 0; 
 }
 
-/* L'IMMAGINE */
-/* Questa classe gestisce i 40px di aria che volevi */
-.img-spacing {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+/* 4. IMMAGINE DENTRO IL RATIO 16:9 */
+/* Bootstrap gestisce la dimensione del box, noi diciamo all'immagine come comportarsi dentro */
+.ratio img {
+    object-fit: cover; /* Ritaglia l'immagine per riempire il 16:9 senza deformarsi */
 }
 
-/* OVERRIDE DEL CONTAINER BOOTSTRAP */
-/* Questo è fondamentale per allineare tutto alla tua variabile --side-margin */
+/* OVERRIDE CONTAINER (Per allineare tutto ai tuoi margini laterali) */
 .project-list .container-fluid {
     padding-left: var(--side-margin);
     padding-right: var(--side-margin);
@@ -665,16 +657,10 @@ button:hover {
 
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
-    /* Su mobile l'allineamento baseline non ha senso (sono impilati),
-       quindi resettiamo un po' le spaziature se serve */
-    
     .project-name {
-        padding-top: 40px; /* Spazio sopra il titolo su mobile */
-        padding-bottom: 20px; /* Meno spazio tra titolo e immagine */
+        margin-bottom: 20px; /* Separa il titolo dall'immagine quando sono impilati */
     }
     
-    .img-spacing {
-        margin-top: 0; /* L'immagine sta subito sotto il titolo */
-        margin-bottom: 40px;
-    }
+    /* Opzionale: Se su mobile il 16:9 è troppo basso, puoi cambiarlo qui */
+    /* .ratio-16x9 { --bs-aspect-ratio: 75%; } -> diventerebbe 4:3 */
 }
