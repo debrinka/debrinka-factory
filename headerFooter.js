@@ -22,53 +22,47 @@ window.addEventListener('load', function() {
 
     // FOOTER (Struttura corretta Flex Verticale)
     if(footer) {
-        footer.innerHTML = `
-        <div class="footer-wrapper" id="sticky-footer">
+    footer.innerHTML = `
+    <div class="footer-wrapper" id="sticky-footer">
+        
+        <div class="footer-grid-layout">
             
-            <div class="footer-cols-container">
-                
-                <div class="footer-col-left">
-                    <h1 class="footer-title">
-                        nice to meet <span style="color: var(--magenta);">you</span>
-                    </h1>
-                    
-                    <ul class="footer-socials">
-                      <li><a href="#" style="text-decoration:none; color:white;">behance</a></li>
-                      <li><a href="#" style="text-decoration:none; color:white;">linkedin</a></li>
-                      <li><a href="mailto:erideba@gmail.com" style="text-decoration:none; color:white;">erideba@gmail.com</a></li>
-                    </ul>
-                </div>
+            <h1 class="footer-item-title">
+                nice to meet <span style="color: var(--magenta);">you</span>
+            </h1>
 
-                <div class="footer-col-right">
-                    <div class="footer-address">
-                        Based in Turin, Learn at Politecnico di Torino
-                    </div>
-                    
-                    <div class="map-container">
-                        <iframe src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=torino,%20italy+(My%20Business%20palce)&t=&z=14&ie=UTF8&iwloc=B&output=embed"></iframe>
-                    </div>
-                </div>
-
+            <div class="footer-item-address">
+                Based in Turin, Learn at Politecnico di Torino
             </div>
 
-            <div class="copyright-bar">
-                © 2025 Debrinka Portfolio
+            <ul class="footer-item-socials">
+                <li><a href="#" style="text-decoration:none; color:white;">behance</a></li>
+                <li><a href="#" style="text-decoration:none; color:white;">linkedin</a></li>
+                <li><a href="mailto:erideba@gmail.com" style="text-decoration:none; color:white;">erideba@gmail.com</a></li>
+            </ul>
+
+            <div class="footer-item-map">
+                <iframe src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=torino,%20italy+(My%20Business%20palce)&t=&z=14&ie=UTF8&iwloc=B&output=embed"></iframe>
             </div>
 
-        </div>`;
+        </div>
 
-        // Funzione per calcolare margine inferiore del sito (Effetto Reveal)
-        const adjustFooterReveal = () => {
-            const footerEl = document.getElementById('sticky-footer');
-            // Applichiamo solo su Desktop (>900px)
-            if(footerEl && main && window.innerWidth > 900) { 
-                main.style.marginBottom = footerEl.offsetHeight + 'px';
-            } else if (main) {
-                main.style.marginBottom = '0px';
-            }
-        };
+        <div class="copyright-bar">
+            © 2025 Debrinka Portfolio
+        </div>
 
-        setTimeout(adjustFooterReveal, 100);
-        window.addEventListener('resize', adjustFooterReveal);
-    }
+    </div>`;
+
+    // (La funzione adjustFooterReveal rimane uguale, non serve cambiarla)
+    const adjustFooterReveal = () => {
+        const footerEl = document.getElementById('sticky-footer');
+        if(footerEl && main && window.innerWidth > 900) { 
+            main.style.marginBottom = footerEl.offsetHeight + 'px';
+        } else if (main) {
+            main.style.marginBottom = '0px';
+        }
+    };
+    setTimeout(adjustFooterReveal, 100);
+    window.addEventListener('resize', adjustFooterReveal);
+}
 });

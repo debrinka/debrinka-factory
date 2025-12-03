@@ -417,166 +417,264 @@ button:hover {
 }
 
 
-/* --- NUOVO FOOTER (Flex Verticale - No bordi, Mappa full-right) --- */
+/* --- FOOTER GRID BASELINE (La soluzione definitiva) --- */
 
-/* 1. Il Contenitore che sta "dietro" */
 .footer-wrapper {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 1; /* Livello basso */
+    z-index: 1; 
     background-color: var(--black);
     color: var(--white);
 }
 
-/* 2. Layout a 2 Colonne Principali */
-.footer-cols-container {
-    display: flex;
-    /* Altezza: tutto lo schermo MENO la barra copyright (60px) */
-    height: calc(100vh - 60px); 
+.footer-grid-layout {
+    display: grid;
+    /* Due Colonne: 2/3 e 1/3 */
+    grid-template-columns: 2fr 1fr;
+    /* Due Righe: La prima automatica (testi), la seconda riempie lo spazio (mappa) */
+    grid-template-rows: auto 1fr;
+    
+    /* ALTEZZA: Tutto lo schermo meno il copyright */
+    height: calc(100vh - 60px);
     width: 100%;
     
-    /* MODIFICA: Padding SOLO a sinistra per l'allineamento. */
-    /* A destra è 0 per far toccare la mappa. */
-    padding: 0 0 0 var(--side-margin); 
-    
+    /* MARGINI: Solo a sinistra. A destra 0 per la mappa */
+    padding: 0 0 0 var(--side-margin);
     box-sizing: border-box;
+    
+    /* --- IL COMANDO MAGICO --- */
+    /* Allinea i testi sulla loro linea di scrittura (baseline) */
+    align-items: baseline; 
 }
 
-/* --- COLONNA SINISTRA (Titolo + Social) --- */
-.footer-col-left {
-    flex: 2; /* Occupa 2/3 dello spazio */
-    display: flex;
-    flex-direction: column;
-    /* SPINGE GLI ELEMENTI AGLI ESTREMI OPPOSTI */
-    justify-content: space-between; 
+/* --- ELEMENTO 1: TITOLO --- */
+.footer-item-title {
+    grid-column: 1 / 2; /* Colonna 1 */
+    grid-row: 1 / 2;    /* Riga 1 */
     
-    /* Padding verticale */
-    padding-top: 40px;
-    padding-bottom: 40px;
-    
-    /* MODIFICA: Aggiunto padding destro per staccare il testo dalla mappa */
-    padding-right: 4rem; 
-    
-    /* MODIFICA: Rimosso il border-right */
-    border-right: none; 
-}
-
-/* --- COLONNA DESTRA (Indirizzo + Mappa) --- */
-.footer-col-right {
-    flex: 1; /* Occupa 1/3 dello spazio */
-    display: flex;
-    flex-direction: column;
-    
-    /* Niente padding verticale */
-    padding-top: 40px; 
-    
-    /* MODIFICA: Rimosso padding-left, così la mappa parte attaccata alla colonna sinistra */
-    padding-left: 0; 
-}
-
-/* Elementi Specifici */
-
-/* Titolo: Inchiodato in alto */
-.footer-title {
     font-size: clamp(3rem, 7vw, 9rem);
     line-height: 0.9;
     font-weight: 700;
     margin: 0;
+    padding-top: 40px; /* Spazio dal tetto */
+    padding-right: 2rem;
 }
 
-/* Social: Inchiodati in basso */
-.footer-socials {
+/* --- ELEMENTO 2: INDIRIZZO --- */
+.footer-item-address {
+    grid-column: 2 / 3; /* Colonna 2 */
+    grid-row: 1 / 2;    /* Riga 1 */
+    font-size: var(--text-lg);
+    white-space: nowrap;
+}
+
+/* --- ELEMENTO 3: SOCIALS --- */
+.footer-item-socials {
+    grid-column: 1 / 2; /* Colonna 1 */
+    grid-row: 2 / 3;    /* Riga 2 */
+    
+    /* Lo spingiamo in basso */
+    align-self: end;    
+    
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0 0 40px 0; /* Padding bottom 40px */
     font-size: 1.5rem;
     line-height: 1.6;
 }
 
-/* Indirizzo: In alto a destra */
-.footer-address {
-    font-size: 1rem;
-    color: gray;
-    margin-bottom: 20px; /* Spazio tra testo e mappa */
-    white-space: nowrap; /* FORZA TUTTO SU UNA RIGA */
-    line-height: 1.2;
-    /* MODIFICA: Aggiunto padding sinistro solo per il testo dell'indirizzo, per allinearlo visivamente */
-    padding-left: 2rem;
-}
-
-/* Mappa: Elastica e Full Right */
-.map-container {
+/* --- ELEMENTO 4: MAPPA --- */
+.footer-item-map {
+    grid-column: 2 / 3; /* Colonna 2 */
+    grid-row: 2 / 3;    /* Riga 2 */
     width: 100%;
-    /* FLEX GROW 1: Si prende tutto lo spazio verticale rimanente */
-    flex-grow: 1; 
-    background: #222;
+    height: 100%; /* Occupa tutto lo spazio rimanente */
     filter: grayscale(100%) invert(90%);
-    /* Non serve altro, toccherà il lato destro perché il container padre ha padding-right: 0 */
+    
+    /* Margine sopra per staccarsi dall'indirizzo (opzionale) */
+    padding-top: 30px; 
 }
 
-.map-container iframe {
+.footer-item-map iframe {
     width: 100%;
     height: 100%;
     border: 0;
     display: block;
 }
 
-/* Barra Copyright */
+/* --- BARRA COPYRIGHT --- */
 .copyright-bar {
     height: 60px;
     background-color: var(--black);
     display: flex;
     align-items: center;
-    /* Allineato a sinistra */
     padding-left: var(--side-margin);
     border-top: 1px solid #333;
     font-size: 0.9rem;
     color: gray;
 }
 
-/* Mobile */
+/* --- MOBILE RESPONSIVE --- */
 @media (max-width: 900px) {
     .footer-wrapper {
         position: relative;
         z-index: 2;
-        height: auto; /* Altezza automatica su mobile */
+        height: auto;
     }
 
-    .footer-cols-container {
+    .footer-grid-layout {
+        display: flex; /* Torniamo a flex column su mobile per semplicità */
         flex-direction: column;
         height: auto;
-        /* MODIFICA: Su mobile togliamo il padding laterale del container principale... */
-        padding: 0; 
+        padding: 0;
+        align-items: stretch; /* Reset baseline */
     }
 
-    /* ...e lo diamo solo alla colonna sinistra per i testi */
-    .footer-col-left {
-        padding: 40px var(--side-margin); /* Padding standard mobile (es. 20px) */
-        flex: auto;
+    /* Ordine visivo elementi su mobile */
+    .footer-item-title {
+        order: 1;
+        padding: 40px var(--side-margin);
     }
-
-    .footer-col-right {
-        padding: 0; /* Nessun padding per la colonna mappa */
-        height: auto;
+    
+    .footer-item-socials {
+        order: 2;
+        padding: 0 var(--side-margin) 40px;
+        align-self: flex-start; /* Reset align-self */
     }
-
-    .footer-address {
-        /* Su mobile l'indirizzo sta sopra la mappa, diamogli il padding laterale */
+    
+    .footer-item-address {
+        order: 3;
         padding: 0 var(--side-margin) 20px;
-        white-space: normal; /* Può andare a capo */
+        white-space: normal;
     }
-
-    /* MODIFICA: Mappa full width su mobile */
-    .map-container {
-        flex-grow: 0;
-        height: 400px; /* Altezza fissa */
-        width: 100%;   /* Larghezza totale */
+    
+    .footer-item-map {
+        order: 4;
+        height: 400px;
+        margin-top: 0;
     }
-
+    
     .copyright-bar {
-        /* Anche il copyright usa il margine standard mobile */
         padding-left: var(--side-margin);
+    }
+}
+
+/* =========================================
+   PAGINA WORKS (BOOTSTRAP EDITION)
+   ========================================= */
+
+.works-hero {
+    /* Manteniamo l'altezza e lo sfondo */
+    height: calc(100vh - var(--topnav-h));
+    width: 100%;
+    background-color: var(--white); 
+    
+    /* I margini laterali li gestiamo noi perché Bootstrap ha step fissi */
+    padding: 0 var(--side-margin);
+    
+    border-bottom: 2px solid var(--black);
+    box-sizing: border-box;
+}
+
+/* Nota: Ho rimosso .works-grid-layout grid properties perché 
+   stiamo usando d-flex flex-column nell'HTML */
+
+/* ZONA TITOLO */
+.title-text h1 {
+    /* Sovrascriviamo le dimensioni di Bootstrap per avere le TUE dimensioni */
+    font-size: clamp(3rem, 7vw, 9rem);
+    line-height: 0.9;
+    /* Font-weight e margin sono gestiti dalle classi Bootstrap fw-bold m-0 nell'HTML */
+}
+
+/* ZONA FRECCIA */
+.arrow-container svg {
+    width: clamp(40px, 6vw, 80px); 
+    height: auto;
+    display: block;
+    margin-bottom: 10px; 
+}
+
+/* SOTTOTITOLO */
+.works-area-subtitle p {
+    font-size: 1.2rem;
+}
+
+/* =========================================
+   LISTA PROGETTI (BOOTSTRAP HYBRID)
+   ========================================= */
+
+.project-list {
+    background-color: var(--white);
+    position: relative;
+    z-index: 2;
+}
+
+/* LA RIGA (Il contenitore cliccabile) */
+.project-row {
+    display: block;        /* Resettiamo il flex vecchio */
+    width: 100%;
+    text-decoration: none; /* Togliamo la sottolineatura dai link */
+    color: inherit;
+    
+    border-bottom: 2px solid var(--black);
+    transition: background-color 0.3s ease;
+    
+    /* Togliamo l'altezza fissa (60vh) per permettere all'allineamento 
+       baseline e ai margini di 40px di comandare l'altezza in modo naturale */
+}
+
+.project-row:hover {
+    background-color: #f4f4f4;
+}
+
+/* IL TITOLO */
+/* Manteniamo il tuo font styling */
+.project-name {
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-weight: 700;
+    line-height: 0.9;
+    margin: 0;
+    
+    /* IMPORTANTE: Per l'allineamento baseline. 
+       Dato che l'immagine ha 40px sotto, dobbiamo assicurarci che 
+       il titolo non "tocchi" il bordo nero se è più lungo. 
+       Diamo anche a lui un po' di respiro inferiore. */
+    padding-bottom: 40px; 
+}
+
+/* L'IMMAGINE */
+/* Questa classe gestisce i 40px di aria che volevi */
+.img-spacing {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* OVERRIDE DEL CONTAINER BOOTSTRAP */
+/* Questo è fondamentale per allineare tutto alla tua variabile --side-margin */
+.project-list .container-fluid {
+    padding-left: var(--side-margin);
+    padding-right: var(--side-margin);
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+    /* Su mobile l'allineamento baseline non ha senso (sono impilati),
+       quindi resettiamo un po' le spaziature se serve */
+    
+    .project-name {
+        padding-top: 40px; /* Spazio sopra il titolo su mobile */
+        padding-bottom: 20px; /* Meno spazio tra titolo e immagine */
+    }
+    
+    .img-spacing {
+        margin-top: 0; /* L'immagine sta subito sotto il titolo */
+        margin-bottom: 40px;
     }
 }
