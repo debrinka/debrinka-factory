@@ -14,7 +14,7 @@ window.addEventListener('load', function() {
         </div>
         <div class="right-wrap">
             <div class="linknav">
-                <a href="works.html" alt="my work" target="_blank" rel="noopener noreferrer">my work</a>
+                <a href="works.html" alt="my work">my work</a>
             </div>
             <button class="button magenta">resume me</button>
         </div>`;
@@ -48,7 +48,7 @@ window.addEventListener('load', function() {
         </div>
 
         <div class="copyright-bar">
-            © 2025 Debrinka Portfolio
+            © 2025 debrinka factory. All rights reserved.
         </div>
 
     </div>`;

@@ -570,11 +570,7 @@ button:hover {
     height: calc(100vh - var(--topnav-h));
     width: 100%;
     background-color: var(--white); 
-    
-    /* I margini laterali li gestiamo noi perché Bootstrap ha step fissi */
     padding: 0 var(--side-margin);
-    
-    border-bottom: 2px solid var(--black);
     box-sizing: border-box;
 }
 
@@ -591,10 +587,46 @@ button:hover {
 
 /* ZONA FRECCIA */
 .arrow-container svg {
-    width: clamp(40px, 6vw, 80px); 
     height: auto;
     display: block;
     margin-bottom: 10px; 
+}
+
+/* KEYFRAMES: L'animazione vera e propria */
+/* 0% -> 33%: Colore Acceso (Magenta) */
+/* 33% -> 100%: Colore Spento (Grigio Scuro) */
+@keyframes snap-flash {
+    0% {
+        fill: var(--magenta); /* Magenta acceso */
+    }
+    32% {
+        fill: var(--magenta); /* Ancora acceso */
+    }
+    33% {
+        fill: var(--black); /* SCATTO: diventa subito grigio scuro */
+    }
+    100% {
+        fill: var(--black); /* Rimane spento fino a fine giro */
+    }
+}
+
+/* Applichiamo l'animazione di base a tutte le parti */
+.arrow-part {
+    /* 1.5s totali per il giro completo (0.5s per ogni freccia) */
+    animation: snap-flash 1.5s infinite; 
+}
+
+/* I ritardi per creare la sequenza a cascata */
+.arrow-top {
+    animation-delay: 0s;     /* Parte subito */
+}
+
+.arrow-middle {
+    animation-delay: 0.5s;   /* Parte dopo un po' */
+}
+
+.arrow-bottom {
+    animation-delay: 1.0s;   /* Parte per ultima */
 }
 
 /* SOTTOTITOLO */
@@ -615,11 +647,11 @@ button:hover {
 
 /* 1. WRAPPER HOVER (Tutta la larghezza) */
 .project-hover-wrapper {
-    transition: background-color 0.3s ease;
+    transition: color 0.8s ease;
 }
 
 .project-hover-wrapper:hover {
-    background-color: #f4f4f4;
+  color: var(--magenta);
 }
 
 /* 2. LA RIGA DEL PROGETTO (Gestisce Bordo e Padding) */
@@ -635,23 +667,18 @@ button:hover {
 /* 3. IL TITOLO */
 .project-name {
     font-size: clamp(3rem, 6vw, 6rem);
-    font-weight: 700;
+    font-weight: 500;
     line-height: 0.9;
     margin: 0;
-    
     /* Fix per mobile: su desktop è baseline, su mobile serve spazio sotto */
     margin-bottom: 0; 
 }
 
-/* 4. IMMAGINE DENTRO IL RATIO 16:9 */
-/* Bootstrap gestisce la dimensione del box, noi diciamo all'immagine come comportarsi dentro */
 .ratio img {
-    object-fit: cover; /* Ritaglia l'immagine per riempire il 16:9 senza deformarsi */
+    object-fit: cover; 
 }
 
 .ratio-7x5 {
-    /* La formula è: (Altezza / Larghezza) * 100% */
-    /* 5 diviso 7 fa circa 71.428...% */
     --bs-aspect-ratio: calc(5 / 7.5 * 100%); 
 }
 
@@ -667,6 +694,42 @@ button:hover {
         margin-bottom: 20px; /* Separa il titolo dall'immagine quando sono impilati */
     }
     
-    /* Opzionale: Se su mobile il 16:9 è troppo basso, puoi cambiarlo qui */
-    /* .ratio-16x9 { --bs-aspect-ratio: 75%; } -> diventerebbe 4:3 */
+    .works-hero .flex-grow-1 {
+                display: none !important;
+            }
+
+            /* 2. Il contenitore della sezione diventa alto quanto tutto lo schermo */
+            .works-hero .container-fluid {
+                height: 100vh; 
+                justify-content: flex-start; /* Reset dell'allineamento verticale */
+            }
+
+            /* 3. La riga principale (Titolo + Freccia) si espande per riempire tutto */
+            .works-hero .row {
+                flex: 1; /* Prende tutta l'altezza disponibile */
+                display: flex;
+                flex-direction: column; /* Impila Titolo sopra e Freccia sotto */
+                margin: 0 !important;
+            }
+
+            /* 4. PRIMA RIGA (Titolo): Prende il 50% dello spazio, testo in basso */
+            .works-hero .col-md-8 {
+                flex: 1; /* 50% altezza */
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end; /* Spinge il titolo sul "pavimento" della sua metà */
+                padding-bottom: 10px;      /* Un po' di aria dalla metà esatta */
+            }
+
+            /* 5. SECONDA RIGA (Freccia): Prende il 50% dello spazio, freccia al centro */
+            .works-hero .col-md-4 {
+                flex: 1; /* 50% altezza */
+                width: 100%;
+                display: flex;
+                align-items: center;    /* Centra verticalmente */
+                justify-content: center; /* Centra orizzontalmente (togli se la vuoi a sx) */
+                margin: 0 !important;
+                padding: 0 !important;
+            }
 }
