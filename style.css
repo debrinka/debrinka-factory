@@ -628,8 +628,8 @@ button:hover {
     border-bottom: 2px solid var(--black);
     
     /* I famosi 40px di aria sopra e sotto */
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 /* 3. IL TITOLO */
@@ -647,6 +647,12 @@ button:hover {
 /* Bootstrap gestisce la dimensione del box, noi diciamo all'immagine come comportarsi dentro */
 .ratio img {
     object-fit: cover; /* Ritaglia l'immagine per riempire il 16:9 senza deformarsi */
+}
+
+.ratio-7x5 {
+    /* La formula è: (Altezza / Larghezza) * 100% */
+    /* 5 diviso 7 fa circa 71.428...% */
+    --bs-aspect-ratio: calc(5 / 7.5 * 100%); 
 }
 
 /* OVERRIDE CONTAINER (Per allineare tutto ai tuoi margini laterali) */
