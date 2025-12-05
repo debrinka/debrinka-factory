@@ -585,50 +585,6 @@ button:hover {
     /* Font-weight e margin sono gestiti dalle classi Bootstrap fw-bold m-0 nell'HTML */
 }
 
-/* ZONA FRECCIA */
-.arrow-container svg {
-    height: auto;
-    display: block;
-    margin-bottom: 10px; 
-}
-
-/* KEYFRAMES: L'animazione vera e propria */
-/* 0% -> 33%: Colore Acceso (Magenta) */
-/* 33% -> 100%: Colore Spento (Grigio Scuro) */
-@keyframes snap-flash {
-    0% {
-        fill: var(--magenta); /* Magenta acceso */
-    }
-    32% {
-        fill: var(--magenta); /* Ancora acceso */
-    }
-    33% {
-        fill: var(--black); /* SCATTO: diventa subito grigio scuro */
-    }
-    100% {
-        fill: var(--black); /* Rimane spento fino a fine giro */
-    }
-}
-
-/* Applichiamo l'animazione di base a tutte le parti */
-.arrow-part {
-    /* 1.5s totali per il giro completo (0.5s per ogni freccia) */
-    animation: snap-flash 1.5s infinite; 
-}
-
-/* I ritardi per creare la sequenza a cascata */
-.arrow-top {
-    animation-delay: 0s;     /* Parte subito */
-}
-
-.arrow-middle {
-    animation-delay: 0.5s;   /* Parte dopo un po' */
-}
-
-.arrow-bottom {
-    animation-delay: 1.0s;   /* Parte per ultima */
-}
-
 /* SOTTOTITOLO */
 .works-area-subtitle p {
     font-size: 1.2rem;
