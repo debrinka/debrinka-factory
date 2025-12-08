@@ -1,72 +1,66 @@
-document.addEventListener("DOMContentLoaded", function() {
-    
-    const preloader = document.getElementById('magenta-preloader');
-    const body = document.body;
+$(document).ready(function() {
+    'use strict';
 
-    // 1. STATO INIZIALE: BLOCCATO E BLU
-    // Le colonne sono già giù grazie al CSS di base.
-    body.classList.add('no-scroll');
+    const $preloader = $('#magenta-preloader');
+    const $body = $('body');
 
-    // Funzione che alza le colonne (Svela il sito)
-    function revealSite() {
-        console.log("Svelo il sito...");
-        // Aggiungo la classe che porta le colonne a -100% (Su)
-        preloader.classList.add('cascade-reveal');
-        // Tolgo eventuali classi di discesa
-        preloader.classList.remove('cascade-drop');
-        
-        // Sblocco scroll
-        body.classList.remove('no-scroll');
+    // --- FUNZIONI TENDA ---
+
+    function openCurtain() {
+        // Togliamo la classe -> il CSS la tira SU
+        $preloader.removeClass('is-active');
+        $body.removeClass('no-scroll');
     }
 
-    // Ascolta segnale header
-    document.addEventListener('headerLoaded', function() {
-        // Piccolo ritardo per vedere il blu un istante
-        setTimeout(revealSite, 300); 
-    });
-
-    // Fallback sicurezza
-    setTimeout(() => {
-        if (!preloader.classList.contains('cascade-reveal')) revealSite();
-    }, 3000);
-
-
-    // 2. GESTIONE CLICK (CASCATA VERSO IL BASSO)
-    document.body.addEventListener('click', function(e) {
-        const link = e.target.closest('a');
-        if (!link || link.target === '_blank') return;
-
-        const targetUrl = link.getAttribute('href');
-        if (!targetUrl || targetUrl.startsWith('#') || targetUrl.includes('mailto:')) return;
-        if (targetUrl === window.location.pathname || targetUrl === window.location.href) return;
-
-        e.preventDefault();
+    function closeCurtain() {
+        // Reset browser (fix per scatti)
+        if ($preloader.length) void $preloader[0].offsetWidth; 
         
-        console.log("Scendo le colonne...");
+        // Mettiamo la classe -> il CSS la tira GIÙ
+        $preloader.addClass('is-active');
+        $body.addClass('no-scroll');
+    }
 
-        // 1. Resetto lo stato: tolgo la classe che le teneva su
-        preloader.classList.remove('cascade-reveal');
-        // 2. Aggiungo la classe che le porta giù (opzionale se il default è giù, ma più sicuro)
-        preloader.classList.add('cascade-drop');
+    // --- 1. PRIMO CARICAMENTO ---
+    // La pagina parte col magenta (grazie all'HTML). Dopo 0.5s alziamo il sipario.
+    setTimeout(openCurtain, 500);
+
+
+    // --- 2. GESTIONE CLICK (NAVIGAZIONE) ---
+    $(document).on('click', 'a', function(e) {
         
-        // Rendo visibile il PNG (togliendo la classe reveal che lo nascondeva)
-        // Ma nel CSS è gestito dal contenitore padre, quindi tornerà visibile automaticamente.
+        const link = $(this);
+        const href = link.attr('href');
+        const target = link.attr('target');
 
-        body.classList.add('no-scroll');
-
-        // 3. Aspetto la fine dell'animazione
-        // 1.0s durata + 0.4s ritardo = 1.4s
-        // Mettiamo 1500ms per sicurezza
-        setTimeout(function() {
-            window.location.href = targetUrl;
-        }, 1500);
-    });
-
-    // Fix tasto indietro
-    window.addEventListener('pageshow', function(event) {
-        if (event.persisted) {
-            preloader.classList.add('cascade-reveal');
-            body.classList.remove('no-scroll');
+        // Ignora link vuoti, ancore, mail o aperture in nuova scheda
+        if (!href || href.indexOf('#') === 0 || href.indexOf('mailto:') === 0 || target === '_blank') {
+            return;
         }
+
+        // Ignora se clicchi sulla pagina stessa
+        if (href === window.location.pathname || href === window.location.href) {
+            return;
+        }
+
+        // BLOCCA IL CARICAMENTO STANDARD
+        e.preventDefault();
+
+        // Fai scendere la tenda
+        closeCurtain();
+
+        // Aspetta 1 secondo (tempo dell'animazione CSS) e poi cambia pagina
+        setTimeout(function() {
+            window.location.href = href;
+        }, 1000); 
     });
+
+    // --- 3. FIX TASTO INDIETRO (Safari/Chrome Cache) ---
+    // Se l'utente torna indietro col browser, riapri la tenda se era rimasta chiusa
+    window.onpageshow = function(event) {
+        if (event.persisted) {
+            openCurtain();
+        }
+    };
+
 });

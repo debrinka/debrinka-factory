@@ -3,8 +3,8 @@
     <style>
         /* Animazione SCATTO */
         @keyframes snap-flash {
-            0% { fill: #FF00DD; }   /* Acceso Magenta */
-            32% { fill: #FF00DD; }  /* Ancora Acceso */
+            0% { fill: hsl(322, 98%, 62%); }   /* Acceso Magenta */
+            32% { fill: hsl(322, 98%, 62%); }  /* Ancora Acceso */
             33% { fill: #252525; }  /* SCATTO: Spento Grigio */
             100% { fill: #252525; } /* Spento */
         }

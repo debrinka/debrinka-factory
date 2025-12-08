@@ -1,13 +1,24 @@
 const header = document.querySelector('#header');
 const footer = document.querySelector('#footer');
-const main = document.querySelector('main');
 
-// Usiamo 'load' così siamo sicuri che anche le immagini pesanti siano pronte prima di mostrare il sito
+// --- 1. FUNZIONE GLOBALE (Fuori da window.load) ---
+// La definiamo qui con "window." così è visibile anche da preloader.js
+window.adjustFooterReveal = function() {
+    const footerEl = document.getElementById('sticky-footer');
+    const main = document.querySelector('main'); // Rileggiamo il main perché potrebbe essere cambiato
+    
+    if(footerEl && main && window.innerWidth > 900) { 
+        main.style.marginBottom = footerEl.offsetHeight + 'px';
+    } else if (main) {
+        main.style.marginBottom = '0px';
+    }
+};
+
+// --- 2. CARICAMENTO PAGINA ---
 window.addEventListener('load', function() {
     
-    // --- 1. GESTIONE HEADER ---
+    // GESTIONE HEADER
     if(header) {
-        // Inseriamo l'HTML dell'header
         header.innerHTML = `
         <div class="left-wrap">
             <div class="linknav" style="padding:0;">
@@ -21,13 +32,12 @@ window.addEventListener('load', function() {
             <button class="button magenta">resume me</button>
         </div>`;
 
-        // *** PUNTO CRUCIALE PER IL PRELOADER ***
-        // Questa riga dice allo script del caricamento: "Finito! Puoi togliere la schermata nera."
+        // Diciamo al preloader che l'header è pronto
         document.dispatchEvent(new Event('headerLoaded'));
-        console.log("Header inserito e segnale inviato."); // Questo ti serve per verifica nella console
+        console.log("Header inserito.");
     }
 
-    // --- 2. GESTIONE FOOTER ---
+    // GESTIONE FOOTER
     if(footer) {
         footer.innerHTML = `
         <div class="footer-wrapper" id="sticky-footer">
@@ -60,18 +70,10 @@ window.addEventListener('load', function() {
 
         </div>`;
 
-        // Funzione per gestire l'altezza del footer fisso/sticky
-        const adjustFooterReveal = () => {
-            const footerEl = document.getElementById('sticky-footer');
-            if(footerEl && main && window.innerWidth > 900) { 
-                main.style.marginBottom = footerEl.offsetHeight + 'px';
-            } else if (main) {
-                main.style.marginBottom = '0px';
-            }
-        };
-
-        // Lanciamo l'aggiustamento con un piccolo ritardo per sicurezza
-        setTimeout(adjustFooterReveal, 100);
-        window.addEventListener('resize', adjustFooterReveal);
+        // Chiamiamo la funzione globale per sistemare il margine subito
+        setTimeout(window.adjustFooterReveal, 100);
     }
+
+    // Ascoltiamo il resize della finestra
+    window.addEventListener('resize', window.adjustFooterReveal);
 });
