@@ -27,9 +27,8 @@ window.addEventListener('load', function() {
         </div>
         <div class="right-wrap">
             <div class="linknav">
-                <a href="works.html" alt="my work">my work</a>
+                <a href="works.html" alt="my work">menu</a>
             </div>
-            <button class="button magenta">resume me</button>
         </div>`;
 
         // Diciamo al preloader che l'header è pronto

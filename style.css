@@ -203,7 +203,6 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   font-size: 1.5rem;
-  border-bottom: 2px solid var(--black);
   padding-left: var(--side-margin);
   height: var(--topnav-h);
 }
