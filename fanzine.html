@@ -3,65 +3,114 @@
 <head>
     <meta charset="utf-8">
     <title>fanzine | debrinka factory</title>
-    <meta content="UI/UX &amp; designer in Turin." name="description">
+    <meta content="UI/UX & designer in Turin." name="description">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
+
 <div id="magenta-preloader" class="is-active">
     <div class="cascade-grid"></div>
     <div class="loader-content">
         <img src="assets/svg/mascotte_loading.svg" alt="Loading..." class="loader-png">
     </div>
 </div>
-    <header id="header" class="topnav"></header>
+
+<header id="header" class="topnav"></header>
     
-    <main> 
-        <div class="project-image">
-            <div class="project-title">
-               POLI FANZINE
+<main id="main-content">
+    
+    <section class="intro-white">
+        <div class="container-fluid h-100 d-flex flex-column justify-content-center" style="padding: 0;">
+            
+            <div class="row" style="margin: 0;">
+                <div class="col-6" style="padding: 0;">
+                    <h4 class="project-mini-header">Poli Fanzine</h4>
+                </div>
+                <div class="col-6 text-end" style="padding: 0;">
+                    <a href="works.html" class="back-link">← All Work</a>
+                </div>
             </div>
-        </div>
-        
-        <section class="section-black">
-    <div class="container-fluid">
-        
-        <div class="section-text">
-            <h3>logo design, branding</h3>
 
-            <p>
-                Design of a wordmark, logo, and visual identity for a Tasmanian music label.
-                Drawing inspiration from the unique forms of Tasmania's natural environment,
-                I created a versatile logo and assets designed for merchandise and beyond.
-            </p>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <h1 class="project-main-title">SAFE CAN'T WAIT</h1>
+                </div>
+            </div>
 
-            <p>
-                Photo credits:<br>
-                Lachlan Fox, 2020;<br>
-                Meg Wright, 2019;<br>
-                Finn Buchhorn, 2023.
-            </p>
+            <div class="row align-items-end" style="margin: 0;"> 
+                
+                <div class="col-md-7 col-lg-6" style="padding: 0;">
+                    <div class="project-description">
+                        <p>
+                            In the high stakes world of health and safety, risks can come at you fast. 
+                            And the biggest risk to any work site and its people is often moving too slow 
+                            and the details falling through the cracks. That's why we created 'Safe Can't Wait,' 
+                            a new brand identity and campaign for VelocityEHS.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-5 col-lg-6" style="padding: 0;">
+                    <div class="project-details-wrapper text-end">
+                        <ul class="project-details-list">
+                            <li>Editorial Design</li>
+                            <li>Art Direction</li>
+                            <li>Social Media</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
+    </section>
+
+    <div class="content-black">
+        
+        <div class="hero-full-width">
+            <img src="https://picsum.photos/1920/1080?random=1" alt="Full Width Hero">
+        </div>
+
+        <section class="project-gallery">
+            <div class="container-fluid">
+                
+                <div class="row mb-5">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <img src="https://picsum.photos/800/1000?random=2" class="img-fluid w-100 media_container" alt="Detail">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://picsum.photos/800/1000?random=3" class="img-fluid w-100 media_container" alt="Detail">
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <img src="https://picsum.photos/1600/900?random=4" class="img-fluid w-100 media_container" alt="Wide Shot">
+                    </div>
+                </div>
+                
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <p class="text-white">Photo credits: Lachlan Fox, Meg Wright.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
 
     </div>
-</section>
 
-<div class="gallery">
-    <img src="https://picsum.photos/500/600?random=10">
-    <img src="https://picsum.photos/500/600?random=11">
-    <img src="https://picsum.photos/500/600?random=12">
-</div>
-
-    </main>
+</main>
+<footer id="footer"></footer>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothState.js/0.7.2/jquery.smoothState.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script src="headerFooter.js"></script>
-    <script src="preloader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="headerFooter.js"></script>
+<script src="preloader.js"></script>
 </body>
 </html>

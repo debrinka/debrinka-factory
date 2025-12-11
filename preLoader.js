@@ -1,6 +1,26 @@
 $(document).ready(function() {
     'use strict';
 
+    // --- ATTIVAZIONE SMOOTH SCROLL (LENIS) ---
+    // Questo crea quell'effetto "lento ma figo" (inerzia)
+    const lenis = new Lenis({
+        duration: 1.2, // Quanto è "lunga" la frenata (più alto = più lento)
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Curva di fluidità
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        smooth: true,
+        mouseMultiplier: 1,
+        smoothTouch: false,
+        touchMultiplier: 2,
+    });
+
+    // Loop di animazione necessario per Lenis
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
     const $preloader = $('#magenta-preloader');
     const $body = $('body');
 

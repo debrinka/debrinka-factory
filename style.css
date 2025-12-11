@@ -107,10 +107,14 @@ body {
   min-height: 100vh;
 }
 
+body::-webkit-scrollbar,html::-webkit-scrollbar {
+    display: none
+}
+
 html,
 body {
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   /* previene scroll orizzontale causato da elementi troppo larghi */
 }
 
@@ -753,4 +757,161 @@ button:hover {
     57%  { transform: scale(1,1)      translateY(-7px); }
     64%  { transform: scale(1,1)      translateY(0); }
     100% { transform: scale(1,1)      translateY(0); }
+}
+
+/* =========================================
+   LAYOUT PAGINA PROGETTO (Stile Velocity)
+   ========================================= */
+
+/* --- 1. ZONA BIANCA (Intro) --- */
+.intro-white {
+  position: sticky; 
+    top: 0;
+    /* Z-index basso così la nera le passa sopra */
+    z-index: 1;
+    background-color: var(--white);
+    color: var(--black);
+    padding-bottom: 60px; /* Spazio prima dell'immagine nera */
+    
+    padding-left: var(--side-margin);
+    padding-right: var(--side-margin);
+    
+    /* Questo assicura che la sezione bianca prenda una buona porzione di schermo */
+    min-height: 60vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente il blocco testi */
+}
+
+/* Header piccolo (es. "Poli Fanzine") */
+.project-mini-header {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--magenta); /* Colore come da richiesta */
+}
+
+/* Link "All Work" */
+.back-link {
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--magenta); /* Colore come da richiesta */
+    transition: opacity 0.3s ease;
+}
+.back-link:hover {
+    opacity: 0.7; /* Semplice effetto hover */
+}
+
+/* Titolo Gigante */
+.project-main-title {
+    /* Dimensione reattiva ma GRANDE */
+    font-size: clamp(3.5rem, 8vw, 9rem);
+    font-weight: 700;
+    line-height: 0.9; 
+    margin-top: 10px;
+    margin-bottom: 30px;
+    letter-spacing: -0.02em;
+    color: var(--magenta);
+}
+
+/* --- DESCRIZIONE (Line-height stretto) --- */
+.project-description p {
+    font-size: 1.1rem;
+    line-height: 1.25; /* Interlinea molto compatta */
+    max-width: 700px;
+    font-weight: 500;
+    margin: 0;
+    color: var(--black); /* Testo nero per contrasto */
+}
+
+/* --- LISTA DETTAGLI (A Destra) --- */
+.project-details-wrapper {
+    margin-top: 20px; /* Margine su mobile */
+}
+
+.project-details-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.5;
+    position: relative;
+    display: inline-block;
+    color: var(--magenta); /* Testo dettagli colorato */
+    text-align: right;
+}
+
+/* IL PALLINO COLORATO SOPRA LA LISTA */
+.project-details-list::before {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--magenta);
+    border-radius: 50%;
+    margin-left: auto; /* Allinea a destra */
+    margin-bottom: 12px; /* Spazio tra pallino e prima voce */
+}
+
+/* Media Query Desktop */
+@media (min-width: 768px) {
+    .project-details-wrapper {
+        margin-top: 0;
+    }
+}
+
+/* --- 2. ZONA NERA E GALLERY --- */
+.content-black {
+    background-color: var(--black);
+    color: var(--white);
+    width: 100%;
+       position: relative;
+    
+    /* Z-index più alto per coprire la bianca */
+    z-index: 2;    
+}
+
+.hero-full-width img {
+    width: 100%;
+    display: block;
+    height: 34.8vw;
+    margin-bottom: 3.07vw;
+    border-radius: 0 !important;
+    object-fit: cover;
+}
+
+.project-gallery .container-fluid {
+    padding-left: var(--side-margin);
+    padding-right: var(--side-margin);
+}
+
+.text-white { color: var(--white) !important; }
+.media_container {
+        border-radius: 1.042vw;
+}
+
+@media (min-width: 46.25em) {
+    .hero_container__EMze8 {
+
+    }
+}
+
+/* --- FIX NECESSARIO PER LENIS (Smooth Scroll) --- */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
