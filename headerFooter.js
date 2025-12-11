@@ -1,23 +1,16 @@
 const header = document.querySelector('#header');
 const footer = document.querySelector('#footer');
 
-// --- 1. FUNZIONE GLOBALE (Fuori da window.load) ---
-// La definiamo qui con "window." così è visibile anche da preloader.js
+// --- FUNZIONE SVUOTATA (Disattivata per il nuovo layout) ---
+// Non calcola più i margini perché il footer è gestito dal CSS.
 window.adjustFooterReveal = function() {
-    const footerEl = document.getElementById('sticky-footer');
-    const main = document.querySelector('main'); // Rileggiamo il main perché potrebbe essere cambiato
-    
-    if(footerEl && main && window.innerWidth > 900) { 
-        main.style.marginBottom = footerEl.offsetHeight + 'px';
-    } else if (main) {
-        main.style.marginBottom = '0px';
-    }
+
 };
 
-// --- 2. CARICAMENTO PAGINA ---
+// --- CARICAMENTO PAGINA ---
 window.addEventListener('load', function() {
     
-    // GESTIONE HEADER
+    // 1. INIEZIONE HEADER (IL TUO VERSIONE LIGHT)
     if(header) {
         header.innerHTML = `
         <div class="left-wrap">
@@ -31,12 +24,11 @@ window.addEventListener('load', function() {
             </div>
         </div>`;
 
-        // Diciamo al preloader che l'header è pronto
+        // Avvisa il preloader che l'header è pronto (FONDAMENTALE per far alzare la tenda)
         document.dispatchEvent(new Event('headerLoaded'));
-        console.log("Header inserito.");
     }
 
-    // GESTIONE FOOTER
+    // 2. INIEZIONE FOOTER
     if(footer) {
         footer.innerHTML = `
         <div class="footer-wrapper" id="sticky-footer">
@@ -68,11 +60,5 @@ window.addEventListener('load', function() {
             </div>
 
         </div>`;
-
-        // Chiamiamo la funzione globale per sistemare il margine subito
-        setTimeout(window.adjustFooterReveal, 100);
     }
-
-    // Ascoltiamo il resize della finestra
-    window.addEventListener('resize', window.adjustFooterReveal);
 });
