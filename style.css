@@ -144,9 +144,9 @@ a {
 }
 
 main {
-    position: relative;
-    z-index: 2; /* Sta sopra il footer */
-    background-color: var(--white); /* DEVE essere colorato, non trasparente */
+    position: relative !important;
+    z-index: 2 !important; /* Sta sopra il footer */
+    background-color: var(--white) !important; /* DEVE essere colorato, non trasparente */
     margin-bottom: 0; /* Lo calcoleremo col JS */
 }
 
@@ -252,7 +252,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-inline: clamp(1rem, 4vw, 6rem);
+  padding: 0 var(--side-margin);
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -428,10 +428,17 @@ button:hover {
 /* --- FOOTER GRID BASELINE (La soluzione definitiva) --- */
 
 #footer .footer-wrapper {
-  position: relative !important; /* Non più fisso, ma segue il flusso della pagina */
-    z-index: 10 !important;        /* Altissimo, così sta sopra a qualsiasi livello nero/bianco */
-    height: auto !important;       /* Altezza naturale */
-    width: 100%;
+position: fixed !important;  /* Inchiodalo allo schermo */
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    
+    /* Z-index 0: Sta DIETRO a tutto il resto */
+    z-index: 0 !important;       
+    
+    /* Reset di sicurezza */
+    height: auto !important;
+    transform: none !important;
     background-color: var(--black);
     color: var(--white);
 }
@@ -568,6 +575,36 @@ button:hover {
     }
 }
 
+/* =======================================================
+   MOBILE FIX: DISATTIVA REVEAL SU SCHERMI PICCOLI
+   ======================================================= */
+@media (max-width: 768px) {
+    
+    /* 1. Il Footer diventa un blocco normale alla fine della pagina */
+    #footer .footer-wrapper {
+        position: relative !important; /* Non più fixed */
+        z-index: 10 !important;        /* Sta sopra a tutto */
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+    }
+
+    /* 2. Il Main smette di avere ombre o comportamenti strani */
+    main {
+        box-shadow: none !important;
+        z-index: 1 !important;
+    }
+
+    /* 3. Assicuriamoci che il footer abbia la sua altezza naturale */
+    .footer-grid-layout {
+        height: auto !important;       /* Si adatta al contenuto */
+        min-height: auto !important;   /* Niente forzature */
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 40px;
+    }
+}
+
 /* =========================================
    PAGINA WORKS (BOOTSTRAP EDITION)
    ========================================= */
@@ -605,7 +642,8 @@ button:hover {
     background-color: var(--white);
     position: relative;
     z-index: 2;
-    padding-bottom: var(--size-11);
+    padding: var(--side-margin);
+    padding-top: 0;
 }
 
 /* 1. WRAPPER HOVER (Tutta la larghezza) */
@@ -785,8 +823,6 @@ button:hover {
     z-index: 1;
     background-color: var(--white);
     color: var(--black);
-    padding-bottom: 100px; /* Spazio prima dell'immagine nera */
-    
     padding-left: var(--side-margin);
     padding-right: var(--side-margin);
     
@@ -885,7 +921,7 @@ button:hover {
        position: relative;
     
     /* Z-index più alto per coprire la bianca */
-    z-index: 5;    
+    z-index: 5 !important;    
 }
 
 .hero-full-width img {
@@ -929,3 +965,4 @@ html.lenis {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
