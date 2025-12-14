@@ -41,7 +41,7 @@
 }
 
 :root {
-  --magenta: hsl(322, 98%, 62%);
+  --magenta: hsl(323.57deg 100% 72.55%);
   --white: hsl(20, 10%, 94%);
   --black: hsl(200, 0%, 15%);
   --size-000: -.5rem;
@@ -252,7 +252,6 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 var(--side-margin);
   box-sizing: border-box;
   overflow: hidden;
 }
