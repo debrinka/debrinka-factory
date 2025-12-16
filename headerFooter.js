@@ -1,77 +1,32 @@
-const header = document.querySelector('#header');
-const footer = document.querySelector('#footer');
+// =========================================================
+// HEADER + FOOTER + MENU LATERALE
+// =========================================================
 
-// --- 1. FUNZIONE INIT MENU (La logica del plugin) ---
-function initAnimatedModal() {
-    // Prima iniettiamo l'HTML del menu nascosto nel body
-    if (!document.getElementById('animatedModal')) {
-        const menuHTML = `
-        <div id="animatedModal">
-            <div class="close-animatedModal">CLOSE</div>
-            
-            <div class="modal-content">
-                <ul>
-                    <li><a href="index.html">home</a></li>
-                    <li><a href="works.html">works</a></li>
-                    <li><a href="fanzine.html">fanzine</a></li>
-                    <li><a href="mailto:erideba@gmail.com">contact</a></li>
-                </ul>
-            </div>
-        </div>`;
-        document.body.insertAdjacentHTML('beforeend', menuHTML);
-    }
+document.addEventListener("DOMContentLoaded", function () {
 
-    // ORA ATTIVIAMO IL PLUGIN (Solo se jQuery esiste)
-    if (window.jQuery && $.fn.animatedModal) {
-        $("#menu-trigger").animatedModal({
-            modalTarget: 'animatedModal',
-            color: '#FF3D94',            // Magenta
-            animatedIn: 'slideInRight',  // Entra da destra
-            animatedOut: 'slideOutRight',// Esce a destra
-            animationDuration: '.5s',
-            overflow: 'hidden'
-        });
-        console.log("✅ PLUGIN ATTIVATO!");
-    } else {
-        console.error("❌ ERRORE: jQuery o Plugin non caricati.");
-    }
-}
-
-// --- 2. CALCOLO MARGINE FOOTER ---
-window.adjustFooterReveal = function() {
-    const main = document.querySelector('main');
-    const footerWrapper = document.querySelector('.footer-wrapper');
-    if (main && footerWrapper) {
-        if (window.innerWidth > 768) {
-            main.style.marginBottom = footerWrapper.offsetHeight + 'px';
-        } else {
-            main.style.marginBottom = '0px';
-        }
-    }
-};
-
-// --- 3. CARICAMENTO PAGINA (Il Main Event) ---
-window.addEventListener('load', function() {
-    
-    // A) INIEZIONE HEADER
-    if(header) {
+    // =====================================================
+    // 1. INIEZIONE HEADER
+    // =====================================================
+    const header = document.querySelector('#header');
+    if (header) {
         header.innerHTML = `
         <div class="left-wrap">
             <div class="linknav" style="padding:0;">
-                <a href="index.html" alt="debrinka portfolio">debrinka portfolio</a>
+                <a href="index.html">debrinka portfolio</a>
             </div>
         </div>
         <div class="right-wrap">
             <div class="linknav">
-                <a href="#animatedModal" id="menu-trigger">menu</a>
+                <a href="#" id="menu-trigger">menu</a>
             </div>
         </div>`;
     }
 
-    // B) INIEZIONE FOOTER
-    if(footer) {
+
+    const footer = document.querySelector('#footer');
+    if (footer) {
         footer.innerHTML = `
-        <div class="footer-wrapper" id="sticky-footer">
+          <div class="footer-wrapper" id="sticky-footer">
             <div class="footer-grid-layout">
                 <h1 class="footer-item-title">
                     nice to meet <span style="color: var(--magenta);">you</span>
@@ -92,12 +47,75 @@ window.addEventListener('load', function() {
                 © 2025 debrinka factory. All rights reserved.
             </div>
         </div>`;
-        
-        setTimeout(window.adjustFooterReveal, 50);
-        window.addEventListener('resize', window.adjustFooterReveal);
+    }
+  // =====================================================
+    // 3. FOOTER REVEAL (CALCOLO MARGINI)
+    // =====================================================
+    function adjustFooterReveal() {
+        const main = document.querySelector('#main-content');
+        const footerWrapper = document.querySelector('.footer-wrapper');
+
+        if (main && footerWrapper) {
+            if (window.innerWidth > 768) {
+                main.style.marginBottom = footerWrapper.offsetHeight + 'px';
+            } else {
+                main.style.marginBottom = '0px';
+            }
+        }
     }
 
-    // C) ATTIVIAMO IL MENU (Subito dopo aver creato l'header)
-    // Usiamo un piccolo timeout per dare tempo al browser di "digerire" l'HTML
-    setTimeout(initAnimatedModal, 100);
+    setTimeout(adjustFooterReveal, 100);
+    window.addEventListener('resize', adjustFooterReveal);
+
+});
+
+
+// =========================================================
+// 4. MENU LATERALE (JQUERY)
+// =========================================================
+
+$(document).ready(function () {
+
+    // CREA MENU SE NON ESISTE
+    if ($('#side-menu').length === 0) {
+        const menuHTML = `
+        <div id="side-menu" style="display:none; flex-direction: column; justify-content: center; align-items: center;">
+            <button id="close-menu">close</button>
+            <ul>
+                <li><a href="index.html">home</a></li>
+                <li><a href="works.html">works</a></li>
+                <li><a href="fanzine.html">fanzine</a></li>
+                <li><a href="mailto:erideba@gmail.com">contact</a></li>
+            </ul>
+        </div>`;
+        $('body').append(menuHTML);
+    }
+
+    // APERTURA MENU
+$(document).on('click', '#menu-trigger', function (e) {
+    e.preventDefault();
+
+    const $menu = $('#side-menu');
+    const $links = $menu.find('ul li');
+
+    // Resetta animazioni precedenti
+    $links.removeClass('show');
+
+    // Mostra il menu (slide)
+    $menu.css('display', 'flex').hide().show('slide', { direction: 'up' }, 500, function() {
+        // Animazione link dopo apertura menu
+        $links.each(function(index) {
+            const $li = $(this);
+            setTimeout(function() {
+                $li.addClass('show');
+            }, 100 * index); // delay progressivo
+        });
+    });
+});
+    // CHIUSURA MENU
+    $(document).on('click', '#close-menu', function (e) {
+        e.preventDefault();
+        $('#side-menu').hide('slide', { direction: 'up' }, 500);
+    });
+
 });

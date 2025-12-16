@@ -18,29 +18,29 @@
 </head>
 
 <body class="no-scroll">
-<!-- <div id="magenta-preloader" class="is-active">
+ <div id="magenta-preloader" class="is-hidden">
     <div class="cascade-grid"></div>
     <div class="loader-content">
         <img src="assets/svg/mascotte_loading.svg" alt="Loading..." class="loader-png">
     </div>
-</div>-->
-<header id="header" class="topnav" style="background-color: var(--magenta);">
+</div>
+<header id="header" class="topnav" style="background-color: var(--magenta); color: var(--white);">
 
 </header>
-  <main>
-    <section class="hero relative" style="flex-direction: column;
-    background-color: var(--magenta); padding: 0 var(--side-margin); align-items: stretch;">
-      <div class="hero-content" style="flex-grow: 2; height: auto;">
+  <main id="main-content">
+    <section class="hero relative d-flex bd-highlight" style="flex-direction: column;
+    background-color: var(--magenta); padding: 0 var(--side-margin);">
+      <div class="hero-content" style="margin-bottom: 1rem; height: auto;">
         <svg viewBox="0 0 1804 648" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%;">
-<path d="M189.773 647.461H0V0H189.773C208.829 0 224.277 15.448 224.277 34.5042V612.956C224.277 632.013 208.829 647.461 189.773 647.461ZM102.498 596.719C112.586 596.719 120.765 588.541 120.765 578.452V70.0232C120.765 59.9346 112.586 51.7562 102.498 51.7562V596.719Z" fill="var(--white)"/>
-<path d="M346.318 596.719C355.846 596.719 363.57 588.995 363.57 579.467V330.834C363.57 311.778 379.018 296.33 398.074 296.33H467.083V612.956C467.083 632.013 451.635 647.461 432.579 647.461H277.31H242.806V365.372C242.806 338.05 249.677 311.167 262.788 287.196C249.677 263.226 242.806 236.343 242.806 209.021V0H277.31H432.579C451.635 0 467.083 15.448 467.083 34.5042V278.063H398.074C379.014 278.047 363.57 262.591 363.57 243.53V69.0083C363.57 59.4802 355.846 51.7562 346.318 51.7562V250.663L363.661 278.179C367.134 283.69 367.134 290.706 363.661 296.216L346.318 323.73V596.719Z" fill="var(--white)"/>
-<path d="M675.384 647.461H485.611V0H675.384C694.44 0 709.888 15.448 709.888 34.5042V209.194C709.888 236.416 703.148 263.214 690.268 287.196C703.148 311.179 709.888 337.977 709.888 365.199V612.956C709.888 632.013 694.44 647.461 675.384 647.461ZM589.124 320.686V596.719C598.652 596.719 606.376 588.995 606.376 579.467V335.908C606.376 327.501 599.56 320.686 591.153 320.686H589.124ZM589.124 253.707C598.652 253.707 606.376 245.983 606.376 236.455V69.0083C606.376 59.4803 598.652 51.7562 589.124 51.7562V253.707Z" fill="var(--white)"/>
-<path d="M831.929 308.508V647.461H728.417V0H918.19C937.246 0 952.694 15.448 952.694 34.5041V196.001C952.694 223.223 945.953 250.021 933.074 274.004C945.953 297.986 952.694 324.784 952.694 352.006V647.461H849.181V322.715C849.181 314.869 842.82 308.508 834.974 308.508H831.929ZM834.974 240.514C842.82 240.514 849.181 234.153 849.181 226.307V69.0083C849.181 59.4802 841.457 51.7562 831.929 51.7562V240.514H834.974Z" fill="var(--white)"/>
-<path d="M971.222 647.461V0H1074.73V647.461H971.222Z" fill="var(--white)"/>
-<path d="M1093.12 0H1172.28L1214.9 224.277V0H1318.41V647.461H1214.9V481.436C1214.9 427.878 1209.04 374.48 1197.42 322.197L1196.63 318.656V647.461H1093.12V0Z" fill="var(--white)"/>
-<path d="M1440.43 320.686V647.461H1336.92V0H1440.43V253.707H1443.47C1451.32 253.707 1457.68 247.346 1457.68 239.499V0H1561.19V209.194C1561.19 236.416 1554.45 263.214 1541.57 287.196C1554.45 311.179 1561.19 337.977 1561.19 365.199V647.461H1457.68V335.908C1457.68 327.501 1450.87 320.686 1442.46 320.686H1440.43Z" fill="var(--white)"/>
-<path d="M1683.24 315.612V647.461H1579.72V34.5042C1579.72 15.448 1595.17 0 1614.23 0H1769.5C1788.55 0 1804 15.4481 1804 34.5042V647.461H1700.49V332.864C1700.49 323.336 1692.76 315.612 1683.24 315.612ZM1683.24 251.677C1692.76 251.677 1700.49 243.953 1700.49 234.425V69.0083C1700.49 59.4803 1692.76 51.7562 1683.24 51.7562V251.677Z" fill="var(--white)"/>
-</svg>
+          <path d="M189.773 647.461H0V0H189.773C208.829 0 224.277 15.448 224.277 34.5042V612.956C224.277 632.013 208.829 647.461 189.773 647.461ZM102.498 596.719C112.586 596.719 120.765 588.541 120.765 578.452V70.0232C120.765 59.9346 112.586 51.7562 102.498 51.7562V596.719Z" fill="var(--white)"/>
+          <path d="M346.318 596.719C355.846 596.719 363.57 588.995 363.57 579.467V330.834C363.57 311.778 379.018 296.33 398.074 296.33H467.083V612.956C467.083 632.013 451.635 647.461 432.579 647.461H277.31H242.806V365.372C242.806 338.05 249.677 311.167 262.788 287.196C249.677 263.226 242.806 236.343 242.806 209.021V0H277.31H432.579C451.635 0 467.083 15.448 467.083 34.5042V278.063H398.074C379.014 278.047 363.57 262.591 363.57 243.53V69.0083C363.57 59.4802 355.846 51.7562 346.318 51.7562V250.663L363.661 278.179C367.134 283.69 367.134 290.706 363.661 296.216L346.318 323.73V596.719Z" fill="var(--white)"/>
+          <path d="M675.384 647.461H485.611V0H675.384C694.44 0 709.888 15.448 709.888 34.5042V209.194C709.888 236.416 703.148 263.214 690.268 287.196C703.148 311.179 709.888 337.977 709.888 365.199V612.956C709.888 632.013 694.44 647.461 675.384 647.461ZM589.124 320.686V596.719C598.652 596.719 606.376 588.995 606.376 579.467V335.908C606.376 327.501 599.56 320.686 591.153 320.686H589.124ZM589.124 253.707C598.652 253.707 606.376 245.983 606.376 236.455V69.0083C606.376 59.4803 598.652 51.7562 589.124 51.7562V253.707Z" fill="var(--white)"/>
+          <path d="M831.929 308.508V647.461H728.417V0H918.19C937.246 0 952.694 15.448 952.694 34.5041V196.001C952.694 223.223 945.953 250.021 933.074 274.004C945.953 297.986 952.694 324.784 952.694 352.006V647.461H849.181V322.715C849.181 314.869 842.82 308.508 834.974 308.508H831.929ZM834.974 240.514C842.82 240.514 849.181 234.153 849.181 226.307V69.0083C849.181 59.4802 841.457 51.7562 831.929 51.7562V240.514H834.974Z" fill="var(--white)"/>
+          <path d="M971.222 647.461V0H1074.73V647.461H971.222Z" fill="var(--white)"/>
+          <path d="M1093.12 0H1172.28L1214.9 224.277V0H1318.41V647.461H1214.9V481.436C1214.9 427.878 1209.04 374.48 1197.42 322.197L1196.63 318.656V647.461H1093.12V0Z" fill="var(--white)"/>
+          <path d="M1440.43 320.686V647.461H1336.92V0H1440.43V253.707H1443.47C1451.32 253.707 1457.68 247.346 1457.68 239.499V0H1561.19V209.194C1561.19 236.416 1554.45 263.214 1541.57 287.196C1554.45 311.179 1561.19 337.977 1561.19 365.199V647.461H1457.68V335.908C1457.68 327.501 1450.87 320.686 1442.46 320.686H1440.43Z" fill="var(--white)"/>
+          <path d="M1683.24 315.612V647.461H1579.72V34.5042C1579.72 15.448 1595.17 0 1614.23 0H1769.5C1788.55 0 1804 15.4481 1804 34.5042V647.461H1700.49V332.864C1700.49 323.336 1692.76 315.612 1683.24 315.612ZM1683.24 251.677C1692.76 251.677 1700.49 243.953 1700.49 234.425V69.0083C1700.49 59.4803 1692.76 51.7562 1683.24 51.7562V251.677Z" fill="var(--white)"/>
+        </svg>
 
      <!-- <img class="hero-img" src="assets/favicon/svg/DEBRINKA FACTORY.svg" alt="">
       <div class="hero-text-wrapper">
@@ -49,37 +49,34 @@
         <p class="hero-subtitle">UI/UX designer &amp; web developer</p>
       </div>-->
     </div> 
-    <div style="flex-grow: 1;">
-        <p class="hero-subtitle">UI/UX designer &amp; web developer</p> </div>
-    </section>
-    <section class="hero dark relative" style="min-height: 100vh; z-index: 2;" >
+    <div style="font-size: 30px; color: var(--white); width: 100%;" >
+        <p style="margin-bottom: 0rem;">UI/UX designer</p>
+           <p>web developer</p> </div>
+      </section>
+      <section class="hero dark relative flex-row" style="min-height: 100vh; z-index: 2;" >
       <div class="hero-content biography"  style="padding-inline: clamp(28rem, 4vw, 6rem)"> 
         <h1>who is <span style="color: var(--magenta);">debrinka</span>?</h1>
+        <img class="hero-img" src="assets/png/erika 1.png" alt="">
         <p class="text-biography">Ciao! Sono Erika.
 Ho 26 anni e fin da bambina facevo già le mie prove di web design, ispirata da ciò che vedevo online. Oggi, quella curiosità è cresciuta e si è trasformata nella mia ambizione: diventare una UI/UX designer. 
 Il mio interesse si manifesta nel notare i dettagli di un'interfaccia o di un servizio: la sua fruibilità, il modo in cui guida l'utente e la sua estetica. Per me, il design è uno sguardo sensibile che trasforma ciò che spesso sfugge in qualcosa che funziona e comunica.</p>
   </div>
-  </section>
-  <section class="hero" style="min-height: 100vh;">
-      <div class="hero-content biography"  style="padding-inline: clamp(28rem, 4vw, 6rem)"> 
-        <h1>who is <span style="color: var(--magenta);">debrinka</span>?</h1>
-        <p class="text-biography">Ciao! Sono Erika.
+      </section>
+      <section class="hero" style="min-height: 100vh;">
+        <div class="hero-content biography"  style="padding-inline: clamp(28rem, 4vw, 6rem)"> 
+          <h1>who is <span style="color: var(--magenta);">debrinka</span>?</h1>
+          <p class="text-biography">Ciao! Sono Erika.
 Ho 26 anni e fin da bambina facevo già le mie prove di web design, ispirata da ciò che vedevo online. Oggi, quella curiosità è cresciuta e si è trasformata nella mia ambizione: diventare una UI/UX designer. 
 Il mio interesse si manifesta nel notare i dettagli di un'interfaccia o di un servizio: la sua fruibilità, il modo in cui guida l'utente e la sua estetica. Per me, il design è uno sguardo sensibile che trasforma ciò che spesso sfugge in qualcosa che funziona e comunica.</p>
-  </div>
-  </section>
-  </main>
-
-  <footer id="footer"></footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animatedModal.js/1.0/animatedModal.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-
-<script src="headerFooter.js"></script>
-<script src="preloader.js"></script>
-</body>
-
+        </div>
+      </section>
+    </main>
+    <footer id="footer"></footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="headerFooter.js"></script>
+    <script src="preloader.js"></script>
+  </body>
 </html>

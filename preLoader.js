@@ -1,85 +1,102 @@
-$(document).ready(function() {
-    'use strict';
-
-    // --- ATTIVAZIONE SMOOTH SCROLL (LENIS) ---
-    // Questo crea quell'effetto "lento ma figo" (inerzia)
-    const lenis = new Lenis({
-        duration: 1.2, // Quanto è "lunga" la frenata (più alto = più lento)
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Curva di fluidità
-        direction: 'vertical',
-        gestureDirection: 'vertical',
-        smooth: true,
-        mouseMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
-    });
-
-    // Loop di animazione necessario per Lenis
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+$(document).ready(function () {
 
     const $preloader = $('#magenta-preloader');
     const $body = $('body');
+    const $heroSvg = $('.hero-content'); // Il contenitore del tuo SVG
 
-    // --- FUNZIONI TENDA ---
+    // FUNZIONE: Fa partire l'animazione SVG
+    function playSvgAnim() {
+        $heroSvg.addClass('is-visible');
+    }
 
-    function openCurtain() {
-        // Togliamo la classe -> il CSS la tira SU
-        $preloader.removeClass('is-active');
+    // ==================================================
+    // 0. GESTIONE ENTRATA PAGINA (Appena carica)
+    // ==================================================
+    
+    // Controlliamo se arriviamo dal click del MENU
+    if (sessionStorage.getItem('fromMenu') === 'true') {
+        
+        // CASO A: Arrivo dal Menu -> Niente Tenda, Animazione Subito
+        $preloader.addClass('is-hidden').removeClass('is-active'); // Nascondi preloader immediato
         $body.removeClass('no-scroll');
-    }
-
-    function closeCurtain() {
-        // Reset browser (fix per scatti)
-        if ($preloader.length) void $preloader[0].offsetWidth; 
         
-        // Mettiamo la classe -> il CSS la tira GIÙ
-        $preloader.addClass('is-active');
-        $body.addClass('no-scroll');
-    }
+        // Pulisci il promemoria
+        sessionStorage.removeItem('fromMenu');
 
-    // --- 1. PRIMO CARICAMENTO ---
-    // La pagina parte col magenta (grazie all'HTML). Dopo 0.5s alziamo il sipario.
-    setTimeout(openCurtain, 500);
+        // Fai partire l'SVG con un micro-ritardo per fluidità
+        setTimeout(playSvgAnim, 100);
 
-
-    // --- 2. GESTIONE CLICK (NAVIGAZIONE) ---
-    $(document).on('click', 'a', function(e) {
+    } else {
         
-        const link = $(this);
-        const href = link.attr('href');
-        const target = link.attr('target');
-
-        // Ignora link vuoti, ancore, mail o aperture in nuova scheda
-        if (!href || href.indexOf('#') === 0 || href.indexOf('mailto:') === 0 || target === '_blank') {
-            return;
-        }
-
-        // Ignora se clicchi sulla pagina stessa
-        if (href === window.location.pathname || href === window.location.href) {
-            return;
-        }
-
-        // BLOCCA IL CARICAMENTO STANDARD
-        e.preventDefault();
-
-        // Fai scendere la tenda
-        closeCurtain();
-
-        // Aspetta 1 secondo (tempo dell'animazione CSS) e poi cambia pagina
+        // CASO B: Arrivo normale -> Alza la tenda, POI animazione
+        // (Assicurati che il preloader sia visibile nel CSS di base o qui)
+        
         setTimeout(function() {
+            // 1. Alza la tenda
+            $preloader.addClass('is-hidden'); 
+            $body.removeClass('no-scroll');
+
+            // 2. Fai partire l'SVG mentre la tenda finisce di alzarsi
+            setTimeout(playSvgAnim, 300); 
+        }, 500); // Tempo di caricamento finto iniziale
+    }
+
+
+    // ==================================================
+    // 1. LINK DEL MENU → NO PRELOADER (TUO CODICE + FIX)
+    // ==================================================
+    $(document).on('click', '#side-menu a', function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        const href = $(this).attr('href');
+
+        // >>> IMPORTANTE: Diciamo alla prossima pagina che arriviamo dal menu
+        sessionStorage.setItem('fromMenu', 'true'); 
+
+        $('#side-menu').hide('slide', { direction: 'up' }, 500, function () {
             window.location.href = href;
-        }, 1000); 
+        });
     });
 
-    // --- 3. FIX TASTO INDIETRO (Safari/Chrome Cache) ---
-    // Se l'utente torna indietro col browser, riapri la tenda se era rimasta chiusa
+    // ==================================================
+    // 2. ALTRI LINK → PRELOADER (TUO CODICE)
+    // ==================================================
+    $(document).on('click', 'a', function (e) {
+
+        const href = $(this).attr('href');
+        const target = $(this).attr('target');
+
+        // Controlli di esclusione
+        if (
+            !href ||
+            href.startsWith('#') ||
+            href.startsWith('mailto:') ||
+            target === '_blank' ||
+            $(this).closest('#side-menu').length
+        ) {
+            return;
+        }
+
+        e.preventDefault();
+        
+        // Assicuriamoci di NON avere il flag del menu attivo
+        sessionStorage.removeItem('fromMenu');
+
+        // MOSTRA LA TENDA (USCITA)
+        $preloader.removeClass('is-hidden');
+        $body.addClass('no-scroll');
+
+        setTimeout(function () {
+            window.location.href = href;
+        }, 1000); // 1000ms basta solitamente per la discesa
+    });
+
+    // Fix per il tasto "Indietro" del browser
     window.onpageshow = function(event) {
         if (event.persisted) {
-            openCurtain();
+            $preloader.addClass('is-hidden');
+            playSvgAnim();
         }
     };
 
