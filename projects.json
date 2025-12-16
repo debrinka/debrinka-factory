@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Project One",
+    "image": "img/project-1.jpg",
+    "link": "project-1.html",
+    "category": "branding"
+  },
+  {
+    "title": "Project Two",
+    "image": "img/project-2.jpg",
+    "link": "project-2.html",
+    "category": "editorial"
+  },
+  {
+    "title": "Project Three",
+    "image": "img/project-3.jpg",
+    "link": "project-3.html",
+    "category": "art direction"
+  }
+]
