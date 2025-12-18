@@ -213,6 +213,10 @@ button:hover {
   height: var(--topnav-h);
 }
 
+#fanzine > #menu-trigger {
+    color: var(--black);
+}
+
 .left-wrap {
   display: flex;
 }
@@ -297,9 +301,14 @@ button:hover {
   object-fit: contain;
 }
 
+
 .dark {
   background-color: var(--black);
   color: var(--white);
+}
+
+.hero.dark {
+  color: white;
 }
 
 .biography {
@@ -792,7 +801,6 @@ position: fixed !important;  /* Inchiodalo allo schermo */
     transform: translateY(-100%); /* Sale su */
 }
 
-.no-scroll { overflow: hidden; }
 
 /* Mascotte */
 .cascade-grid {

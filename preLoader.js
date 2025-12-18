@@ -18,7 +18,7 @@ $(document).ready(function () {
         
         // CASO A: Arrivo dal Menu -> Niente Tenda, Animazione Subito
         $preloader.addClass('is-hidden').removeClass('is-active'); // Nascondi preloader immediato
-        $body.removeClass('no-scroll');
+        lenis.start();
         
         // Pulisci il promemoria
         sessionStorage.removeItem('fromMenu');
@@ -34,7 +34,7 @@ $(document).ready(function () {
         setTimeout(function() {
             // 1. Alza la tenda
             $preloader.addClass('is-hidden'); 
-            $body.removeClass('no-scroll');
+            lenis.start();
 
             // 2. Fai partire l'SVG mentre la tenda finisce di alzarsi
             setTimeout(playSvgAnim, 300); 
@@ -85,7 +85,7 @@ $(document).ready(function () {
 
         // MOSTRA LA TENDA (USCITA)
         $preloader.removeClass('is-hidden');
-        $body.addClass('no-scroll');
+       lenis.stop();
 
         setTimeout(function () {
             window.location.href = href;
@@ -101,3 +101,21 @@ $(document).ready(function () {
     };
 
 });
+
+// ==================================================
+// LENIS – SMOOTH SCROLL
+// ==================================================
+
+const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    smoothTouch: false,
+});
+
+// RAF LOOP
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
