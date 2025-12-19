@@ -2,101 +2,78 @@ $(document).ready(function () {
 
     const $preloader = $('#magenta-preloader');
     const $body = $('body');
-    const $heroSvg = $('.hero-content'); // Il contenitore del tuo SVG
 
-    // FUNZIONE: Fa partire l'animazione SVG
-    function playSvgAnim() {
-        $heroSvg.addClass('is-visible');
-    }
+    // ============================
+    // ENTRATA PAGINA
+    // ============================
+    $(window).on('load', function () {
 
-    // ==================================================
-    // 0. GESTIONE ENTRATA PAGINA (Appena carica)
-    // ==================================================
-    
-    // Controlliamo se arriviamo dal click del MENU
-    if (sessionStorage.getItem('fromMenu') === 'true') {
-        
-        // CASO A: Arrivo dal Menu -> Niente Tenda, Animazione Subito
-        $preloader.addClass('is-hidden').removeClass('is-active'); // Nascondi preloader immediato
-        lenis.start();
-        
-        // Pulisci il promemoria
-        sessionStorage.removeItem('fromMenu');
-
-        // Fai partire l'SVG con un micro-ritardo per fluidità
-        setTimeout(playSvgAnim, 100);
-
-    } else {
-        
-        // CASO B: Arrivo normale -> Alza la tenda, POI animazione
-        // (Assicurati che il preloader sia visibile nel CSS di base o qui)
-        
-        setTimeout(function() {
-            // 1. Alza la tenda
-            $preloader.addClass('is-hidden'); 
+        // Caso: arrivo dal menu → niente tenda
+        if (sessionStorage.getItem('fromMenu') === 'true') {
+            $preloader.addClass('is-hidden');
+            sessionStorage.removeItem('fromMenu');
             lenis.start();
+            return;
+        }
 
-            // 2. Fai partire l'SVG mentre la tenda finisce di alzarsi
-            setTimeout(playSvgAnim, 300); 
-        }, 500); // Tempo di caricamento finto iniziale
-    }
+        // Caso normale → tenda che sale
+        setTimeout(function () {
+            $preloader.addClass('is-hidden');
+            lenis.start();
+        }, 100);
+    });
 
-
-    // ==================================================
-    // 1. LINK DEL MENU → NO PRELOADER (TUO CODICE + FIX)
-    // ==================================================
+    // ============================
+    // LINK MENU → NO PRELOADER
+    // ============================
     $(document).on('click', '#side-menu a', function (e) {
         e.preventDefault();
         e.stopImmediatePropagation();
 
         const href = $(this).attr('href');
-
-        // >>> IMPORTANTE: Diciamo alla prossima pagina che arriviamo dal menu
-        sessionStorage.setItem('fromMenu', 'true'); 
+        sessionStorage.setItem('fromMenu', 'true');
 
         $('#side-menu').hide('slide', { direction: 'up' }, 500, function () {
             window.location.href = href;
         });
     });
 
-    // ==================================================
-    // 2. ALTRI LINK → PRELOADER (TUO CODICE)
-    // ==================================================
+    // ============================
+    // ALTRI LINK → PRELOADER
+    // ============================
     $(document).on('click', 'a', function (e) {
 
         const href = $(this).attr('href');
         const target = $(this).attr('target');
 
-        // Controlli di esclusione
         if (
             !href ||
             href.startsWith('#') ||
             href.startsWith('mailto:') ||
             target === '_blank' ||
             $(this).closest('#side-menu').length
-        ) {
-            return;
-        }
+        ) return;
 
         e.preventDefault();
-        
-        // Assicuriamoci di NON avere il flag del menu attivo
+
         sessionStorage.removeItem('fromMenu');
+        lenis.stop();
 
-        // MOSTRA LA TENDA (USCITA)
         $preloader.removeClass('is-hidden');
-       lenis.stop();
+        $body.addClass('no-scroll');
 
-        setTimeout(function () {
+        setTimeout(() => {
             window.location.href = href;
-        }, 1000); // 1000ms basta solitamente per la discesa
+        }, 1000);
     });
 
-    // Fix per il tasto "Indietro" del browser
-    window.onpageshow = function(event) {
+    // ============================
+    // FIX BACK BUTTON
+    // ============================
+    window.onpageshow = function (event) {
         if (event.persisted) {
             $preloader.addClass('is-hidden');
-            playSvgAnim();
+            lenis.start();
         }
     };
 
