@@ -4,14 +4,11 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // =====================================================
-    // 1. INIEZIONE HEADER
-    // =====================================================
-    const header = document.querySelector('#header');
-    if (header) {
-        header.innerHTML = `
+ const headerContainer = document.querySelector('#header');
+    if (headerContainer) {
+        headerContainer.innerHTML = `
         <div class="left-wrap">
-            <div class="linknav" style="padding:0;">
+            <div class="linknav">
                 <a href="index.html">debrinka portfolio</a>
             </div>
         </div>
@@ -22,6 +19,30 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>`;
     }
 
+    // ORA l'header esiste davvero nel DOM
+   const header = document.querySelector('.topnav');
+
+// default
+header.classList.add('is-light');
+
+// sezioni scure (hero magenta, ecc.)
+const darkSections = document.querySelectorAll('.magenta-section');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      header.classList.add('is-dark');
+      header.classList.remove('is-light');
+    } else {
+      header.classList.remove('is-dark');
+      header.classList.add('is-light');
+    }
+  });
+}, {
+  rootMargin: '-80px 0px -80% 0px'
+});
+
+darkSections.forEach(section => observer.observe(section));
 
     const footer = document.querySelector('#footer');
     if (footer) {

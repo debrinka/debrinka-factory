@@ -58,24 +58,11 @@
   --magenta: hsl(323.57deg 100% 72.55%);
   --white: hsl(20, 10%, 94%);
   --black: hsl(200, 0%, 15%);
-  --size-000: -.5rem;
   --size-00: -.25rem;
   --size-1: .25rem;
   --size-2: .5rem;
   --size-3: 1rem;
-  --size-4: 1.25rem;
-  --size-5: 1.5rem;
-  --size-6: 1.75rem;
   --size-7: 2rem;
-  --size-8: 3rem;
-  --size-9: 4rem;
-  --size-10: 5rem;
-  --size-11: 7.5rem;
-  --size-12: 10rem;
-  --size-13: 15rem;
-  --size-14: 20rem;
-  --size-15: 30rem;
-  --size-xxs: 240px;
   --size-xs: 360px;
   --size-sm: 480px;
   --size-md: 768px;
@@ -133,6 +120,24 @@ width: 100%;
     position: relative;
     height: auto;
 }
+
+/* --- FIX NECESSARIO PER LENIS (Smooth Scroll) --- */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 
 h1,
 h2,
@@ -204,33 +209,133 @@ button:hover {
   font-weight: 500;
 }
 
-.grid-main {
-  display: grid;
-  grid-template-columns: 1fr min(100%, 50rem) 1fr;
-}
-
-@media (width > 28.125rem) {}
-
-.grid-content {
-  grid-column: 2 / 3;
-}
-
 .topnav {
   position: relative; 
-    z-index: 999; /* Priorità massima */
-    background-color: var(--white);
+  z-index: 999; /* Priorità massima */
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 1.5rem;
-  padding-left: var(--side-margin);
+  padding: 0 var(--side-margin);
   height: var(--topnav-h);
 }
 
-#fanzine > #menu-trigger {
+.topnav a {
+  color: inherit;
+}
+
+/* HEADER SU SFONDO SCURO / MAGENTA */
+.topnav.is-dark {
+  color: var(--white);
+  background-color: var(--magenta);
+}
+
+/* HEADER SU SFONDO CHIARO */
+.topnav.is-light {
+  color: var(--black);
+  background-color: var(--white);
+}
+
+/* =========================================
+   MENU LATERALE (JQUERY UI TOGGLE)
+   ========================================= */
+
+#menu-trigger {
+    height: 35px;
+    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+    border-radius: 9999px;
+   background-size: 0 100%;
+    background-repeat: no-repeat;
+    transition: .5s;
+   /* transform: translateZ(0);*/
+}
+
+.topnav.is-light #menu-trigger {
+  border: 1px solid var(--black);
+  color: var(--black);
+  background-image: linear-gradient(var(--black), var(--black));
+}
+
+.topnav.is-light #menu-trigger:hover {
+  background-size: 100% 100%;
+  color: var(--white);
+}
+
+.topnav.is-dark #menu-trigger {
+  border: 1px solid var(--white);
+  color: var(--white);
+  background-image: linear-gradient(var(--white), var(--white));
+}
+
+.topnav.is-dark #menu-trigger:hover {
+  background-size: 100% 100%;
+  color: var(--magenta);
+}
+
+/* Il contenitore del menu (Nascosto di default) */
+#side-menu {
+    position: fixed;
+    top: 0;
+    right: 0; /* Allineato a destra */
+    width: 100%; /* Su mobile tutto schermo */
+    max-width: 100wh; /* Su desktop largo 400px */
+    height: 100vh;
+    background-color: var(--black);
+    z-index: 999999; /* Sopra a tutto */
+    display: none; /* FONDAMENTALE: jQuery lo mostrerà */
+    /* Flexbox per centrare i link */
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Pulsante Chiudi (X) */
+#close-menu {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* Link del menu */
+#side-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+#side-menu li {
+    margin-bottom: 20px;
+}
+
+#side-menu a {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    transition: 1s;
+}
+
+#side-menu a:hover {
     color: var(--black);
 }
 
+#side-menu ul li {
+  opacity: 0;
+  transform: translateY(20px); /* partono sotto */
+  transition: all 0.4s ease-out;
+}
+
+/* Quando attivo */
+#side-menu ul li.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 .left-wrap {
   display: flex;
 }
@@ -242,7 +347,6 @@ button:hover {
 
 .linknav {
   line-height: 1.625;
-  padding: 18px 64px;
 }
 
 /** .hero {
@@ -321,6 +425,11 @@ button:hover {
   color: var(--white);
 }
 
+.light {
+  background-color: var(--white);
+  color: var(--black);
+}
+
 .hero.dark {
   color: white;
 }
@@ -372,6 +481,60 @@ button:hover {
   width: 100%;
   height: 100%;
   border: none;
+}
+
+/*--- orizzontal section for journey --*/
+.journey-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.journey-track {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  will-change: transform;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.journey-text-container {
+  flex: 1;
+  max-width: 45%;
+  padding-left: var(--side-margin);
+  align-self: flex-end;
+}
+
+.container-year-card {
+  flex: 1;
+  gap: var(--side-margin);
+  display: flex; 
+  flex-direction: row;
+  max-width: 543px;
+  height: 100%;
+}
+
+.year-card {
+  transform-origin: left bottom;
+  flex: 0 0 550px;
+  height: 100%;
+  will-change: transform;
+}
+
+/* .year-card.is-active {
+  transform: translateY(0) scale(1);
+} */
+
+.container-year-card .year-card:first-child {
+  transform: translateY(0);
+  width: 550px;
+  height: 100%;
 }
 
 /* --- LOGICA DELL'ALTEZZA (THE FOLD) --- */
@@ -988,106 +1151,7 @@ position: fixed !important;  /* Inchiodalo allo schermo */
     }
 }
 
-/* --- FIX NECESSARIO PER LENIS (Smooth Scroll) --- */
-html.lenis {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto;
-}
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
-
-/* =========================================
-   MENU LATERALE (JQUERY UI TOGGLE)
-   ========================================= */
-
-#menu-trigger {
-    height: 35px;
-    padding: .5rem 1rem;
-    display: flex;
-    align-items: center;
-    border-radius: 9999px;
-    border: 1px solid var(--white);
-  background-image: linear-gradient(var(--white),var(--white));
-   background-size: 0 100%;
-    background-repeat: no-repeat;
-    color: var(--white);
-    transition: .5s;
-   /* transform: translateZ(0);*/
-}
-#menu-trigger:hover {
-  background-size: 100% 100%;
-  color: var(--magenta);
-}
 
 
-/* Il contenitore del menu (Nascosto di default) */
-#side-menu {
-    position: fixed;
-    top: 0;
-    right: 0; /* Allineato a destra */
-    width: 100%; /* Su mobile tutto schermo */
-    max-width: 100wh; /* Su desktop largo 400px */
-    height: 100vh;
-    background-color: var(--black);
-    z-index: 999999; /* Sopra a tutto */
-    display: none; /* FONDAMENTALE: jQuery lo mostrerà */
-    /* Flexbox per centrare i link */
-    flex-direction: column;
-    align-items: center;
-}
 
-/* Pulsante Chiudi (X) */
-#close-menu {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white);
-    cursor: pointer;
-    background: none;
-    border: none;
-}
 
-/* Link del menu */
-#side-menu ul {
-    list-style: none;
-    padding: 0;
-}
-
-#side-menu li {
-    margin-bottom: 20px;
-}
-
-#side-menu a {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--white);
-    text-decoration: none;
-    transition: 1s;
-}
-
-#side-menu a:hover {
-    color: var(--black);
-}
-
-#side-menu ul li {
-  opacity: 0;
-  transform: translateY(20px); /* partono sotto */
-  transition: all 0.4s ease-out;
-}
-
-/* Quando attivo */
-#side-menu ul li.show {
-  opacity: 1;
-  transform: translateY(0);
-}

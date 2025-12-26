@@ -24,11 +24,11 @@
         <img src="assets/svg/mascotte_loading.svg" alt="Loading..." class="loader-png">
     </div>
 </div>
-<header id="header" class="topnav" style="background-color: var(--magenta); color: var(--white);">
+<header id="header" class="topnav">
  
 </header>
   <main id="main-content">
-    <section class="hero relative d-flex bd-highlight" style=" background-color: var(--magenta);flex-direction: column; padding: 0 var(--side-margin);">
+    <section class="hero relative d-flex bd-highlight magenta-section" style=" background-color: var(--magenta);flex-direction: column; padding: 0 var(--side-margin);">
       <div class="hero-content" style="margin-bottom: 1rem; height: auto;">
         <svg class="hero-img" viewBox="0 0 1804 648" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%;">
           <path d="M189.773 647.461H0V0H189.773C208.829 0 224.277 15.448 224.277 34.5042V612.956C224.277 632.013 208.829 647.461 189.773 647.461ZM102.498 596.719C112.586 596.719 120.765 588.541 120.765 578.452V70.0232C120.765 59.9346 112.586 51.7562 102.498 51.7562V596.719Z" fill="var(--white)"/>
@@ -61,12 +61,47 @@ Il mio interesse si manifesta nel notare i dettagli di un'interfaccia o di un se
   </div></div>
       </section>
       <section class="hero dark" style="min-height: 100vh; padding: 0 var(--side-margin);">
-        <div class="hero-content biography"> 
-          <h1>services</h1>
-          <p class="text-biography">Ciao! Sono Erika.
-Ho 26 anni e fin da bambina facevo già le mie prove di web design, ispirata da ciò che vedevo online. Oggi, quella curiosità è cresciuta e si è trasformata nella mia ambizione: diventare una UI/UX designer. 
-Il mio interesse si manifesta nel notare i dettagli di un'interfaccia o di un servizio: la sua fruibilità, il modo in cui guida l'utente e la sua estetica. Per me, il design è uno sguardo sensibile che trasforma ciò che spesso sfugge in qualcosa che funziona e comunica.</p>
-        </div>
+        <div class="hero-content" style="justify-content: space-between; flex: 1; align-items: flex-start; margin-top: 20rem;"> 
+         <div style=" flex: 1; max-width: 45%;">
+          <h1 style="font-size: 134px; font-weight: 500;">services</h1>
+         </div>
+          <div style=" flex: 1; display: flex; max-width: 534px; flex-direction: column; gap: 1.5rem;">
+            <p class="text-biography" style="font-size: 24px; font-weight: 400;">From first spark to final polish, I shape ideas with strategy and insight, then make them real through thoughtful design and execution.</p>
+          
+          <div class="text-biography" style="font-size: 24px; gap: 80px; display: flex; max-width: 100%;">
+            <div style="display:flex; flex-direction:column; gap:0px; flex: 1;">
+                  <p style="font-weight: 500;">making</p>
+                <p style="font-weight: 400;color:#9a9a9a; margin-bottom: 0px">brand design</p>
+                <p style="font-weight: 400;color:#9a9a9a; margin-bottom: 0px">ui/ux design</p>
+                <p style="font-weight: 400;color:#9a9a9a; margin-bottom: 0px">graphic design</p>
+                <p style="font-weight: 400;color:#9a9a9a; margin-bottom: 0px">editorial</p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:0px; flex: 1;">
+                <p style="font-weight: 500;">software</p>
+                <p style="font-weight: 400;color:#9a9a9a; margin-bottom: 0px">brand design</p>
+                <p style="font-weight: 400;color:#9a9a9a; margin-bottom: 0px">ui/ux design</p>
+                <p style="font-weight: 400;color:#9a9a9a; margin-bottom: 0px">graphic design</p>
+                <p style="font-weight: 400;color:#9a9a9a; margin-bottom: 0px">editorial</p>
+            </div>
+           </div>
+           <p class="text-biography" style="font-size: 24px; font-weight: 400;">Look my selectioned works.</p>
+      </div>
+       </div>
+      </section>
+      <section id="journey" class="light">
+         <div class="journey-sticky" style="padding-right: var(--side-margin); margin: 100px 0px;">
+          <h1 style="font-size: 134px; font-weight: 400; padding: 0 var(--side-margin); text-indent: -0.07em;">my journey</h1>
+          <div class="journey-track" style="margin-top: 40px; margin-bottom: 20px;">
+            <div class="journey-text-container">
+            <p style="font-size: 40px; margin-bottom: 0; line-height: 1.1;">
+                  in those years i do a lots of new experiences, start from my hobby to dedicated my passion in my job but only after i understand that i was made for design
+                </p>
+              </div>
+              
+              <div class="container-year-card">
+              </div>
+            </div>
+  </div>
       </section>
     </main>
     <footer id="footer"></footer>
@@ -76,5 +111,6 @@ Il mio interesse si manifesta nel notare i dettagli di un'interfaccia o di un se
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="headerFooter.js"></script>
     <script src="preloader.js"></script>
+    <script src="horizontalScroll.js"></script>
   </body>
 </html>
