@@ -20,11 +20,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ORA l'header esiste davvero nel DOM
-   const header = document.querySelector('.topnav');
+if (header) header.classList.add('is-light');
 
-// default
-header.classList.add('is-light');
+const sections = document.querySelectorAll('.bg-section');
+const pageBg = document.querySelector('#page-bg');
+const bgObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
 
+    const color = entry.target.dataset.bg;
+
+    pageBg.style.backgroundColor =
+      getComputedStyle(document.documentElement)
+        .getPropertyValue(`--${color}`);
+  });
+}, {
+  threshold: 0.6
+});
+
+sections.forEach(section => bgObserver.observe(section));
 // sezioni scure (hero magenta, ecc.)
 const darkSections = document.querySelectorAll('.magenta-section');
 

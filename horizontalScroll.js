@@ -24,8 +24,21 @@ function setSectionHeight() {
     maxScroll
   );
     track.style.transform = `translateX(-${progress}px)`;
+    updateJourneyBackground(progress);
      updateActiveYearCard();
+     setSectionHeight();
   }
+
+function updateJourneyBackground(progress) {
+  const maxScroll = track.scrollWidth - window.innerWidth;
+  const ratio = progress / maxScroll;
+
+  if (ratio < 0.2) {
+    document.body.style.backgroundColor = 'var(--white)';
+  } else {
+    document.body.style.backgroundColor = 'var(--black)';
+  }
+}
 
 function updateActiveYearCard() {
   const cards = document.querySelectorAll('.year-card');

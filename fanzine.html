@@ -34,7 +34,7 @@
             
             <div class="row" style="margin: 0;">
                 <div class="col-6" style="padding: 0;">
-                    <h4 class="project-mini-header">Poli Fanzine</h4>
+                    <h4 class="project-mini-header">progetto d'esame fanzine</h4>
                 </div>
                 <div class="col-6 text-end" style="padding: 0;">
                     <a href="works.html" class="back-link">← All Work</a>
@@ -52,10 +52,7 @@
                 <div class="col-md-7 col-lg-6" style="padding: 0;">
                     <div class="project-description">
                         <p>
-                            In the high stakes world of health and safety, risks can come at you fast. 
-                            And the biggest risk to any work site and its people is often moving too slow 
-                            and the details falling through the cracks. That's why we created 'Safe Can't Wait,' 
-                            a new brand identity and campaign for VelocityEHS.
+                            Ricerca antropologica di una studiosa sul passaggio, tra il 2025 e il 2100, dall’isolamento emotivo a una nuova era di connessione grazie a Sentium, l’integratore che ha reso l’empatia un valore collettivo.
                         </p>
                     </div>
                 </div>
@@ -63,9 +60,10 @@
                 <div class="col-md-5 col-lg-6" style="padding: 0;">
                     <div class="project-details-wrapper text-end">
                         <ul class="project-details-list">
-                            <li>Editorial Design</li>
-                            <li>Art Direction</li>
-                            <li>Social Media</li>
+                            <li>composizione fotografie</li>
+                            <li>illustrazioni</li>
+                            <li>tipografia</li>
+                            <li>realizzazione del storytelling</li>
                         </ul>
                     </div>
                 </div>
@@ -78,12 +76,12 @@
     <div class="content-black">
         
         <div class="hero-full-width">
-            <img src="https://picsum.photos/1920/1080?random=1" alt="Full Width Hero">
+            <img src="assets/png/fanzine_copertina_pagina.png" alt="Full Width Hero">
         </div>
 
         <section class="project-gallery">
             <div class="container-fluid">
-                
+                 <!-- 2 elementi in una riga
                 <div class="row mb-5">
                     <div class="col-md-6 mb-4 mb-md-0">
                         <img src="https://picsum.photos/800/1000?random=2" class="img-fluid w-100 media_container" alt="Detail">
@@ -91,14 +89,15 @@
                     <div class="col-md-6">
                         <img src="https://picsum.photos/800/1000?random=3" class="img-fluid w-100 media_container" alt="Detail">
                     </div>
-                </div>
+                </div> -->
 
                 <div class="row justify-content-center">
                     <div class="col-12">
-                        <img src="https://picsum.photos/1600/900?random=4" class="img-fluid w-100 media_container" alt="Wide Shot">
+                        <div class="image-cycle" style="padding: 12vw;">
+                            <img id="cycle-img" src="assets/png/pagine_fanzine/1primapagina.png" alt="">
+                        </div>
                     </div>
                 </div>
-                
                 <div class="row mt-5">
                     <div class="col-12">
                         <p class="text-white">Photo credits: Lachlan Fox, Meg Wright.</p>
@@ -109,6 +108,30 @@
     </div>
 </main>
     <footer id="footer"></footer>
+     <script>
+        const images = [
+                'assets/png/pagine_fanzine/1primapagina.png',
+                'assets/png/pagine_fanzine/2primapagina.png',
+                'assets/png/pagine_fanzine/3primapagina.png',
+                'assets/png/pagine_fanzine/4primapagina.png',
+                'assets/png/pagine_fanzine/5primapagina.png',
+                'assets/png/pagine_fanzine/6primapagina.png',
+                'assets/png/pagine_fanzine/7primapagina.png',
+                'assets/png/pagine_fanzine/8primapagina.png',
+                'assets/png/pagine_fanzine/9primapagina.png',
+                'assets/png/pagine_fanzine/10primapagina.png',
+                'assets/png/pagine_fanzine/11primapagina.png',
+                'assets/png/pagine_fanzine/12primapagina.png'
+                ];
+
+                let index = 0;
+                const imgEl = document.getElementById('cycle-img');
+
+                setInterval(() => {
+                index = (index + 1) % images.length;
+                imgEl.src = images[index];
+                }, 1000);
+    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
