@@ -922,15 +922,6 @@ position: fixed;  /* Inchiodalo allo schermo */
     padding-top: 0;
 }
 
-/* 1. WRAPPER HOVER (Tutta la larghezza) */
-.project-hover-wrapper {
-    transition: color 0.8s ease;
-}
-
-.project-hover-wrapper:hover {
-  color: var(--magenta);
-}
-
 /* 2. LA RIGA DEL PROGETTO (Gestisce Bordo e Padding) */
 .project-row {
     /* Il bordo è applicato alla riga, quindi sarà largo quanto il container (meno i gutter) */
