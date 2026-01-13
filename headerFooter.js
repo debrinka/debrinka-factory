@@ -26,16 +26,16 @@ const sections = document.querySelectorAll('.bg-section');
 const pageBg = document.querySelector('#page-bg');
 const bgObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-
-    const color = entry.target.dataset.bg;
-
-    pageBg.style.backgroundColor =
-      getComputedStyle(document.documentElement)
-        .getPropertyValue(`--${color}`);
+    if (entry.isIntersecting) {
+      const color = entry.target.dataset.bg;
+      pageBg.style.backgroundColor =
+        getComputedStyle(document.documentElement)
+          .getPropertyValue(`--${color}`);
+    }
   });
 }, {
-  threshold: 0.6
+  rootMargin: '-40% 0px -60% 0px',
+  threshold: 0
 });
 
 sections.forEach(section => bgObserver.observe(section));
@@ -114,8 +114,16 @@ $(document).ready(function () {
     // CREA MENU SE NON ESISTE
     if ($('#side-menu').length === 0) {
         const menuHTML = `
-        <div id="side-menu" style="display:none; flex-direction: column; justify-content: center; align-items: center;">
-            <button id="close-menu">close</button>
+        <div id="side-menu" style="display:none; flex-direction: column; ">
+        <div id="menu-header" style="font-size: 1.5rem; padding: 0 var(--side-margin); display: flex; height: var(--topnav-h); width: 100%; justify-content: space-between; align-items: center;">
+            <div class="left-wrap">
+            <div class="linknav">
+                <a href="index.html" style="font-size: 1.5rem;">debrinka portfolio</a>
+            </div>
+        </div><div class="right-wrap">
+            <button id="close-menu">close</button> 
+        </div></div>
+             <div style=" display: flex; flex: 1 1 0; align-items: center; justify-content: center;">
             <ul>
                 <li><a href="index.html" class="menu-link">
                     <span class="menu-icon">
@@ -151,25 +159,32 @@ $(document).on('click', '#menu-trigger', function (e) {
     e.preventDefault();
 
     const $menu = $('#side-menu');
+    const $menuheader = $('#menu-header');
     const $links = $menu.find('ul li');
 
     // Resetta animazioni precedenti
     $links.removeClass('show');
+    $menuheader.removeClass('show');
 
     // Mostra il menu (slide)
     $menu.css('display', 'flex').hide().show('slide', { direction: 'up' }, 500, function() {
+        setTimeout(() => {
+        $menuheader.addClass('show');
+      }, 50);
         // Animazione link dopo apertura menu
         $links.each(function(index) {
             const $li = $(this);
             setTimeout(function() {
                 $li.addClass('show');
-            }, 100 * index); // delay progressivo
+            }, 100 + 150 * index); // delay progressivo
         });
     });
 });
     // CHIUSURA MENU
     $(document).on('click', '#close-menu', function (e) {
         e.preventDefault();
+         $('#menu-header').removeClass('show');
+        $('#side-menu ul li').removeClass('show');
         $('#side-menu').hide('slide', { direction: 'up' }, 500);
     });
 

@@ -93,6 +93,9 @@
     --peek-height: 100px; /* Su mobile meno */
     --text-lg: 1.25rem;
   }
+
+
+}
 }
 
 *,
@@ -296,58 +299,70 @@ button:hover {
 
 /* Pulsante Chiudi (X) */
 #close-menu {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    font-size: 1.5rem;
-    color: var(--white);
-    cursor: pointer;
-    background: none;
-    border: none;
+    line-height: normal;
+    font-size: 1.5rem;/**/
+    color: var(--white);/**/
+    border: 1px solid var(--white);
+    cursor: pointer;/**/
+    background: none;/**/
+    padding: .2rem 1rem;
+    border-radius: 9999px;
+}
+
+#menu-header {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#menu-header.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Link del menu */
-#side-menu ul {
+#side-menu ul {/**/
     list-style: none;
     padding: 0;
 }
 
-#side-menu a {
+#side-menu a {/**/
     font-size: 2.5rem;
     color: var(--white);
     text-decoration: none;
     transition: 1s;
 }
 
-#side-menu a.is-active{
+#side-menu a.is-active{/**/
     color: var(--magenta);
 }
 
-#side-menu ul li {
+#side-menu ul li {/**/
   opacity: 0;
   transform: translateY(20px); /* partono sotto */
-  transition: all 0.4s ease-out;
+  transition: all 2s ease-out;
 }
 
+
 /* Quando attivo */
-#side-menu ul li.show {
+#side-menu ul li.show {/**/
   opacity: 1;
   transform: translateY(0);
 }
 
-.menu-link {
+.menu-link {/**/
   display: inline-flex;
   align-items: baseline;
   gap: 1rem;
   text-decoration: none;
 }
 
-.menu-icon {
+.menu-icon {/**/
   display: flex;
   flex: 0 0 1.2rem;
 }
 
-.menu-link .menu-icon svg {
+.menu-link .menu-icon svg {/**/
   transform: translate3d(-100%, 100%, 0);
   content: "";
   opacity: 0;
@@ -506,9 +521,8 @@ button:hover {
   flex-direction: row;
   flex-wrap: wrap;
   margin-left: 0 !important;
-    margin-right: 0 !important;
-    width: 100% !important;
-    --bs-gutter-x: 0;
+  margin-right: 0 !important;
+  width: 100% !important;
 }
 
 .column {
@@ -599,6 +613,74 @@ button:hover {
   transform: translateY(0);
   width: 550px;
   height: 100%;
+}
+
+@media (max-width: 1349px) {
+  section {
+    padding-right: var(--side-margin);
+    padding-left: var(--side-margin);
+}
+  /* disattivo comportamento sticky */
+  .journey-sticky {
+    padding-right: 0 !important;
+    position: relative;
+    height: auto;
+    overflow: visible;
+    margin: 0 !important;
+  }
+
+  .journey-sticky h1 {
+    padding: 0 !important;
+  }
+
+  .journey-track {
+    flex-direction: column;
+    transform: none !important;
+    height: auto;
+  }
+
+  .journey-text-container {
+    max-width: 100%;
+    padding-left: 0 !important;
+    margin-bottom: 3rem;
+  }
+  .journey-text-container p{
+    font-size: 32px !important;
+  }
+
+  .container-year-card {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    height: auto;
+  }
+
+   .container-year-card .year-card:first-child {
+    width: auto;
+    height: auto;
+    transform: none !important;
+    aspect-ratio: 3 / 4;
+}
+  .year-card {
+ height: auto;          /* 🔴 fondamentale */
+    aspect-ratio: 3 / 4;  /* opzionale ma consigliato */
+    transform: none !important;
+  }
+
+  .year-card p {
+    font-size: 24px !important;
+  }
+}
+@media (min-width: 769px) and (max-width: 1355px) {
+.journey-sticky h1 {
+    font-size: 96px !important;
+  }}
+
+@media (min-width: 0px) and (max-width: 768px) {
+      .journey-sticky h1 {
+    font-size: 64px !important;
+  }
 }
 
 /* --- LOGICA DELL'ALTEZZA (THE FOLD) --- */
@@ -693,14 +775,55 @@ button:hover {
 }
 
 /* Mobile responsive */
-@media (max-width: 768px) {
+@media (min-width: 0px) and (max-width: 768px) {
     .gallery {
         grid-template-columns: 1fr;
         gap: 16px;
     }
+
+    .text-biography {
+    font-size: 24px;
+    }
+
+      #title h1 {
+      font-size: 64px !important;
+    }
 }
 
+@media (min-width: 769px) and (max-width: 1355px) {
+#title h1 {
+      font-size: 96px !important;
+    }}
 
+@media  (max-width: 1355px) {
+  #service-section{
+      padding: 0 var(--side-margin) 2rem !important;
+      height: 100% !important;
+      min-height: auto !important;
+  }
+
+    #services {
+      flex-direction: column;
+      margin-top: 0 !important;
+    }
+
+    #title {
+      flex: 0 1 !important;
+      width: 100% !important;
+    }
+
+    #aboutservices {
+      max-width: none !important;
+    }
+}
+    @media (max-width: 500px) {
+      #container-services-list {
+        flex-direction: column !important;
+      }
+}
+ @media (max-width: 1349px) {
+     
+}
 /* --- FOOTER GRID BASELINE (La soluzione definitiva) --- */
 
 #footer .footer-wrapper {
@@ -907,7 +1030,7 @@ position: fixed;  /* Inchiodalo allo schermo */
 
 /* SOTTOTITOLO */
 .works-area-subtitle p {
-    font-size: 1.2rem;
+    font-size: 24px !important;
 }
 
 /* =========================================
@@ -952,14 +1075,24 @@ position: fixed;  /* Inchiodalo allo schermo */
 
 /* OVERRIDE CONTAINER (Per allineare tutto ai tuoi margini laterali) */
 @media (max-width: 768px) {.project-list>.container-fluid {
-    padding-left: var(--side-margin);
-    padding-right: var(--side-margin);
+    padding-left: 0;
+    padding-right: 0;
 }
 .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, 
 .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, 
 .col-md-6, .col-lg-6 {
     padding-left: 12px !important;
     padding-right: 12px !important;
+}
+
+#title-container.col-12 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+#title-main-header {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 }
 
@@ -1092,42 +1225,34 @@ position: fixed;  /* Inchiodalo allo schermo */
 
 /* Header piccolo (es. "Poli Fanzine") */
 .project-mini-header {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 24px;
+    font-weight: 500;
     margin: 0;
-    color: var(--magenta); /* Colore come da richiesta */
 }
 
 /* Link "All Work" */
 .back-link {
-    font-size: 1rem;
+    font-size: 24px;
     text-decoration: none;
     font-weight: 500;
-    color: var(--magenta); /* Colore come da richiesta */
-    transition: opacity 0.3s ease;
-}
-.back-link:hover {
-    opacity: 0.7; /* Semplice effetto hover */
 }
 
 /* Titolo Gigante */
 .project-main-title {
     /* Dimensione reattiva ma GRANDE */
-    font-size: clamp(3.5rem, 8vw, 9rem);
-    font-weight: 700;
+    font-size: 134px !important;
+    font-weight: 500;
     line-height: 0.9; 
     margin-top: 10px;
     margin-bottom: 30px;
     letter-spacing: -0.02em;
-    color: var(--magenta);
 }
 
 /* --- DESCRIZIONE (Line-height stretto) --- */
 .project-description p {
-    font-size: 1.1rem;
-    line-height: 1.25; /* Interlinea molto compatta */
+    font-size: 24px;
+    line-height: 1.15; /* Interlinea molto compatta */
     max-width: 700px;
-    font-weight: 500;
     margin: 0;
     color: var(--black); /* Testo nero per contrasto */
 }
@@ -1141,33 +1266,11 @@ position: fixed;  /* Inchiodalo allo schermo */
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    line-height: 1.5;
+    font-size: 16px;
+    line-height: 1.2;
     position: relative;
     display: inline-block;
-    color: var(--magenta); /* Testo dettagli colorato */
     text-align: right;
-}
-
-/* IL PALLINO COLORATO SOPRA LA LISTA */
-.project-details-list::before {
-    content: "";
-    display: block;
-    width: 6px;
-    height: 6px;
-    background-color: var(--magenta);
-    border-radius: 50%;
-    margin-left: auto; /* Allinea a destra */
-    margin-bottom: 12px; /* Spazio tra pallino e prima voce */
-}
-
-/* Media Query Desktop */
-@media (min-width: 768px) {
-    .project-details-wrapper {
-        margin-top: 0;
-    }
 }
 
 /* --- 2. ZONA NERA E GALLERY --- */
@@ -1195,6 +1298,61 @@ position: fixed;  /* Inchiodalo allo schermo */
     padding-right: var(--side-margin);
 }
 
+@media (min-width: 769px) and (max-width: 1355px) {
+.project-main-title {
+    font-size: 96px !important;
+  }}
+
+@media (max-width: 1349px) {
+  .project-gallery .container-fluid {
+    padding-left: 0 ;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+   .project-details-wrapper {
+        margin-top: 0;
+    }
+
+    #project-description{
+        padding: 0 !important;
+    }
+
+    .back-link, #title-mini-header{
+      display: none;
+    }
+
+    .project-main-title {
+    font-size: 64px !important;
+  }
+  .image-cycle {
+    padding: 12vw 0 !important;
+  }
+
+  .hero-full-width img{
+    height: 50vw;
+  }
+.project-description p{
+    font-size: 24px;
+}
+
+.menu-icon {/**/
+  flex: 0 0 2rem !important;
+}
+
+.fs-5 {
+    font-size: 24px !important;
+}
+
+.project-details-list {
+    font-size: 16px;
+    padding: 2rem 0;
+
+}
+
+
+
 .text-white { color: var(--white) !important; }
 .media_container {
         border-radius: 1.042vw;
@@ -1209,7 +1367,15 @@ position: fixed;  /* Inchiodalo allo schermo */
   width: 100%;
   height: 100%;
   object-fit: cover;
+}}
+
+.image-cycle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
+
+
 
 @media (min-width: 46.25em) {
     .hero_container__EMze8 {

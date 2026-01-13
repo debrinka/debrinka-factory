@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const section = document.querySelector('#journey');
   const track = document.querySelector('.journey-track');
+  const DESKTOP_BREAKPOINT = 1350;
+  let horizontalEnabled = false;
 
 function setSectionHeight() {
   const trackWidth = track.scrollWidth;
@@ -71,6 +73,50 @@ function updateActiveYearCard() {
   });
 }
 
+ /* --------------------
+     ENABLE / DISABLE
+  -------------------- */
+
+  function enableHorizontalScroll() {
+    if (horizontalEnabled) return;
+    horizontalEnabled = true;
+
+    setSectionHeight();
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('resize', setSectionHeight);
+  }
+
+  function disableHorizontalScroll() {
+    if (!horizontalEnabled) return;
+    horizontalEnabled = false;
+
+    window.removeEventListener('scroll', onScroll);
+    window.removeEventListener('resize', setSectionHeight);
+
+    // reset layout
+    section.style.height = 'auto';
+    track.style.transform = 'translateX(0)';
+  }
+
+  /* --------------------
+     CHECK VIEWPORT
+  -------------------- */
+
+  function checkViewport() {
+    if (window.innerWidth >= DESKTOP_BREAKPOINT) {
+      enableHorizontalScroll();
+    } else {
+      disableHorizontalScroll();
+    }
+  }
+
+  /* --------------------
+     INIT
+  -------------------- */
+
+
+
+
 const container = document.querySelector('.container-year-card');
 const journeyData = [
   {
@@ -94,6 +140,7 @@ const journeyData = [
     year: '2023'
   }
 ];
+
 journeyData.forEach(item => {
   const card = document.createElement('div');
   card.className = 'year-card d-flex flex-column';
@@ -120,7 +167,6 @@ journeyData.forEach(item => {
   container.appendChild(card);
 });
 
-  setSectionHeight();
-  window.addEventListener('resize', setSectionHeight); 
-  window.addEventListener('scroll', onScroll);
+  checkViewport();
+  window.addEventListener('resize', checkViewport);
 });

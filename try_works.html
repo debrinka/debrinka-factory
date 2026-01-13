@@ -29,7 +29,7 @@
             <div class="container-fluid h-100 d-flex flex-column p-0">
                 <div class="flex-grow-1"></div>
                 <div class="row w-100 align-items-end mb-4">
-                    <div class="col-12 col-md-8">
+                    <div id="title-container" class="col-12 col-md-8">
                         <div class="title-text">
                             <h1 class="project-main-title" style="color: var(--black);">all my projects</h1>
                         </div>
@@ -50,13 +50,39 @@
             </div>
         </section>
         <section class="project-list">
-                <div class="container-fluid">
+
+        </section>
+    </main>
+    <footer id="footer"></footer>
+    <script>
+            const container = document.querySelector('.project-list');
+            const projectData = [
+            {
+                image: 'assets/png/fanzine_copertina.png',
+                link: 'works/fanzine.html',
+                title: 'sentium',
+            },
+            {
+                image: 'assets/png/gtt_moveapp.png',
+                link: 'works/gtt_move.html',
+                title: 'gtt move',
+            },
+            {
+                image: 'assets/png/knowling.png',
+                link: 'works/knowling.html',
+                title: 'knowling',
+            }];
+            projectData.forEach(item => {
+            const project = document.createElement('div');
+            project.className = 'container-fluid';
+
+            project.innerHTML = `
                     <div class="row align-items-baseline project-row" style="margin: 0 !important;">
                         <div class="col-md-6" style="padding: 0 !important;">
                             <h2 class="project-name">
-                                <a href="fanzine.html" class="project-hover-wrapper d-inline-flex menu-link">
+                                <a href="${item.link}" class="project-hover-wrapper d-inline-flex menu-link">
                                     <span class="menu-text">
-                                        fanzine
+                                        ${item.title}
                                     </span>
                                     <span class="menu-icon" style="flex: 0 0 3rem">
                                         <svg style="fill: var(--black);" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,41 +94,15 @@
                         </div>
                         <div class="col-md-6" style="padding: 0 !important;">
                             <div class="ratio ratio-7x5">
-                                <img src="assets/png/fanzine_copertina.png" alt="Fanzine">
+                                <img src="${item.image}" alt="${item.title}">
                             </div>
                         </div>
-
                     </div>
-                </div>
-            <div class="container-fluid">
-                    <div class="row align-items-baseline project-row" style="margin: 0 !important;">
-                        <div class="col-md-6" style="padding: 0 !important;">
-                            <h2 class="project-name"><a href="fanzine.html" class="project-hover-wrapper">gtt move</a></h2>
-                        </div>
-                        <div class="col-md-6" style="padding: 0 !important;">
-                            <div class="ratio ratio-7x5">
-                                <img src="assets/png/gtt_moveapp.png" alt="Fanzine">
-                            </div>
-                        </div>
+            `;
 
-                    </div>
-                </div>
-               <div class="container-fluid">
-                    <div class="row align-items-baseline project-row" style="margin: 0 !important;">
-                        <div class="col-md-6" style="padding: 0 !important;">
-                            <h2 class="project-name"><a href="fanzine.html" class="project-hover-wrapper">knowling</a></h2>
-                        </div>
-                        <div class="col-md-6" style="padding: 0 !important;">
-                            <div class="ratio ratio-7x5">
-                                <img src="assets/png/knowling.png" alt="Fanzine">
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-        </section>
-    </main>
-    <footer id="footer"></footer>
+            container.appendChild(project);
+            });
+    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
