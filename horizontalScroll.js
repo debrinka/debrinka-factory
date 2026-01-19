@@ -46,8 +46,8 @@ function updateActiveYearCard() {
   const cards = document.querySelectorAll('.year-card');
   const viewportWidth = window.innerWidth;
 
-  const focusX = viewportWidth * 0.35;
-  const range = viewportWidth * 0.6;
+  const focusX = viewportWidth * 0.35; // punto orizzontale della card attiva, 35% dello schermo
+  const range = viewportWidth * 0.6; // range di influenza delle trasformazioni, entro 
 
   cards.forEach((card, index) => {
 
@@ -57,8 +57,8 @@ function updateActiveYearCard() {
       return;
     }
 
-    const rect = card.getBoundingClientRect();
-    const distance = rect.left - focusX;
+    const rect = card.getBoundingClientRect(); //posizione della card nello schermo
+    const distance = rect.left - focusX; // distanza orizzontale dal punto di focus (0 è esattamente sul punto, negativo a sinistra, positivo a destra)
 
     let t = 1 - Math.min(Math.max(distance / range, 0), 1);
     t = t * t * (3 - 2 * t); // smoothstep
