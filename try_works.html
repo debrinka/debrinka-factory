@@ -50,11 +50,17 @@
             </div>
         </section>
         <section class="project-list">
-
+<div id="cursor">
+  <svg width="14" height="14" viewBox="0 0 14 14">
+    <path d="M0.292893 11.6064C-0.0976311 11.9969 -0.0976311 12.6301 0.292893 13.0206C0.683418 13.4111 1.31658 13.4111 1.70711 13.0206L0.292893 11.6064ZM13.3137 0.999768C13.3137 0.447483 12.866 -0.000232004 12.3137 -0.000232257L3.31371 -0.000231456C2.76142 -0.000231793 2.31371 0.447484 2.31371 0.999768C2.31371 1.55205 2.76142 1.99977 3.31371 1.99977L11.3137 1.99977L11.3137 9.99977C11.3137 10.5521 11.7614 10.9998 12.3137 10.9998C12.866 10.9998 13.3137 10.5521 13.3137 9.99977L13.3137 0.999768ZM1.70711 13.0206L13.0208 1.70688L11.6066 0.292661L0.292893 11.6064L1.70711 13.0206Z"/>
+  </svg>
+</div>
         </section>
     </main>
     <footer id="footer"></footer>
+    
     <script>
+            //array lista progetti
             const container = document.querySelector('.project-list');
             const projectData = [
             {
@@ -77,38 +83,46 @@
             project.className = 'container-fluid';
 
             project.innerHTML = `
-                    <div class="row align-items-baseline project-row" style="margin: 0 !important;">
+                 <div class="project-item"> 
+                    <div  class="row align-items-baseline project-row" style="margin: 0 !important;">
                         <div class="col-md-6" style="padding: 0 !important;">
                             <h2 class="project-name">
                                 <a href="${item.link}" class="project-hover-wrapper d-inline-flex menu-link">
                                     <span class="menu-text">
                                         ${item.title}
                                     </span>
-                                    <span class="menu-icon" style="flex: 0 0 3rem">
+                                    <!--  <span class="menu-icon" style="flex: 0 0 3rem">
                                         <svg style="fill: var(--black);" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M0.292893 11.6064C-0.0976311 11.9969 -0.0976311 12.6301 0.292893 13.0206C0.683418 13.4111 1.31658 13.4111 1.70711 13.0206L0.292893 11.6064ZM13.3137 0.999768C13.3137 0.447483 12.866 -0.000232004 12.3137 -0.000232257L3.31371 -0.000231456C2.76142 -0.000231793 2.31371 0.447484 2.31371 0.999768C2.31371 1.55205 2.76142 1.99977 3.31371 1.99977L11.3137 1.99977L11.3137 9.99977C11.3137 10.5521 11.7614 10.9998 12.3137 10.9998C12.866 10.9998 13.3137 10.5521 13.3137 9.99977L13.3137 0.999768ZM1.70711 13.0206L13.0208 1.70688L11.6066 0.292661L0.292893 11.6064L1.70711 13.0206Z"/>
                                         </svg>
-                                    </span>
+                                    </span> -->
                                 </a>
                             </h2>
                         </div>
                         <div class="col-md-6" style="padding: 0 !important;">
-                            <div class="ratio ratio-7x5">
+                            <div class="ratio ratio-7x5 project-media">
                                 <img src="${item.image}" alt="${item.title}">
+                                <div class="mobile-arrow">
+                                    <svg style="fill: var(--white);" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0.292893 11.6064C-0.0976311 11.9969 -0.0976311 12.6301 0.292893 13.0206C0.683418 13.4111 1.31658 13.4111 1.70711 13.0206L0.292893 11.6064ZM13.3137 0.999768C13.3137 0.447483 12.866 -0.000232004 12.3137 -0.000232257L3.31371 -0.000231456C2.76142 -0.000231793 2.31371 0.447484 2.31371 0.999768C2.31371 1.55205 2.76142 1.99977 3.31371 1.99977L11.3137 1.99977L11.3137 9.99977C11.3137 10.5521 11.7614 10.9998 12.3137 10.9998C12.866 10.9998 13.3137 10.5521 13.3137 9.99977L13.3137 0.999768ZM1.70711 13.0206L13.0208 1.70688L11.6066 0.292661L0.292893 11.6064L1.70711 13.0206Z"/>
+                                        </svg>
+                                </div>
                             </div>
                         </div>
+                    </div>
                     </div>
             `;
 
             container.appendChild(project);
             });
-    </script>
+</script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="headerFooter.js"></script>
     <script src="preloader.js"></script>
+    <script src="circleCursor.js"></script>
 </body>
 
 </html>

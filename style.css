@@ -93,9 +93,12 @@
     --peek-height: 100px; /* Su mobile meno */
     --text-lg: 1.25rem;
   }
-
-
 }
+
+* {
+  -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 *,
@@ -124,6 +127,7 @@ width: 100%;
     position: relative;
     height: auto;
 }
+
 
 /* --- FIX NECESSARIO PER LENIS (Smooth Scroll) --- */
 html.lenis {
@@ -375,7 +379,39 @@ button:hover {
     opacity 0.3s ease;
 }
 
-/* hover sul link */
+#cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--black);
+  pointer-events: none;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition:
+    transform 0.45s cubic-bezier(.34, 1.56, .64, 1),
+    opacity 0.2s ease;
+}
+
+#cursor svg {
+  fill: var(--white);
+  width: 14px;
+  height: 14px;
+}
+
+/* attivo */
+#cursor.is-active {
+  transform: translate(-50%, -50%) scale(1.1);
+  opacity: 1;
+}
+
+
 .menu-link:hover .menu-icon svg {
   transform: translate3d(0, 0, 0);
   opacity: 1;
@@ -594,13 +630,13 @@ button:hover {
   gap: var(--side-margin);
   display: flex; 
   flex-direction: row;
-  max-width: 543px;
+  max-width: clamp(520px, 28vw, 620px);
   height: 100%;
 }
 
 .year-card {
   transform-origin: left bottom;
-  flex: 0 0 550px;
+  flex: 0 0 clamp(520px, 28vw, 620px);
   height: 100%;
   will-change: transform;
 }
@@ -663,8 +699,8 @@ button:hover {
     aspect-ratio: 3 / 4;
 }
   .year-card {
- height: auto;          /* 🔴 fondamentale */
-    aspect-ratio: 3 / 4;  /* opzionale ma consigliato */
+ height: auto;         
+    aspect-ratio: 3 / 4;  
     transform: none !important;
   }
 
@@ -844,38 +880,27 @@ position: fixed;  /* Inchiodalo allo schermo */
 
 .footer-grid-layout {
     display: grid;
-    /* Due Colonne: 2/3 e 1/3 */
     grid-template-columns: 2fr 1fr;
-    /* Due Righe: La prima automatica (testi), la seconda riempie lo spazio (mappa) */
     grid-template-rows: auto 1fr;
-    
-    /* ALTEZZA: Tutto lo schermo meno il copyright */
     height: calc(100vh - 60px);
     width: 100%;
-    
-    /* MARGINI: Solo a sinistra. A destra 0 per la mappa */
     padding: 0 0 0 var(--side-margin);
     box-sizing: border-box;
-    
-    /* --- IL COMANDO MAGICO --- */
-    /* Allinea i testi sulla loro linea di scrittura (baseline) */
     align-items: baseline; 
 }
 
 /* --- ELEMENTO 1: TITOLO --- */
 .footer-item-title {
-    grid-column: 1 / 2; /* Colonna 1 */
-    grid-row: 1 / 2;    /* Riga 1 */
-    
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;    
     font-size: clamp(3rem, 7vw, 9rem);
     line-height: 0.9;
-    font-weight: 700;
+    font-weight: 500;
     margin: 0;
     padding-top: 40px; /* Spazio dal tetto */
     padding-right: 2rem;
 }
 
-/* --- ELEMENTO 2: INDIRIZZO --- */
 .footer-item-address {
     grid-column: 2 / 3; /* Colonna 2 */
     grid-row: 1 / 2;    /* Riga 1 */
@@ -883,30 +908,23 @@ position: fixed;  /* Inchiodalo allo schermo */
     white-space: nowrap;
 }
 
-/* --- ELEMENTO 3: SOCIALS --- */
 .footer-item-socials {
-    grid-column: 1 / 2; /* Colonna 1 */
-    grid-row: 2 / 3;    /* Riga 2 */
-    
-    /* Lo spingiamo in basso */
+    grid-column: 1 / 2; 
+    grid-row: 2 / 3;    
     align-self: end;    
-    
     list-style: none;
     margin: 0;
-    padding: 0 0 40px 0; /* Padding bottom 40px */
+    padding: 0 0 40px 0; 
     font-size: 1.5rem;
     line-height: 1.6;
 }
 
-/* --- ELEMENTO 4: MAPPA --- */
 .footer-item-map {
-    grid-column: 2 / 3; /* Colonna 2 */
-    grid-row: 2 / 3;    /* Riga 2 */
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
     width: 100%;
-    height: 100%; /* Occupa tutto lo spazio rimanente */
+    height: 100%; 
     filter: grayscale(100%) invert(90%);
-    
-    /* Margine sopra per staccarsi dall'indirizzo (opzionale) */
     padding-top: 30px; 
 }
 
@@ -917,7 +935,6 @@ position: fixed;  /* Inchiodalo allo schermo */
     display: block;
 }
 
-/* --- BARRA COPYRIGHT --- */
 .copyright-bar {
     height: 60px;
     background-color: var(--black);
@@ -1049,7 +1066,7 @@ position: fixed;  /* Inchiodalo allo schermo */
 .project-row {
     /* Il bordo è applicato alla riga, quindi sarà largo quanto il container (meno i gutter) */
     border-bottom: 2px solid var(--black);
-    
+    cursor: pointer;
     /* I famosi 40px di aria sopra e sotto */
     padding-top: 30px;
     padding-bottom: 30px;
@@ -1066,12 +1083,44 @@ position: fixed;  /* Inchiodalo allo schermo */
 }
 
 .ratio img {
-    object-fit: cover; 
+     width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: all .3s ease;
+}
+
+.project-item:hover .ratio img {
+  transform: scale(1.2);
 }
 
 .ratio-7x5 {
-    --bs-aspect-ratio: calc(5 / 7.5 * 100%); 
+    --bs-aspect-ratio: calc(5 / 7.5 * 100%);
+    overflow: hidden; 
 }
+
+.project-media {
+  position: relative;
+}
+
+.mobile-arrow {
+  position: absolute;
+  top: auto;
+  left: auto;
+  bottom: 12px;
+  right: 12px;
+  width: clamp(2.75rem, 1.9487rem + 4.2735vw, 4rem);
+  height: clamp(2.75rem, 1.9487rem + 4.2735vw, 4rem);
+  border-radius: 50%;
+  background: var(--black);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-arrow svg {
+  fill: var(--white);
+}
+
 
 /* OVERRIDE CONTAINER (Per allineare tutto ai tuoi margini laterali) */
 @media (max-width: 768px) {.project-list>.container-fluid {
@@ -1096,14 +1145,20 @@ position: fixed;  /* Inchiodalo allo schermo */
 }
 }
 
-
-
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
     .project-name {
         margin-bottom: 20px; /* Separa il titolo dall'immagine quando sono impilati */
     }
     
+    .mobile-arrow {
+    display: flex;
+  }
+
+  /* nasconde il cursore custom */
+  #cursor {
+    display: none;
+  }
     .works-hero .flex-grow-1 {
                 display: none !important;
             }
@@ -1142,6 +1197,12 @@ position: fixed;  /* Inchiodalo allo schermo */
                 margin: 0 !important;
                 padding: 0 !important;
             }
+}
+
+@media (min-width: 769px) {
+  .mobile-arrow {
+    display: none;
+  }
 }
 
 /* --- PRELOADER --- */
@@ -1375,7 +1436,56 @@ position: fixed;  /* Inchiodalo allo schermo */
   object-fit: cover;
 }
 
+.media-box {
+    width: 100%;
+    aspect-ratio: 0.87;
+    overflow: hidden;
+}
 
+.media-box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+ .article_container {
+  text-align: center;
+    margin: 14.44vw 0;
+  }
+
+  .article_container h2 {
+   margin: 0 0 3.61vw;
+   line-height: .95;
+    letter-spacing: -.04em;
+  }
+
+  .article_container p { 
+    font-size: calc(18px + 1 * ((100vw - 320px) / 1080));
+    line-height: 1.4;
+    margin: 0;
+  }
+
+@media (min-width: 768px) {
+  .article_container {
+    text-align: left;
+    margin: 4.5125vw 0;
+    max-width: 960px;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+  }
+  
+  .article_container h2 {
+     margin: 0 0 16px;
+  }
+
+    .article_container p {
+    line-height: 1.1;
+    letter-spacing: -.01em;
+    font-weight: 400;
+    font-size: 24px;
+    max-width: 650px;
+  }
+}
 
 @media (min-width: 46.25em) {
     .hero_container__EMze8 {

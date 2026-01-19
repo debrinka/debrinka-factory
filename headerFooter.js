@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         headerContainer.innerHTML = `
         <div class="left-wrap">
             <div class="linknav">
-                <a href="index.html">debrinka portfolio</a>
+                <a href="../index.html">debrinka portfolio</a>
             </div>
         </div>
         <div class="right-wrap">
@@ -70,12 +70,35 @@ darkSections.forEach(section => observer.observe(section));
                     Based in Turin, Learn at Politecnico di Torino
                 </div>
                 <ul class="footer-item-socials">
-                    <li><a href="#" style="text-decoration:none; color:white;">behance</a></li>
-                    <li><a href="#" style="text-decoration:none; color:white;">linkedin</a></li>
-                    <li><a href="mailto:erideba@gmail.com" style="text-decoration:none; color:white;">erideba@gmail.com</a></li>
+                    <li><a href="https://www.behance.net/debrinka" class="menu-link">
+                        <span class="menu-text">behance</span>
+                        <span class="menu-icon">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.292893 11.6064C-0.0976311 11.9969 -0.0976311 12.6301 0.292893 13.0206C0.683418 13.4111 1.31658 13.4111 1.70711 13.0206L0.292893 11.6064ZM13.3137 0.999768C13.3137 0.447483 12.866 -0.000232004 12.3137 -0.000232257L3.31371 -0.000231456C2.76142 -0.000231793 2.31371 0.447484 2.31371 0.999768C2.31371 1.55205 2.76142 1.99977 3.31371 1.99977L11.3137 1.99977L11.3137 9.99977C11.3137 10.5521 11.7614 10.9998 12.3137 10.9998C12.866 10.9998 13.3137 10.5521 13.3137 9.99977L13.3137 0.999768ZM1.70711 13.0206L13.0208 1.70688L11.6066 0.292661L0.292893 11.6064L1.70711 13.0206Z"/>
+                        </svg>
+                    </span></a>
+                    </li>
+                    <li><a href="https://www.linkedin.com/in/erika-de-battisti/" class="menu-link">
+                        <span class="menu-text">linkedin</span>
+                        <span class="menu-icon">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.292893 11.6064C-0.0976311 11.9969 -0.0976311 12.6301 0.292893 13.0206C0.683418 13.4111 1.31658 13.4111 1.70711 13.0206L0.292893 11.6064ZM13.3137 0.999768C13.3137 0.447483 12.866 -0.000232004 12.3137 -0.000232257L3.31371 -0.000231456C2.76142 -0.000231793 2.31371 0.447484 2.31371 0.999768C2.31371 1.55205 2.76142 1.99977 3.31371 1.99977L11.3137 1.99977L11.3137 9.99977C11.3137 10.5521 11.7614 10.9998 12.3137 10.9998C12.866 10.9998 13.3137 10.5521 13.3137 9.99977L13.3137 0.999768ZM1.70711 13.0206L13.0208 1.70688L11.6066 0.292661L0.292893 11.6064L1.70711 13.0206Z"/>
+                        </svg>
+                    </span></a></li>
+                    <li><a href="mailto:erideba@gmail.com" class="menu-link">
+                    <span class="menu-text">erideba@gmail.com</span>
+                        <span class="menu-icon">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.292893 11.6064C-0.0976311 11.9969 -0.0976311 12.6301 0.292893 13.0206C0.683418 13.4111 1.31658 13.4111 1.70711 13.0206L0.292893 11.6064ZM13.3137 0.999768C13.3137 0.447483 12.866 -0.000232004 12.3137 -0.000232257L3.31371 -0.000231456C2.76142 -0.000231793 2.31371 0.447484 2.31371 0.999768C2.31371 1.55205 2.76142 1.99977 3.31371 1.99977L11.3137 1.99977L11.3137 9.99977C11.3137 10.5521 11.7614 10.9998 12.3137 10.9998C12.866 10.9998 13.3137 10.5521 13.3137 9.99977L13.3137 0.999768ZM1.70711 13.0206L13.0208 1.70688L11.6066 0.292661L0.292893 11.6064L1.70711 13.0206Z"/>
+                        </svg>
+                    </span>
+                    </a></li>
                 </ul>
                 <div class="footer-item-map">
-                    <iframe src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=torino,%20italy+(My%20Business%20palce)&t=&z=14&ie=UTF8&iwloc=B&output=embed"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5639.467019834511!2d7.616038076760058!3d45.03033496228162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47881340ef6330a1%3A0xa805d611f41e47ec!2sPolitecnico%20di%20Torino%20-%20Cittadella%20Politecnica%20del%20Design%20e%20della%20Mobilit%C3%A0%20Sostenibile!5e0!3m2!1sit!2sit!4v1768832068328!5m2!1sit!2sit"></iframe>
                 </div>
             </div>
             <div class="copyright-bar">
@@ -118,7 +141,7 @@ $(document).ready(function () {
         <div id="menu-header" style="font-size: 1.5rem; padding: 0 var(--side-margin); display: flex; height: var(--topnav-h); width: 100%; justify-content: space-between; align-items: center;">
             <div class="left-wrap">
             <div class="linknav">
-                <a href="index.html" style="font-size: 1.5rem;">debrinka portfolio</a>
+                <a href="index.html" style="font-size: 1.5rem; color: var(--white)">debrinka portfolio</a>
             </div>
         </div><div class="right-wrap">
             <button id="close-menu">close</button> 
