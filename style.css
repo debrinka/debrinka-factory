@@ -616,6 +616,7 @@ button:hover {
   will-change: transform;
   justify-content: space-between;
   flex: 1;
+  padding-right: var(--side-margin);
 }
 
 .journey-text-container {
