@@ -77,22 +77,22 @@ const container = document.querySelector('.container-year-card');
 const journeyData = [
   {
     image: 'assets/png/diploma_2019.png',
-    title: 'diploma in IT expert at ITIS A. Avogadro',
+    title: 'diploma di perito informatico, ITIS Avogadro',
     year: '2019'
   },
   {
     image: 'assets/png/reply_2019.png',
-    title: 'first consulance at Reply',
+    title: 'react developer/consulente est., Reply',
     year: '2019'
   },
   {
     image: 'assets/png/tilab_2020.png',
-    title: 'second consulance at TiLab',
+    title: 'react developer/consulente est., Tilab',
     year: '2020'
   },
   {
     image: 'assets/png/politecnico_2023.png',
-    title: 'starting design degree at poliTO',
+    title: 'inizio LT in design, Polito',
     year: '2023'
   }
 ];
