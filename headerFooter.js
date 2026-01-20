@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         headerContainer.innerHTML = `
         <div class="left-wrap">
             <div class="linknav">
-                <a href="../index.html">debrinka portfolio</a>
+                <a href="../debrinka-factory/index.html">debrinka portfolio</a>
             </div>
         </div>
         <div class="right-wrap">
@@ -70,6 +70,15 @@ darkSections.forEach(section => observer.observe(section));
                     Based in Turin, Learn at Politecnico di Torino
                 </div>
                 <ul class="footer-item-socials">
+                <li><a href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:43f43489-7d6e-48b1-bf9c-fb2d05569ede" class="menu-link">
+                        <span class="menu-text">my curriculum</span>
+                        <span class="menu-icon">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.292893 11.6064C-0.0976311 11.9969 -0.0976311 12.6301 0.292893 13.0206C0.683418 13.4111 1.31658 13.4111 1.70711 13.0206L0.292893 11.6064ZM13.3137 0.999768C13.3137 0.447483 12.866 -0.000232004 12.3137 -0.000232257L3.31371 -0.000231456C2.76142 -0.000231793 2.31371 0.447484 2.31371 0.999768C2.31371 1.55205 2.76142 1.99977 3.31371 1.99977L11.3137 1.99977L11.3137 9.99977C11.3137 10.5521 11.7614 10.9998 12.3137 10.9998C12.866 10.9998 13.3137 10.5521 13.3137 9.99977L13.3137 0.999768ZM1.70711 13.0206L13.0208 1.70688L11.6066 0.292661L0.292893 11.6064L1.70711 13.0206Z"/>
+                        </svg>
+                    </span></a>
+                    </li>
                     <li><a href="https://www.behance.net/debrinka" class="menu-link">
                         <span class="menu-text">behance</span>
                         <span class="menu-icon">
@@ -164,7 +173,7 @@ $(document).ready(function () {
                         </svg>
                     </span>
                     <span class="menu-text">works</span></a></li>
-                <li><a href="mailto:erideba@gmail.com" class="menu-link">
+                <li><a href="#footer" class="menu-link">
                     <span class="menu-icon">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
