@@ -67,7 +67,7 @@ darkSections.forEach(section => observer.observe(section));
                     nice to meet <span style="color: var(--magenta);">you</span>
                 </h1>
                 <div class="footer-item-address">
-                    Based in Turin, Learn at Politecnico di Torino
+                    studiando al Politecnico di Torino
                 </div>
                 <ul class="footer-item-socials">
                 <li><a href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:43f43489-7d6e-48b1-bf9c-fb2d05569ede" class="menu-link">
@@ -165,7 +165,7 @@ $(document).ready(function () {
                         </svg>
                     </span>
                     <span class="menu-text">home</span></a></li>
-                <li><a href="try_works.html" class="menu-link">
+                <li><a href="works.html" class="menu-link">
                     <span class="menu-icon">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
