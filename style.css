@@ -1385,7 +1385,7 @@ position: fixed;  /* Inchiodalo allo schermo */
     font-size: 64px !important;
   }
   .image-cycle {
-    padding: 12vw 0 !important;
+    padding: 0 0 !important;
   }
 
   .hero-full-width img{
