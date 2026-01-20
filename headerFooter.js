@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
         headerContainer.innerHTML = `
         <div class="left-wrap">
             <div class="linknav">
-                <a href="../debrinka-factory/index.html">debrinka portfolio</a>
+                <a href="index.html">debrinka portfolio</a>
             </div>
         </div>
         <div class="right-wrap">
