@@ -93,10 +93,12 @@
 }
 
 body {
-
   font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
   background-color: transparent;
   transition: background-color 0.6s ease;
+  -webkit-transition: background-color 0.6s ease;
+  -moz-transition: background-color 0.6s ease;
+  -o-transition: background-color 0.6s ease;
 }
 
 body::-webkit-scrollbar,
@@ -185,6 +187,9 @@ button:hover {
   text-transform: lowercase;
   border: none;
   transition: 150ms ease-in-out;
+  -webkit-transition: 150ms ease-in-out;
+  -moz-transition: 150ms ease-in-out;
+  -o-transition: 150ms ease-in-out;
   transition-property: background-color, color, text-decoration, font-weight;
 }
 
@@ -206,6 +211,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  -webkit-align-items: center;
   font-size: 1.5rem;
   padding: 0 var(--side-margin);
   height: var(--topnav-h);
@@ -232,16 +238,21 @@ button:hover {
   padding: .5rem 1rem;
   display: flex;
   align-items: center;
+  -webkit-align-items: center;
   border-radius: 9999px;
   background-size: 0 100%;
   background-repeat: no-repeat;
   transition: .5s;
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -o-transition: .5s;
 }
 
 .topnav.is-light #menu-trigger {
   border: 1px solid var(--black);
   color: var(--black);
   background-image: linear-gradient(var(--black), var(--black));
+  background-image: -webkit-linear-gradient(var(--black), var(--black));
 }
 
 .topnav.is-light #menu-trigger:hover {
@@ -253,6 +264,7 @@ button:hover {
   border: 1px solid var(--white);
   color: var(--white);
   background-image: linear-gradient(var(--white), var(--white));
+  background-image: -webkit-linear-gradient(var(--white), var(--white));
 }
 
 .topnav.is-dark #menu-trigger:hover {
@@ -271,7 +283,9 @@ button:hover {
   z-index: 999999;
   display: none;
   flex-direction: column;
+  -webkit-flex-direction: column;
   align-items: center;
+  -webkit-align-items: center;
 }
 
 #close-menu {
@@ -288,12 +302,21 @@ button:hover {
 #menu-header {
   opacity: 0;
   transform: translateY(-10px);
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  -o-transform: translateY(-10px);
   transition: opacity 0.4s ease, transform 0.4s ease;
+  -webkit-transition: opacity 0.4s ease, transform 0.4s ease;
+  -moz-transition: opacity 0.4s ease, transform 0.4s ease;
+  -o-transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 #menu-header.show {
   opacity: 1;
   transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -o-transform: translateY(0);
 }
 
 
@@ -307,6 +330,9 @@ button:hover {
   color: var(--white);
   text-decoration: none;
   transition: 1s;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
 }
 
 #side-menu a.is-active {
@@ -316,18 +342,28 @@ button:hover {
 #side-menu ul li {
   opacity: 0;
   transform: translateY(20px);
+  -webkit-transform: translateY(20px);
+  -moz-transform: translateY(20px);
+  -o-transform: translateY(20px);
   transition: all 2s ease-out;
+  -webkit-transition: all 2s ease-out;
+  -moz-transition: all 2s ease-out;
+  -o-transition: all 2s ease-out;
 }
 
 
 #side-menu ul li.show {
   opacity: 1;
   transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -o-transform: translateY(0);
 }
 
 .menu-link {
   display: inline-flex;
   align-items: baseline;
+  -webkit-align-items: baseline;
   gap: 1rem;
   text-decoration: none;
 }
@@ -339,6 +375,9 @@ button:hover {
 
 .menu-link .menu-icon svg {
   transform: translate3d(-100%, 100%, 0);
+  -webkit-transform: translate3d(-100%, 100%, 0);
+  -moz-transform: translate3d(-100%, 100%, 0);
+  -o-transform: translate3d(-100%, 100%, 0);
   content: "";
   opacity: 0;
   width: 100%;
@@ -347,6 +386,12 @@ button:hover {
   visibility: hidden;
   transition:
     transform 0.4s cubic-bezier(.19, 1, .22, 1),
+    opacity 0.3s ease;
+  -webkit-transition: transform 0.4s cubic-bezier(.19, 1, .22, 1),
+    opacity 0.3s ease;
+  -moz-transition: transform 0.4s cubic-bezier(.19, 1, .22, 1),
+    opacity 0.3s ease;
+  -o-transition: transform 0.4s cubic-bezier(.19, 1, .22, 1),
     opacity 0.3s ease;
 }
 
@@ -362,11 +407,19 @@ button:hover {
   z-index: 9999;
   display: flex;
   align-items: center;
+  -webkit-align-items: center;
   justify-content: center;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
   transition:
     transform 0.45s cubic-bezier(.34, 1.56, .64, 1),
+    opacity 0.2s ease;
+  -webkit-transition:
+    transform 0.45s cubic-bezier(.34, 1.56, .64, 1),
+    opacity 0.2s ease;
+  -moz-transition: transform 0.45s cubic-bezier(.34, 1.56, .64, 1),
+    opacity 0.2s ease;
+  -o-transition: transform 0.45s cubic-bezier(.34, 1.56, .64, 1),
     opacity 0.2s ease;
 }
 
@@ -378,11 +431,17 @@ button:hover {
 
 #cursor.is-active {
   transform: translate(-50%, -50%) scale(1.1);
+  -webkit-transform: translate(-50%, -50%) scale(1.1);
+  -moz-transform: translate(-50%, -50%) scale(1.1);
+  -o-transform: translate(-50%, -50%) scale(1.1);
   opacity: 1;
 }
 
 .menu-link:hover .menu-icon svg {
   transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
   opacity: 1;
   visibility: visible;
 }
@@ -390,6 +449,9 @@ button:hover {
 .menu-link.is-active .menu-icon svg {
   fill: var(--magenta);
   transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
   opacity: 1;
   visibility: visible;
 }
@@ -400,7 +462,9 @@ button:hover {
 
 .right-wrap {
   display: flex;
+  display: -webkit-flex;
   align-items: center;
+  -webkit-align-items: center;
 }
 
 .linknav {
@@ -415,6 +479,7 @@ button:hover {
   min-height: calc(100vh - var(--topnav-h));
   display: flex;
   align-items: center;
+  -webkit-align-items: center;
   justify-content: center;
   overflow: hidden;
   background-image: none;
@@ -425,7 +490,9 @@ button:hover {
   width: 100%;
   display: flex;
   align-items: center;
+  -webkit-align-items: center;
   justify-content: center;
+  -webkit-justify-content: center;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -433,52 +500,114 @@ button:hover {
 /* animazione titolo*/
 .hero-content svg path {
   transform: scaleY(0);
+  -webkit-transform: scaleY(0);
+  -moz-transform: scaleY(0);
+  -o-transform: scaleY(0);
   transform-box: fill-box;
+  -webkit-transform-box: fill-box;
+  -moz-transform-box: fill-box;
+  -o-transform-box: fill-box;
   transform-origin: bottom center;
+  -webkit-transform-origin: bottom center;
+  -moz-transform-origin: bottom center;
+  -o-transform-origin: bottom center;
   animation: raiseUp 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+  -webkit-animation: raiseUp 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+  -moz-animation: raiseUp 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+  -o-animation: raiseUp 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
 }
 
 @keyframes raiseUp {
   0% {
     transform: scaleY(0);
   }
-
   100% {
     transform: scaleY(1);
+  }
+}
+@-webkit-keyframes raiseUp {
+  0% {
+    -webkit-transform: scaleY(0);
+  }
+
+  100% {
+    -webkit-transform: scaleY(1);
+  }
+}
+@-moz-keyframes raiseUp {
+  0% {
+    -moz-transform: scaleY(0);
+  }
+
+  100% {
+    -moz-transform: scaleY(1);
+  }
+}
+@-o-keyframes raiseUp {
+  0% {
+    -o-transform: scaleY(0);
+  }
+
+  100% {
+    -o-transform: scaleY(1);
   }
 }
 
 /* letter for letter */
 .hero-content svg path:nth-child(1) {
   animation-delay: 0.1s;
+  -webkit-animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+  -o-animation-delay: 0.1s;
 }
 
 .hero-content svg path:nth-child(2) {
   animation-delay: 0.2s;
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  -o-animation-delay: 0.2s;
 }
 
 .hero-content svg path:nth-child(3) {
   animation-delay: 0.3s;
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  -o-animation-delay: 0.3s;
 }
 
 .hero-content svg path:nth-child(4) {
   animation-delay: 0.4s;
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  -o-animation-delay: 0.4s;
 }
 
 .hero-content svg path:nth-child(5) {
   animation-delay: 0.5s;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  -o-animation-delay: 0.5s;
 }
 
 .hero-content svg path:nth-child(6) {
   animation-delay: 0.6s;
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  -o-animation-delay: 0.6s;
 }
 
 .hero-content svg path:nth-child(7) {
   animation-delay: 0.7s;
+  -webkit-animation-delay: 0.7s;
+  -moz-animation-delay: 0.7s;
+  -o-animation-delay: 0.7s;
 }
 
 .hero-content svg path:nth-child(8) {
   animation-delay: 0.8s;
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  -o-animation-delay: 0.8s;
 }
 
 .hero-img {
@@ -508,6 +637,9 @@ button:hover {
   z-index: 2;
   background-color: var(--magenta);
   transition: background-color 0.8s ease;
+  -webkit-transition: background-color 0.8s ease;
+  -moz-transition: background-color 0.8s ease;
+  -o-transition: background-color 0.8s ease;
 }
 
 .bg-magenta {
@@ -534,7 +666,9 @@ button:hover {
 
 .row {
   display: flex;
+  display: -webkit-flex;
   flex-direction: row;
+  -webkit-flex-direction: row;
   flex-wrap: wrap;
   margin-left: 0 !important;
   margin-right: 0 !important;
@@ -543,21 +677,27 @@ button:hover {
 
 .column {
   display: flex;
+  display: -webkit-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
   flex-basis: 100%;
   flex: 1
 }
 
 .double-column {
   display: flex;
+  display: -webkit-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
   flex-basis: 100%;
   flex: 2;
 }
 
 .contact {
   align-items: flex-start;
+  -webkit-align-items: flex-start;
   justify-content: space-between;
+  -webkit-justify-content: space-between;
 }
 
 .maps {
@@ -582,17 +722,23 @@ button:hover {
   height: 100vh;
   overflow: hidden;
   display: flex;
+  display: -webkit-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
 }
 
 .journey-track {
   display: flex;
+  display: -webkit-flex;
   flex-direction: row;
+  -webkit-flex-direction: row;
   width: 100%;
   height: 100%;
   align-items: center;
+  -webkit-align-items: center;
   will-change: transform;
   justify-content: space-between;
+  -webkit-justify-content: space-between;
   flex: 1;
   padding-right: var(--side-margin);
 }
@@ -608,13 +754,18 @@ button:hover {
   flex: 1;
   gap: var(--side-margin);
   display: flex;
+  display: -webkit-flex;
   flex-direction: row;
+  -webkit-flex-direction: row;
   max-width: clamp(520px, 28vw, 620px);
   height: 100%;
 }
 
 .year-card {
   transform-origin: left bottom;
+  -webkit-transform-origin: left bottom;
+  -moz-transform-origin: left bottom;
+  -o-transform-origin: left bottom;
   flex: 0 0 clamp(520px, 28vw, 620px);
   height: 100%;
   will-change: transform;
@@ -622,6 +773,9 @@ button:hover {
 
 .container-year-card .year-card:first-child {
   transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -o-transform: translateY(0);
   width: 550px;
   height: 100%;
 }
@@ -647,7 +801,11 @@ button:hover {
 
   .journey-track {
     flex-direction: column;
+    -webkit-flex-direction: column;
     transform: none !important;
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -o-transform: none !important;
     height: auto;
   }
 
@@ -673,6 +831,9 @@ button:hover {
     width: auto;
     height: auto;
     transform: none !important;
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -o-transform: none !important;
     aspect-ratio: 3 / 4;
   }
 
@@ -680,6 +841,9 @@ button:hover {
     height: auto;
     aspect-ratio: 3 / 4;
     transform: none !important;
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -o-transform: none !important;
   }
 
   .year-card p {
@@ -725,6 +889,7 @@ button:hover {
 
   #services {
     flex-direction: column;
+    -webkit-flex-direction: column;
     margin-top: 0 !important;
   }
 
@@ -741,6 +906,7 @@ button:hover {
 @media (max-width: 500px) {
   #container-services-list {
     flex-direction: column !important;
+    -webkit-flex-direction: column !important;
   }
 }
 
@@ -763,6 +929,7 @@ button:hover {
   padding: 0 0 0 var(--side-margin);
   box-sizing: border-box;
   align-items: baseline;
+  -webkit-align-items: baseline;
 }
 
 /* --- ELEMENTO 1: TITOLO --- */
@@ -803,6 +970,7 @@ button:hover {
   grid-row: 2 / 3;
   width: 100%;
   height: 100%;
+  -webkit-filter: grayscale(100%) invert(90%);
   filter: grayscale(100%) invert(90%);
   padding-top: 30px;
 }
@@ -818,7 +986,9 @@ button:hover {
   height: 60px;
   background-color: var(--black);
   display: flex;
+  display: -webkit-flex;
   align-items: center;
+  -webkit-align-items: center;
   padding-left: var(--side-margin);
   border-top: 1px solid #333;
   font-size: 0.9rem;
@@ -833,10 +1003,13 @@ button:hover {
 
   .footer-grid-layout {
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
     height: auto;
     padding: 0;
     align-items: stretch;
+    -webkit-align-items: stretch;
   }
 
   .footer-item-title {
@@ -873,7 +1046,9 @@ button:hover {
     height: auto !important;
     min-height: auto !important;
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
     padding-bottom: 40px;
   }
 }
@@ -917,10 +1092,16 @@ button:hover {
   aspect-ratio: 1 / 1;
   object-fit: cover;
   transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -o-transition: all .3s ease;
 }
 
 .project-item:hover .ratio img {
   transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -o-transform: scale(1.2);
 }
 
 .ratio-7x5 {
@@ -944,7 +1125,9 @@ button:hover {
   background: var(--black);
   display: none;
   align-items: center;
+  -webkit-align-items: center;
   justify-content: center;
+  -webkit-justify-content: center;
 }
 
 .mobile-arrow svg {
@@ -995,6 +1178,7 @@ button:hover {
 
   .mobile-arrow {
     display: flex;
+    display: -webkit-flex;
   }
 
   #cursor {
@@ -1008,12 +1192,15 @@ button:hover {
   .works-hero .container-fluid {
     height: 100vh;
     justify-content: flex-start;
+    -webkit-justify-content: flex-start;
   }
 
   .works-hero .row {
     flex: 1;
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
     margin: 0 !important;
   }
 
@@ -1021,8 +1208,11 @@ button:hover {
     flex: 1;
     width: 100%;
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
     justify-content: flex-end;
+    -webkit-justify-content: flex-end;
     padding-bottom: 10px;
   }
 
@@ -1030,8 +1220,11 @@ button:hover {
     flex: 1;
     width: 100%;
     display: flex;
+    display: -webkit-flex;
     align-items: center;
+    -webkit-align-items: center;
     justify-content: center;
+    -webkit-justify-content: center;
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -1055,8 +1248,11 @@ button:hover {
   padding: 0 var(--side-margin);
   min-height: 60vh;
   display: flex;
+  display: -webkit-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
   justify-content: center;
+  -webkit-justify-content: center;
 }
 
 .project-mini-header {
@@ -1263,6 +1459,9 @@ button:hover {
   background-size: 0 100%;
   background-repeat: no-repeat;
   transition: .5s;
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -o-transition: .5s;
   color: var(--white);
   background-color: var(--black);
 }

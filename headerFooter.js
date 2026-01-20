@@ -119,7 +119,7 @@ $(document).ready(function () {
     if ($('#side-menu').length === 0) {
         const menuHTML = `
         <div id="side-menu" style="display:none; flex-direction: column; ">
-        <div id="menu-header" style="font-size: 1.5rem; padding: 0 var(--side-margin); display: flex; height: var(--topnav-h); width: 100%; justify-content: space-between; align-items: center;">
+        <div class="d-flex w-100 justify-content-between align-items-center" id="menu-header" style="font-size: 1.5rem; padding: 0 var(--side-margin); height: var(--topnav-h);">
             <div class="left-wrap">
             <div class="linknav">
                 <a href="index.html" style="font-size: 1.5rem; color: var(--white)">debrinka portfolio</a>
@@ -127,7 +127,7 @@ $(document).ready(function () {
         </div><div class="right-wrap">
             <button id="close-menu">close</button> 
         </div></div>
-             <div style=" display: flex; flex: 1 1 0; align-items: center; justify-content: center;">
+             <div class="d-flex flex-fill justify-content-center align-items-center">
             <ul>
                 <li><a href="index.html" class="menu-link">
                     <span class="menu-icon">
