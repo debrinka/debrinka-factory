@@ -1,21 +1,27 @@
 /* plus-jakarta-sans-regular - latin */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Plus Jakarta Sans';
   font-style: normal;
   font-weight: 400;
-  src: url('fonts/plus-jakarta-sans-v12-latin-regular.eot'); /* IE9 Compat Modes */
-  src: url('fonts/plus-jakarta-sans-v12-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('fonts/plus-jakarta-sans-v12-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-       url('fonts/plus-jakarta-sans-v12-latin-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
-       url('fonts/plus-jakarta-sans-v12-latin-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
-       url('fonts/plus-jakarta-sans-v12-latin-regular.svg#PlusJakartaSans') format('svg'); /* Legacy iOS */
+  src: url('fonts/plus-jakarta-sans-v12-latin-regular.eot');
+  /* IE9 Compat Modes */
+  src: url('fonts/plus-jakarta-sans-v12-latin-regular.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('fonts/plus-jakarta-sans-v12-latin-regular.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('fonts/plus-jakarta-sans-v12-latin-regular.woff') format('woff'),
+    /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+    url('fonts/plus-jakarta-sans-v12-latin-regular.ttf') format('truetype'),
+    /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+    url('fonts/plus-jakarta-sans-v12-latin-regular.svg#PlusJakartaSans') format('svg');
+  /* Legacy iOS */
 }
 
 /* plus-jakarta-sans-500 - latin */
 @font-face {
   font-display: swap;
-  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Plus Jakarta Sans';
   font-style: normal;
   font-weight: 500;
@@ -36,7 +42,6 @@
 /* plus-jakarta-sans-700 - latin */
 @font-face {
   font-display: swap;
-  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Plus Jakarta Sans';
   font-style: normal;
   font-weight: 700;
@@ -58,47 +63,27 @@
   --magenta: hsl(323.57deg 100% 72.55%);
   --white: hsl(20, 10%, 94%);
   --black: hsl(200, 0%, 15%);
+  --grey: hsl(200, 5%, 50%);
   --size-00: -.25rem;
   --size-1: .25rem;
-  --size-2: .5rem;
-  --size-3: 1rem;
-  --size-7: 2rem;
-  --size-xs: 360px;
-  --size-sm: 480px;
-  --size-md: 768px;
-  --size-lg: 1024px;
-  --size-xl: 1440px;
-  --size-xxl: 1920px;
-  --space-xxs: var(--size-1);
-  --space-xs: var(--size-2);
-  --space-sm: calc(var(--size-1) + var(--size-2));
-  --space-md: var(--size-3);
-  --space-lg: var(--size-7);
   --topnav-h: 72px;
   --text-lg: 1.5rem;
-  /* valore di fallback; sarà sovrascritto da JS */
   --vh: 1vh;
-  /* I MARGINI RESPONSIVE QUI */
-  --side-margin: 8.54vw; /* Desktop: arioso come richiesto */
-  
-  /* QUANTO TESTO VOGLIAMO CHE SPUNTI SOTTO L'IMMAGINE? */
-  /* Questo valore determina quanto spazio bianco si vede al caricamento */
-  --peek-height: 140px;
+  --side-margin: 8.54vw;
 }
 
 /* Gestione Mobile */
 @media (max-width: 768px) {
   :root {
-    --side-margin: 16px; /* Mobile */
-    --peek-height: 100px; /* Su mobile meno */
+    --side-margin: 16px;
     --text-lg: 1.25rem;
   }
 }
 
 * {
   -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 *,
@@ -114,34 +99,37 @@ body {
   transition: background-color 0.6s ease;
 }
 
-body::-webkit-scrollbar,html::-webkit-scrollbar {
-    display: none
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+  display: none
 }
 
 html,
 body {
-    margin: 0;
-width: 100%;
-    max-width: 100vw;
-    overflow-x: clip; /* LA CHIAVE: Taglia tutto ciò che esce lateralmente */
-    position: relative;
-    height: auto;
+  margin: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: clip;
+  position: relative;
+  height: auto;
 }
 
-
-/* --- FIX NECESSARIO PER LENIS (Smooth Scroll) --- */
 html.lenis {
   height: auto;
 }
+
 .lenis.lenis-smooth {
   scroll-behavior: auto;
 }
+
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
 }
+
 .lenis.lenis-stopped {
   overflow: hidden;
 }
+
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
@@ -165,20 +153,11 @@ ul {
 
 a {
   color: inherit;
-  /* blue colors for links too */
   text-decoration: inherit;
-  /* no underline */
 }
 
 main {
-    position: relative !important;
-    z-index: 2 !important; /* Sta sopra il footer */
-    background-color: transparent !important; /* DEVE essere colorato, non trasparente */
-    margin-bottom: 0; /* Lo calcoleremo col JS */
-}
-
-#main-content {
-  position: relative;
+  background-color: transparent !important;
 }
 
 img {
@@ -222,8 +201,8 @@ button:hover {
 }
 
 .topnav {
-  position: relative; 
-  z-index: 999; /* Priorità massima */
+  position: relative;
+  z-index: 999;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -236,32 +215,27 @@ button:hover {
   color: inherit;
 }
 
-/* HEADER SU SFONDO SCURO / MAGENTA */
 .topnav.is-dark {
   color: var(--white);
   background-color: var(--magenta);
 }
 
-/* HEADER SU SFONDO CHIARO */
 .topnav.is-light {
   color: var(--black);
   background-color: var(--white);
 }
 
-/* =========================================
-   MENU LATERALE (JQUERY UI TOGGLE)
-   ========================================= */
+/*menu laterale jquery ui toggle */
 
 #menu-trigger {
-    height: 35px;
-    padding: .5rem 1rem;
-    display: flex;
-    align-items: center;
-    border-radius: 9999px;
-   background-size: 0 100%;
-    background-repeat: no-repeat;
-    transition: .5s;
-   /* transform: translateZ(0);*/
+  height: 35px;
+  padding: .5rem 1rem;
+  display: flex;
+  align-items: center;
+  border-radius: 9999px;
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: .5s;
 }
 
 .topnav.is-light #menu-trigger {
@@ -286,31 +260,29 @@ button:hover {
   color: var(--magenta);
 }
 
-/* Il contenitore del menu (Nascosto di default) */
 #side-menu {
-    position: fixed;
-    top: 0;
-    right: 0; /* Allineato a destra */
-    width: 100%; /* Su mobile tutto schermo */
-    max-width: 100wh; /* Su desktop largo 400px */
-    height: 100vh;
-    background-color: var(--black);
-    z-index: 999999; /* Sopra a tutto */
-    display: none; /* x jQuery lo mostrerà */
-    flex-direction: column;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100wh;
+  height: 100vh;
+  background-color: var(--black);
+  z-index: 999999;
+  display: none;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Pulsante Chiudi (X) */
 #close-menu {
-    line-height: normal;
-    font-size: 1.5rem;/**/
-    color: var(--white);/**/
-    border: 1px solid var(--white);
-    cursor: pointer;/**/
-    background: none;/**/
-    padding: .2rem 1rem;
-    border-radius: 9999px;
+  line-height: normal;
+  font-size: 1.5rem;
+  color: var(--white);
+  border: 1px solid var(--white);
+  cursor: pointer;
+  background: none;
+  padding: .2rem 1rem;
+  border-radius: 9999px;
 }
 
 #menu-header {
@@ -324,49 +296,48 @@ button:hover {
   transform: translateY(0);
 }
 
-/* Link del menu */
-#side-menu ul {/**/
-    list-style: none;
-    padding: 0;
+
+#side-menu ul {
+  list-style: none;
+  padding: 0;
 }
 
-#side-menu a {/**/
-    font-size: 2.5rem;
-    color: var(--white);
-    text-decoration: none;
-    transition: 1s;
+#side-menu a {
+  font-size: 2.5rem;
+  color: var(--white);
+  text-decoration: none;
+  transition: 1s;
 }
 
-#side-menu a.is-active{/**/
-    color: var(--magenta);
+#side-menu a.is-active {
+  color: var(--magenta);
 }
 
-#side-menu ul li {/**/
+#side-menu ul li {
   opacity: 0;
-  transform: translateY(20px); /* partono sotto */
+  transform: translateY(20px);
   transition: all 2s ease-out;
 }
 
 
-/* Quando attivo */
-#side-menu ul li.show {/**/
+#side-menu ul li.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-.menu-link {/**/
+.menu-link {
   display: inline-flex;
   align-items: baseline;
   gap: 1rem;
   text-decoration: none;
 }
 
-.menu-icon {/**/
+.menu-icon {
   display: flex;
   flex: 0 0 1.2rem;
 }
 
-.menu-link .menu-icon svg {/**/
+.menu-link .menu-icon svg {
   transform: translate3d(-100%, 100%, 0);
   content: "";
   opacity: 0;
@@ -375,7 +346,7 @@ button:hover {
   fill: var(--white);
   visibility: hidden;
   transition:
-    transform 0.4s cubic-bezier(.19,1,.22,1),
+    transform 0.4s cubic-bezier(.19, 1, .22, 1),
     opacity 0.3s ease;
 }
 
@@ -392,7 +363,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
- transform: translate(-50%, -50%) scale(0);
+  transform: translate(-50%, -50%) scale(0);
   opacity: 0;
   transition:
     transform 0.45s cubic-bezier(.34, 1.56, .64, 1),
@@ -405,12 +376,10 @@ button:hover {
   height: 14px;
 }
 
-/* attivo */
 #cursor.is-active {
   transform: translate(-50%, -50%) scale(1.1);
   opacity: 1;
 }
-
 
 .menu-link:hover .menu-icon svg {
   transform: translate3d(0, 0, 0);
@@ -438,13 +407,7 @@ button:hover {
   line-height: 1.625;
 }
 
-/** .hero {
-    block-size: max(490px, calc(100dvb - var(100px)));
-    display: grid;
-    gap: var(--space-lg);
-    inline-size: 100%;
-}**/
-
+/* section hero */
 .hero {
   width: 100%;
   max-width: 100vw;
@@ -469,35 +432,54 @@ button:hover {
 
 /* animazione titolo*/
 .hero-content svg path {
-        /* Stato iniziale: invisibile */
-        transform: scaleY(0);
-        /* Impostazioni per il movimento */
-        transform-box: fill-box;       /* Calcola le coordinate rispetto alla singola lettera */
-        transform-origin: bottom center; /* L'animazione parte dal basso della lettera */
-        
-        /* Applica l'animazione */
-        animation: raiseUp 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
-    }
+  transform: scaleY(0);
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: raiseUp 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+}
 
-    /* Definizione del movimento "Salita dal basso" */
-    @keyframes raiseUp {
-        0% {
-            transform: scaleY(0); /* Parte bassa e leggermente schiacciata */
-        }
-        100% {
-            transform: scaleY(1); /* Arriva in posizione normale */
-        }
-    }
+@keyframes raiseUp {
+  0% {
+    transform: scaleY(0);
+  }
 
-    /* Ritardo progressivo per ogni lettera (effetto "letter for letter") */
-    .hero-content svg path:nth-child(1) { animation-delay: 0.1s; }
-    .hero-content svg path:nth-child(2) { animation-delay: 0.2s; }
-    .hero-content svg path:nth-child(3) { animation-delay: 0.3s; }
-    .hero-content svg path:nth-child(4) { animation-delay: 0.4s; }
-    .hero-content svg path:nth-child(5) { animation-delay: 0.5s; }
-    .hero-content svg path:nth-child(6) { animation-delay: 0.6s; }
-    .hero-content svg path:nth-child(7) { animation-delay: 0.7s; }
-    .hero-content svg path:nth-child(8) { animation-delay: 0.8s; }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* letter for letter */
+.hero-content svg path:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.hero-content svg path:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.hero-content svg path:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.hero-content svg path:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.hero-content svg path:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.hero-content svg path:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.hero-content svg path:nth-child(7) {
+  animation-delay: 0.7s;
+}
+
+.hero-content svg path:nth-child(8) {
+  animation-delay: 0.8s;
+}
 
 .hero-img {
   max-width: 100%;
@@ -523,7 +505,7 @@ button:hover {
 
 #page-bg {
   position: relative;
-  z-index: 2;              /* sopra al footer */
+  z-index: 2;
   background-color: var(--magenta);
   transition: background-color 0.8s ease;
 }
@@ -573,14 +555,12 @@ button:hover {
   flex: 2;
 }
 
-.contact
-{
+.contact {
   align-items: flex-start;
   justify-content: space-between;
 }
 
-.maps 
-{
+.maps {
   width: 100%;
   height: 100%;
   border: none;
@@ -627,7 +607,7 @@ button:hover {
 .container-year-card {
   flex: 1;
   gap: var(--side-margin);
-  display: flex; 
+  display: flex;
   flex-direction: row;
   max-width: clamp(520px, 28vw, 620px);
   height: 100%;
@@ -640,10 +620,6 @@ button:hover {
   will-change: transform;
 }
 
-/* .year-card.is-active {
-  transform: translateY(0) scale(1);
-} */
-
 .container-year-card .year-card:first-child {
   transform: translateY(0);
   width: 550px;
@@ -654,7 +630,8 @@ button:hover {
   section {
     padding-right: var(--side-margin);
     padding-left: var(--side-margin);
-}
+  }
+
   /* disattivo comportamento sticky */
   .journey-sticky {
     padding-right: 0 !important;
@@ -679,7 +656,8 @@ button:hover {
     padding-left: 0 !important;
     margin-bottom: 3rem;
   }
-  .journey-text-container p{
+
+  .journey-text-container p {
     font-size: 32px !important;
   }
 
@@ -691,15 +669,16 @@ button:hover {
     height: auto;
   }
 
-   .container-year-card .year-card:first-child {
+  .container-year-card .year-card:first-child {
     width: auto;
     height: auto;
     transform: none !important;
     aspect-ratio: 3 / 4;
-}
+  }
+
   .year-card {
- height: auto;         
-    aspect-ratio: 3 / 4;  
+    height: auto;
+    aspect-ratio: 3 / 4;
     transform: none !important;
   }
 
@@ -707,380 +686,234 @@ button:hover {
     font-size: 24px !important;
   }
 }
+
 @media (min-width: 769px) and (max-width: 1355px) {
-.journey-sticky h1 {
+  .journey-sticky h1 {
     font-size: 96px !important;
-  }}
+  }
+}
 
 @media (min-width: 0px) and (max-width: 768px) {
-      .journey-sticky h1 {
+  .journey-sticky h1 {
     font-size: 64px !important;
   }
 }
 
-/* --- LOGICA DELL'ALTEZZA (THE FOLD) --- */
-.project-image {
-  position: relative;
-  width: 100%;
-  height: calc(100vh - var(--topnav-h) - var(--peek-height));
-  min-height: 400px;
-  background-image: url("https://plus.unsplash.com/premium_photo-1710865692399-6fe10f968711?q=80&w=1170&auto=format&fit=crop");
-  background-size: cover;
-  background-position: center;
-  margin-bottom: 0; 
-}
-
-/* --- IL TITOLO A CAVALLO TRA LE SEZIONI --- */
-.project-title {
-  position: absolute;
-  bottom: -30px; /* Lo facciamo uscire per metà */
-  left: var(--side-margin); /* ALLINEAMENTO PERFETTO COL TESTO SOTTO */
-  
-  background: #e5e5e5;
-  color: var(--black);
-  padding: 12px 30px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(1.5rem, 4vw, 3rem); /* Responsive font size */
-  font-weight: 700;
-  z-index: 10; /* Assicurati che stia sopra a tutto */
-  max-width: calc(100% - var(--side-margin) * 2); /* Evita che esca a destra su mobile */
-}
-
-/* --- SEZIONE TESTO NERO --- */
-.section-black {
-    background: var(--black);
-    color: var(--white);
-    padding-top: 80px; /* Spazio per non sovrapporsi al titolo */
-    padding-bottom: 40px;
-}
-
-/* Il contenitore che allinea il testo */
-.section-black .container-fluid {
-    /* Usa la variabile laterale per allinearsi perfettamente al titolo sopra */
-    padding-left: var(--side-margin); 
-    padding-right: var(--side-margin);
-    width: 100%;
-}
-
-.section-text {
-    max-width: 600px; /* Larghezza massima lettura */
-}
-
-/* STILE CATEGORIA (H3) */
-.section-text h3 {
-    margin-top: 0;
-    margin-bottom: 2rem;
-    font-size: 1.2rem;
-    font-weight: 500;
-}
-
-.section-text h3 a {
-    color: var(--white); /* BIANCO come richiesto */
-    text-decoration: none;
-    text-transform: lowercase; /* FORZA MINUSCOLO */
-}
-
-/* STILE PARAGRAFI (Descrizione e Crediti uguali) */
-.section-text p {
-    font-size: var(--text-lg);
-    line-height: 1.2;
-    margin-bottom: 1.5rem; /* Spazio tra i paragrafi */
-    color: var(--white);
-}
-
-/* --- GALLERY --- */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    
-    /* GAP STRETTO (12px) */
-    gap: 12px; 
-    
-    /* Margini esterni: 40px verticali, laterali allineati alla variabile */
-    padding: 40px var(--side-margin);
-    
-    background: var(--black);
-}
-
-.gallery img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
 /* Mobile responsive */
 @media (min-width: 0px) and (max-width: 768px) {
-    .gallery {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .text-biography {
+  .text-biography {
     font-size: 24px;
-    }
+  }
 
-      #title h1 {
-      font-size: 64px !important;
-    }
+  #title h1 {
+    font-size: 64px !important;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1355px) {
-#title h1 {
-      font-size: 96px !important;
-    }}
+  #title h1 {
+    font-size: 96px !important;
+  }
+}
 
-@media  (max-width: 1355px) {
-  #service-section{
-      padding: 0 var(--side-margin) 2rem !important;
-      height: 100% !important;
-      min-height: auto !important;
+@media (max-width: 1355px) {
+  #service-section {
+    padding: 0 var(--side-margin) 2rem !important;
+    height: 100% !important;
+    min-height: auto !important;
   }
 
-    #services {
-      flex-direction: column;
-      margin-top: 0 !important;
-    }
+  #services {
+    flex-direction: column;
+    margin-top: 0 !important;
+  }
 
-    #title {
-      flex: 0 1 !important;
-      width: 100% !important;
-    }
+  #title {
+    flex: 0 1 !important;
+    width: 100% !important;
+  }
 
-    #aboutservices {
-      max-width: none !important;
-    }
+  #aboutservices {
+    max-width: none !important;
+  }
 }
-    @media (max-width: 500px) {
-      #container-services-list {
-        flex-direction: column !important;
-      }
+
+@media (max-width: 500px) {
+  #container-services-list {
+    flex-direction: column !important;
+  }
 }
- @media (max-width: 1349px) {
-     
-}
-/* --- FOOTER GRID BASELINE (La soluzione definitiva) --- */
+
+@media (max-width: 1349px) {}
+
+/* footer */
 
 #footer .footer-wrapper {
-position: fixed;  /* Inchiodalo allo schermo */
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    
-    /* Z-index 0: Sta DIETRO a tutto il resto */
-    z-index: 1;       
-    
-    /* Reset di sicurezza 
-    height: auto !important;
-    transform: none !important;*/
-    background-color: var(--black);
-    color: var(--white);
+  width: 100%;
+  background-color: var(--black);
+  color: var(--white);
 }
 
 .footer-grid-layout {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: auto 1fr;
-    height: calc(100vh - 60px);
-    width: 100%;
-    padding: 0 0 0 var(--side-margin);
-    box-sizing: border-box;
-    align-items: baseline; 
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto 1fr;
+  height: calc(100vh - 60px);
+  width: 100%;
+  padding: 0 0 0 var(--side-margin);
+  box-sizing: border-box;
+  align-items: baseline;
 }
 
 /* --- ELEMENTO 1: TITOLO --- */
 .footer-item-title {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;    
-    font-size: clamp(3rem, 7vw, 9rem);
-    line-height: 0.9;
-    font-weight: 500;
-    margin: 0;
-    padding-top: 40px; /* Spazio dal tetto */
-    padding-right: 2rem;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  font-size: clamp(3rem, 7vw, 9rem);
+  line-height: 0.9;
+  font-weight: 500;
+  margin: 0;
+  padding-top: 40px;
+  /* Spazio dal tetto */
+  padding-right: 2rem;
 }
 
 .footer-item-address {
-    grid-column: 2 / 3; /* Colonna 2 */
-    grid-row: 1 / 2;    /* Riga 1 */
-    font-size: var(--text-lg);
-    white-space: nowrap;
+  grid-column: 2 / 3;
+  /* Colonna 2 */
+  grid-row: 1 / 2;
+  /* Riga 1 */
+  font-size: var(--text-lg);
+  white-space: nowrap;
 }
 
 .footer-item-socials {
-    grid-column: 1 / 2; 
-    grid-row: 2 / 3;    
-    align-self: end;    
-    list-style: none;
-    margin: 0;
-    padding: 0 0 40px 0; 
-    font-size: 1.5rem;
-    line-height: 1.6;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  align-self: end;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 40px 0;
+  font-size: 1.5rem;
+  line-height: 1.6;
 }
 
 .footer-item-map {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    width: 100%;
-    height: 100%; 
-    filter: grayscale(100%) invert(90%);
-    padding-top: 30px; 
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(100%) invert(90%);
+  padding-top: 30px;
 }
 
 .footer-item-map iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
 }
 
 .copyright-bar {
-    height: 60px;
-    background-color: var(--black);
-    display: flex;
-    align-items: center;
-    padding-left: var(--side-margin);
-    border-top: 1px solid #333;
-    font-size: 0.9rem;
-    color: gray;
+  height: 60px;
+  background-color: var(--black);
+  display: flex;
+  align-items: center;
+  padding-left: var(--side-margin);
+  border-top: 1px solid #333;
+  font-size: 0.9rem;
+  color: gray;
 }
 
 @media (max-width: 900px) {
-    .footer-wrapper {
-        position: relative;
-        z-index: 2;
-        height: auto;
-    }
+  .footer-wrapper {
+    position: relative;
+    height: auto;
+  }
 
-    .footer-grid-layout {
-        display: flex;
-        flex-direction: column;
-        height: auto;
-        padding: 0;
-        align-items: stretch;
-    }
+  .footer-grid-layout {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: 0;
+    align-items: stretch;
+  }
 
-    .footer-item-title {
-        order: 1;
-        padding: 40px var(--side-margin);
-    }
-    
-    .footer-item-socials {
-        order: 2;
-        padding: 0 var(--side-margin) 40px;
-        align-self: flex-start; 
-    }
-    
-    .footer-item-address {
-        order: 3;
-        padding: 0 var(--side-margin) 20px;
-        white-space: normal;
-    }
-    
-    .footer-item-map {
-        order: 4;
-        height: 400px;
-        margin-top: 0;
-    }
-    
-    .copyright-bar {
-        padding-left: var(--side-margin);
-    }
+  .footer-item-title {
+    order: 1;
+    padding: 40px var(--side-margin);
+  }
+
+  .footer-item-socials {
+    order: 2;
+    padding: 0 var(--side-margin) 40px;
+    align-self: flex-start;
+  }
+
+  .footer-item-address {
+    order: 3;
+    padding: 0 var(--side-margin) 20px;
+    white-space: normal;
+  }
+
+  .footer-item-map {
+    order: 4;
+    height: 400px;
+    margin-top: 0;
+  }
+
+  .copyright-bar {
+    padding-left: var(--side-margin);
+  }
 }
 
-/* =======================================================
-   MOBILE FIX: DISATTIVA REVEAL SU SCHERMI PICCOLI
-   ======================================================= */
 @media (max-width: 768px) {
-    
-    /* 1. Il Footer diventa un blocco normale alla fine della pagina */
-    #footer .footer-wrapper {
-        position: relative !important; /* Non più fixed */
-        z-index: 10 !important;        /* Sta sopra a tutto */
-        bottom: auto !important;
-        left: auto !important;
-        transform: none !important;
-    }
 
-    /* 2. Il Main smette di avere ombre o comportamenti strani */
-    main {
-        box-shadow: none !important;
-        z-index: 1 !important;
-    }
-
-    /* 3. Assicuriamoci che il footer abbia la sua altezza naturale */
-    .footer-grid-layout {
-        height: auto !important;       /* Si adatta al contenuto */
-        min-height: auto !important;   /* Niente forzature */
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 40px;
-    }
+  .footer-grid-layout {
+    height: auto !important;
+    min-height: auto !important;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+  }
 }
 
-/* =========================================
-   PAGINA WORKS (BOOTSTRAP EDITION)
-   ========================================= */
+/* file works */
 
-.works-hero {
-    /* Manteniamo l'altezza e lo sfondo */
-    height: calc(100vh - var(--topnav-h));
-    width: 100%;
-    background-color: var(--white); 
-    padding: 0 var(--side-margin);
-    box-sizing: border-box;
-}
-
-/* Nota: Ho rimosso .works-grid-layout grid properties perché 
-   stiamo usando d-flex flex-column nell'HTML */
-
-/* ZONA TITOLO */
 .title-text h1 {
-    /* Sovrascriviamo le dimensioni di Bootstrap per avere le TUE dimensioni */
-    font-size: clamp(3rem, 7vw, 9rem);
-    line-height: 0.9;
-    /* Font-weight e margin sono gestiti dalle classi Bootstrap fw-bold m-0 nell'HTML */
+  font-size: clamp(3rem, 7vw, 9rem);
+  line-height: 0.9;
 }
 
-/* SOTTOTITOLO */
 .works-area-subtitle p {
-    font-size: 24px !important;
+  font-size: 24px !important;
 }
-
-/* =========================================
-   LISTA PROGETTI (BOOTSTRAP HYBRID)
-   ========================================= */
 
 .project-list {
-    background-color: var(--white);
-    position: relative;
-    z-index: 2;
-    padding: var(--side-margin);
-    padding-top: 0;
+  background-color: var(--white);
+  position: relative;
+  z-index: 2;
+  padding: var(--side-margin);
+  padding-top: 0;
 }
 
-/* 2. LA RIGA DEL PROGETTO (Gestisce Bordo e Padding) */
 .project-row {
-    /* Il bordo è applicato alla riga, quindi sarà largo quanto il container (meno i gutter) */
-    border-bottom: 2px solid var(--black);
-    cursor: pointer;
-    /* I famosi 40px di aria sopra e sotto */
-    padding-top: 30px;
-    padding-bottom: 30px;
+  border-bottom: 2px solid var(--black);
+  cursor: pointer;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
-/* 3. IL TITOLO */
 .project-name {
-    font-size: clamp(3rem, 6vw, 6rem);
-    font-weight: 500;
-    line-height: 0.9;
-    margin: 0;
-    /* Fix per mobile: su desktop è baseline, su mobile serve spazio sotto */
-    margin-bottom: 0; 
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 500;
+  line-height: 0.9;
+  margin: 0;
+  margin-bottom: 0;
 }
 
 .ratio img {
-     width: 100%;
+  width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   transition: all .3s ease;
@@ -1091,8 +924,8 @@ position: fixed;  /* Inchiodalo allo schermo */
 }
 
 .ratio-7x5 {
-    --bs-aspect-ratio: calc(5 / 7.5 * 100%);
-    overflow: hidden; 
+  --bs-aspect-ratio: calc(5 / 7.5 * 100%);
+  overflow: hidden;
 }
 
 .project-media {
@@ -1119,81 +952,89 @@ position: fixed;  /* Inchiodalo allo schermo */
 }
 
 
-/* OVERRIDE CONTAINER (Per allineare tutto ai tuoi margini laterali) */
-@media (max-width: 768px) {.project-list>.container-fluid {
+@media (max-width: 768px) {
+  .project-list>.container-fluid {
     padding-left: 0;
     padding-right: 0;
-}
-.col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, 
-.col-7, .col-8, .col-9, .col-10, .col-11, .col-12, 
-.col-md-6, .col-lg-6 {
+  }
+
+  .col,
+  .col-1,
+  .col-2,
+  .col-3,
+  .col-4,
+  .col-5,
+  .col-6,
+  .col-7,
+  .col-8,
+  .col-9,
+  .col-10,
+  .col-11,
+  .col-12,
+  .col-md-6,
+  .col-lg-6 {
     padding-left: 12px !important;
     padding-right: 12px !important;
-}
+  }
 
-#title-container.col-12 {
+  #title-container.col-12 {
     padding-left: 0 !important;
     padding-right: 0 !important;
-}
+  }
 
-#title-main-header {
+  #title-main-header {
     padding-left: 0 !important;
     padding-right: 0 !important;
-}
+  }
 }
 
-/* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
-    .project-name {
-        margin-bottom: 20px; /* Separa il titolo dall'immagine quando sono impilati */
-    }
-    
-    .mobile-arrow {
+  .project-name {
+    margin-bottom: 20px;
+  }
+
+  .mobile-arrow {
     display: flex;
   }
 
-  /* nasconde il cursore custom */
   #cursor {
     display: none;
   }
-    .works-hero .flex-grow-1 {
-                display: none !important;
-            }
 
-            /* 2. Il contenitore della sezione diventa alto quanto tutto lo schermo */
-            .works-hero .container-fluid {
-                height: 100vh; 
-                justify-content: flex-start; /* Reset dell'allineamento verticale */
-            }
+  .works-hero .flex-grow-1 {
+    display: none !important;
+  }
 
-            /* 3. La riga principale (Titolo + Freccia) si espande per riempire tutto */
-            .works-hero .row {
-                flex: 1; /* Prende tutta l'altezza disponibile */
-                display: flex;
-                flex-direction: column; /* Impila Titolo sopra e Freccia sotto */
-                margin: 0 !important;
-            }
+  .works-hero .container-fluid {
+    height: 100vh;
+    justify-content: flex-start;
+  }
 
-            /* 4. PRIMA RIGA (Titolo): Prende il 50% dello spazio, testo in basso */
-            .works-hero .col-md-8 {
-                flex: 1; /* 50% altezza */
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-end; /* Spinge il titolo sul "pavimento" della sua metà */
-                padding-bottom: 10px;      /* Un po' di aria dalla metà esatta */
-            }
+  .works-hero .row {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0 !important;
+  }
 
-            /* 5. SECONDA RIGA (Freccia): Prende il 50% dello spazio, freccia al centro */
-            .works-hero .col-md-4 {
-                flex: 1; /* 50% altezza */
-                width: 100%;
-                display: flex;
-                align-items: center;    /* Centra verticalmente */
-                justify-content: center; /* Centra orizzontalmente (togli se la vuoi a sx) */
-                margin: 0 !important;
-                padding: 0 !important;
-            }
+  .works-hero .col-md-8 {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+  }
+
+  .works-hero .col-md-4 {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 }
 
 @media (min-width: 769px) {
@@ -1202,230 +1043,164 @@ position: fixed;  /* Inchiodalo allo schermo */
   }
 }
 
-/* --- PRELOADER --- */
-#magenta-preloader {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100vh;
-    z-index: 999999;
-    background-color: var(--magenta);
-    display: flex; justify-content: center; align-items: center;
-    
-    /* Animazione Tenda */
-    transform: translateY(0%);
-    transition: transform 1.0s cubic-bezier(0.77, 0, 0.175, 1);
-}
+/* layout pagina dei lavori */
 
-#magenta-preloader.is-hidden {
-    transform: translateY(-100%); /* Sale su */
-}
-
-
-/* Mascotte */
-.cascade-grid {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--magenta);
-  z-index: 1;
-}
-
-.loader-content {
-  position: relative;
-  z-index: 2;
-  transition: opacity 0.3s;
-}
-
-#magenta-preloader.is-hidden .loader-content {
-  opacity: 0;
-}
-
-.loader-png {
-  width: 100px;
-  height: auto;
-  animation: bounce-7 2s infinite;
-}
-@keyframes bounce-7 {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
-
-
-.instant-hide {
-    transform: translateY(-100%) !important;
-    transition: none !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-}
-/* =========================================
-   LAYOUT PAGINA PROGETTO (Stile Velocity)
-   ========================================= */
-
-/* --- 1. ZONA BIANCA (Intro) --- */
 .intro-white {
   position: -webkit-sticky;
-  position: sticky; 
-    top: 0;
-    /* Z-index basso così la nera le passa sopra */
-    z-index: 1;
-    background-color: var(--white);
-    color: var(--black);
-    padding-left: var(--side-margin);
-    padding-right: var(--side-margin);
-    
-    /* Questo assicura che la sezione bianca prenda una buona porzione di schermo */
-    min-height: 60vh; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centra verticalmente il blocco testi */
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--white);
+  color: var(--black);
+  padding: 0 var(--side-margin);
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* Header piccolo (es. "Poli Fanzine") */
 .project-mini-header {
-    font-size: 24px;
-    font-weight: 500;
-    margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
 }
 
-/* Link "All Work" */
 .back-link {
-    font-size: 24px;
-    text-decoration: none;
-    font-weight: 500;
+  font-size: 24px;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-/* Titolo Gigante */
 .project-main-title {
-    /* Dimensione reattiva ma GRANDE */
-    font-size: 134px !important;
-    font-weight: 500;
-    line-height: 0.9; 
-    margin-top: 10px;
-    margin-bottom: 30px;
-    letter-spacing: -0.02em;
+  font-size: 134px !important;
+  font-weight: 500;
+  line-height: 0.9;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  letter-spacing: -0.02em;
 }
 
-/* --- DESCRIZIONE (Line-height stretto) --- */
 .project-description p {
-    font-size: 24px;
-    line-height: 1.15; /* Interlinea molto compatta */
-    max-width: 700px;
-    margin: 0;
-    color: var(--black); /* Testo nero per contrasto */
+  font-size: 24px;
+  line-height: 1.15;
+  max-width: 700px;
+  margin: 0;
+  color: var(--black);
 }
 
-/* --- LISTA DETTAGLI (A Destra) --- */
 .project-details-wrapper {
-    margin-top: 20px; /* Margine su mobile */
+  margin-top: 20px;
 }
 
 .project-details-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.2;
-    position: relative;
-    display: inline-block;
-    text-align: right;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+  text-align: right;
 }
 
-/* --- 2. ZONA NERA E GALLERY --- */
 .content-black {
-    background-color: var(--black);
-    color: var(--white);
-    width: 100%;
-       position: relative;
-    
-    /* Z-index più alto per coprire la bianca */
-    z-index: 5 !important;    
+  background-color: var(--black);
+  color: var(--white);
+  width: 100%;
+  position: relative;
+  z-index: 5 !important;
 }
 
 .hero-full-width img {
-    width: 100%;
-    display: block;
-    height: 34.8vw;
-    margin-bottom: 3.07vw;
-    border-radius: 0 !important;
-    object-fit: cover;
+  width: 100%;
+  display: block;
+  height: 34.8vw;
+  margin-bottom: 3.07vw;
+  border-radius: 0 !important;
+  object-fit: cover;
 }
 
 .project-gallery .container-fluid {
-    padding-left: var(--side-margin);
-    padding-right: var(--side-margin);
+  padding-left: var(--side-margin);
+  padding-right: var(--side-margin);
 }
 
 @media (min-width: 769px) and (max-width: 1355px) {
-.project-main-title {
+  .project-main-title {
     font-size: 96px !important;
-  }}
+  }
+}
 
 @media (max-width: 1349px) {
   .project-gallery .container-fluid {
-    padding-left: 0 ;
+    padding-left: 0;
     padding-right: 0;
   }
 }
 
 @media (max-width: 768px) {
-   .project-details-wrapper {
-        margin-top: 0;
-    }
+  .project-details-wrapper {
+    margin-top: 0;
+  }
 
-    #project-description{
-        padding: 0 !important;
-    }
+  #project-description {
+    padding: 0 !important;
+  }
 
-    .back-link, #title-mini-header{
-      display: none;
-    }
+  .back-link,
+  #title-mini-header {
+    display: none;
+  }
 
-    .project-main-title {
+  .project-main-title {
     font-size: 64px !important;
   }
+
   .image-cycle {
     padding: 0 0 !important;
   }
 
-  .hero-full-width img{
+  .hero-full-width img {
     height: 50vw;
   }
-.project-description p{
+
+  .project-description p {
     font-size: 24px;
-}
+  }
 
-.menu-icon {/**/
-  flex: 0 0 2rem !important;
-}
+  .menu-icon {
+    flex: 0 0 1.24rem;
+  }
 
-.fs-5 {
+  .fs-5 {
     font-size: 24px !important;
-}
+  }
 
-.project-details-list {
+  .project-details-list {
     font-size: 16px;
     padding: 2rem 0;
 
+  }
+
+  .text-white {
+    color: var(--white) !important;
+  }
+
+  .media_container {
+    border-radius: 1.042vw;
+  }
+
+  .image-cycle {
+    width: 100%;
+    height: 100%;
+  }
+
+  .image-cycle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
-
-
-
-.text-white { color: var(--white) !important; }
-.media_container {
-        border-radius: 1.042vw;
-}
-
-.image-cycle {
-  width: 100%;
-  height: 100%;
-}
-
-.image-cycle img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}}
 
 .image-cycle img {
   width: 100%;
@@ -1434,33 +1209,33 @@ position: fixed;  /* Inchiodalo allo schermo */
 }
 
 .media-box {
-    width: 100%;
-    aspect-ratio: 0.87;
-    overflow: hidden;
+  width: 100%;
+  aspect-ratio: 0.87;
+  overflow: hidden;
 }
 
-.media-box img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.media-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
- .article_container {
+.article_container {
   text-align: center;
-    margin: 14.44vw 0;
-  }
+  margin: 14.44vw 0;
+}
 
-  .article_container h2 {
-   margin: 0 0 3.61vw;
-   line-height: .95;
-    letter-spacing: -.04em;
-  }
+.article_container h2 {
+  margin: 0 0 3.61vw;
+  line-height: .95;
+  letter-spacing: -.04em;
+}
 
-  .article_container p { 
-    font-size: calc(18px + 1 * ((100vw - 320px) / 1080));
-    line-height: 1.4;
-    margin: 0;
-  }
+.article_container p {
+  font-size: calc(18px + 1 * ((100vw - 320px) / 1080));
+  line-height: 1.4;
+  margin: 0;
+}
 
 @media (min-width: 768px) {
   .article_container {
@@ -1470,24 +1245,18 @@ position: fixed;  /* Inchiodalo allo schermo */
     padding-right: calc(var(--bs-gutter-x) * .5);
     padding-left: calc(var(--bs-gutter-x) * .5);
   }
-  
+
   .article_container h2 {
-     margin: 0 0 16px;
+    margin: 0 0 16px;
   }
 
-    .article_container p {
+  .article_container p {
     line-height: 1.1;
     letter-spacing: -.01em;
     font-weight: 400;
     font-size: 24px;
     max-width: 650px;
   }
-}
-
-@media (min-width: 46.25em) {
-    .hero_container__EMze8 {
-
-    }
 }
 
 .look-works p {
@@ -1497,13 +1266,16 @@ position: fixed;  /* Inchiodalo allo schermo */
   color: var(--white);
   background-color: var(--black);
 }
+
 .look-works:hover p {
   background-color: var(--white);
   color: var(--black);
 }
+
 .look-works svg {
   fill: var(--white);
 }
+
 .look-works:hover svg {
   fill: var(--black);
 }

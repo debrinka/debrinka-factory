@@ -1,7 +1,4 @@
-// =========================================================
-// HEADER + FOOTER + MENU LATERALE
-// =========================================================
-
+// componenti header con apertura e chiusura del menù, footer
 document.addEventListener("DOMContentLoaded", function () {
 
  const headerContainer = document.querySelector('#header');
@@ -18,29 +15,28 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         </div>`;
     }
-
-    // ORA l'header esiste davvero nel DOM
 if (header) header.classList.add('is-light');
 
 const sections = document.querySelectorAll('.bg-section');
 const pageBg = document.querySelector('#page-bg');
-const bgObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const color = entry.target.dataset.bg;
+const bgObserver = new IntersectionObserver(entries => { // osservatore che controlla le sezioni quando entrano nella finestra
+  entries.forEach(entry => { // per ogni sezione che è dentro la finesta
+    if (entry.isIntersecting) { // se la sezione è visibile dentro la finestra
+      const color = entry.target.dataset.bg; // prende il colore dato da data-bg
       pageBg.style.backgroundColor =
         getComputedStyle(document.documentElement)
           .getPropertyValue(`--${color}`);
     }
   });
 }, {
-  rootMargin: '-40% 0px -60% 0px',
+  rootMargin: '-40% 0px -60% 0px', //delay prima di cambiare colore
   threshold: 0
 });
 
+// cambio colore dell'header in base alla sezione
 sections.forEach(section => bgObserver.observe(section));
-// sezioni scure (hero magenta, ecc.)
-const darkSections = document.querySelectorAll('.magenta-section');
+
+const darkSections = document.querySelectorAll('.magenta-section'); // sezioni scure (hero magenta, ecc.)
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -52,12 +48,10 @@ const observer = new IntersectionObserver(entries => {
       header.classList.add('is-light');
     }
   });
-}, {
-  rootMargin: '-80px 0px -80% 0px'
 });
-
 darkSections.forEach(section => observer.observe(section));
 
+// footer
     const footer = document.querySelector('#footer');
     if (footer) {
         footer.innerHTML = `
@@ -115,35 +109,13 @@ darkSections.forEach(section => observer.observe(section));
             </div>
         </div>`;
     }
-  // =====================================================
-    // 3. FOOTER REVEAL (CALCOLO MARGINI)
-    // =====================================================
-    function adjustFooterReveal() {
-        const main = document.querySelector('#main-content');
-        const footerWrapper = document.querySelector('.footer-wrapper');
-
-        if (main && footerWrapper) {
-            if (window.innerWidth > 768) {
-                main.style.marginBottom = footerWrapper.offsetHeight + 'px';
-            } else {
-                main.style.marginBottom = '0px';
-            }
-        }
-    }
-
-    setTimeout(adjustFooterReveal, 100);
-    window.addEventListener('resize', adjustFooterReveal);
-
 });
 
-
-// =========================================================
-// 4. MENU LATERALE (JQUERY)
-// =========================================================
+// componente menù
 
 $(document).ready(function () {
 
-    // CREA MENU SE NON ESISTE
+    // se menù non esiste allora lo crea
     if ($('#side-menu').length === 0) {
         const menuHTML = `
         <div id="side-menu" style="display:none; flex-direction: column; ">
@@ -173,7 +145,7 @@ $(document).ready(function () {
                         </svg>
                     </span>
                     <span class="menu-text">works</span></a></li>
-                <li><a href="#footer" class="menu-link">
+                <li><a id="footer-link" href="#footer" class="menu-link">
                     <span class="menu-icon">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -186,41 +158,59 @@ $(document).ready(function () {
         $('body').append(menuHTML);
     }
 
-    // APERTURA MENU
-$(document).on('click', '#menu-trigger', function (e) {
+// effetto animazione apertura del menu
+$(document).on('click', '#menu-trigger', function(e) {
     e.preventDefault();
 
     const $menu = $('#side-menu');
     const $menuheader = $('#menu-header');
     const $links = $menu.find('ul li');
 
-    // Resetta animazioni precedenti
+    // resetta animazioni precedenti
     $links.removeClass('show');
     $menuheader.removeClass('show');
 
-    // Mostra il menu (slide)
+    // mostra il menu con slide
     $menu.css('display', 'flex').hide().show('slide', { direction: 'up' }, 500, function() {
+        // mostra header
         setTimeout(() => {
-        $menuheader.addClass('show');
-      }, 50);
-        // Animazione link dopo apertura menu
+            $menuheader.addClass('show');
+        }, 50);
+
+        // animazione link uno alla volta
         $links.each(function(index) {
             const $li = $(this);
             setTimeout(function() {
                 $li.addClass('show');
-            }, 100 + 150 * index); // delay progressivo
+            }, 100 + 150 * index); //ms
         });
     });
 });
-    // CHIUSURA MENU
-    $(document).on('click', '#close-menu', function (e) {
-        e.preventDefault();
-         $('#menu-header').removeClass('show');
-        $('#side-menu ul li').removeClass('show');
-        $('#side-menu').hide('slide', { direction: 'up' }, 500);
-    });
 
-// LINK ATTIV NEL MENU
+// chiusura del menu
+$(document).on('click', '#close-menu', function(e) {
+    e.preventDefault();
+    const $menu = $('#side-menu');
+    const $menuheader = $('#menu-header');
+    const $links = $menu.find('ul li');
+
+    $menuheader.removeClass('show');
+    $links.removeClass('show');
+    $menu.hide('slide', { direction: 'up' }, 500);
+});
+
+// clic su link del menu
+$(document).on('click', '#side-menu a', function() {
+    const $menu = $('#side-menu');
+    const $menuheader = $('#menu-header');
+    const $links = $menu.find('ul li');
+
+    $menuheader.removeClass('show');
+    $links.removeClass('show');
+    $menu.hide('slide', { direction: 'up' }, 500);
+});
+
+// classe attiva di quando si trova in pagina
     const currentPage = window.location.pathname.split('/').pop();
 
 $('#side-menu a').each(function () {

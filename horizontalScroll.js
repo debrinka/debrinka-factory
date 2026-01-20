@@ -1,40 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
   const section = document.querySelector('#journey');
   const track = document.querySelector('.journey-track');
-  const DESKTOP_BREAKPOINT = 1350;
+  const DESKTOP_BREAKPOINT = 1350; // per la vista ipad in giù
   let horizontalEnabled = false;
 
-function setSectionHeight() {
-  const trackWidth = track.scrollWidth;
+  
+function setSectionHeight() { //funzione che quando scrollo in verticale, fa lo scroll orizzontale
+  const trackWidth = track.scrollWidth; //quanto è larga l'intera striscia delle card
   const viewportWidth = window.innerWidth;
   
-  section.style.height = trackWidth - viewportWidth + window.innerHeight + 'px';
+  section.style.height = trackWidth - viewportWidth + window.innerHeight + 'px'; // altezza della sezione deve essere uguale a: lunghezza totale traccia della striscia - larghezza schermo) + altezza schermo
 }
 
   function onScroll() {
-    const rect = section.getBoundingClientRect();
- // quanto ho scrollato DENTRO la sezione
-  const scrollInside = -rect.top;
-
-  // ritardo prima di partire
-  const startOffset = 150;
-    const maxScroll = track.scrollWidth - window.innerWidth;
+    const rect = section.getBoundingClientRect(); //coordinate e dimensioni della sezione rispetto alla finestra visibile
+  const scrollInside = -rect.top; // quanto ho scrollato DENTRO la sezione
+    const maxScroll = track.scrollWidth - window.innerWidth; //lunghezza massima che può fare lo scroll orizzontale
   // progress parte solo dopo il delay
   const progress = Math.min(
     Math.max(scrollInside, 0),
-    maxScroll
+    maxScroll +163 // 163px per il side-margin
   );
     track.style.transform = `translateX(-${progress}px)`;
-     setSectionHeight();
+     setSectionHeight(); // ricalcolo altezza se viene rimpicciolita la finestra
   }
 
-
- /* --------------------
-     ENABLE / DISABLE
-  -------------------- */
-
+ 
+//attiva e disattiva lo scroll orizzontale in base alla larghezza della finestra
   function enableHorizontalScroll() {
-    if (horizontalEnabled) return;
+    if (horizontalEnabled) return; // se è già attivo, non fare nulla
     horizontalEnabled = true;
 
     setSectionHeight();
@@ -54,10 +48,6 @@ function setSectionHeight() {
     track.style.transform = 'translateX(0)';
   }
 
-  /* --------------------
-     CHECK VIEWPORT
-  -------------------- */
-
   function checkViewport() {
     if (window.innerWidth >= DESKTOP_BREAKPOINT) {
       enableHorizontalScroll();
@@ -66,13 +56,8 @@ function setSectionHeight() {
     }
   }
 
-  /* --------------------
-     INIT
-  -------------------- */
 
-
-
-
+//array cards
 const container = document.querySelector('.container-year-card');
 const journeyData = [
   {
